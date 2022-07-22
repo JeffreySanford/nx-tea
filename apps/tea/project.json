@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/tea",
         "index": "apps/tea/src/index.html",
@@ -13,8 +15,14 @@
         "polyfills": "apps/tea/src/polyfills.ts",
         "tsConfig": "apps/tea/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/tea/src/favicon.ico", "apps/tea/src/assets"],
-        "styles": ["apps/tea/src/styles.scss"],
+        "assets": [
+          "apps/tea/src/favicon.ico",
+          "apps/tea/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/tea/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -74,12 +82,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/tea/**/*.ts", "apps/tea/**/*.html"]
+        "lintFilePatterns": [
+          "apps/tea/**/*.ts",
+          "apps/tea/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/tea"],
+      "outputs": [
+        "coverage/apps/tea"
+      ],
       "options": {
         "jestConfig": "apps/tea/jest.config.ts",
         "passWithNoTests": true

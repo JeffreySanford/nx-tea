@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { AppFooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,11 @@ import { FormsModule } from '@angular/forms';
     MatDividerModule,
     MatCheckboxModule
   ],
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    AppFooterComponent
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

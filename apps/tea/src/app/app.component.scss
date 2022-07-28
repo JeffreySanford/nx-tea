@@ -1,48 +1,125 @@
-mat-toolbar {
-    background: green;
+.mat-sidenav {
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: darkseagreen;
+  border-radius: 10px;
+  padding: 16px;
+
+  .action-icon {
+    display: flex;
+    background-color: darkgreen;
     color: white;
+    width: 100%;
+    margin: 0.5em 0;
+    border-radius: 0.25em;
+
+    .mat-icon {
+      margin-right: 0.25em;
+    }
+  }
+
+  .menu-button {
+    margin-top: 0.5em;
+  }
 }
 
-mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    border-right: none;
-    background: darkgreen;
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
+.focus-tea {
+  border-radius: 0.25em;
+  width: 50%;
+  height: 10em;
+  margin: 4em auto 0;
+  display: flex;
+  border: 1px solid purple;
 }
 
 .content {
-    height: calc(100vh - 98px);
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
+  height: calc(100vh - 12.75em);
+  border-radius: 0.25em;
+  margin: 0.5em;
+  margin-left: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-width: 82%;
+  width: 96%;
+  align-items: top;
+  font-size: 2rem;
+  overflow-y: scroll;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &::-webkit-scrollbar {
+    width: 0.1em;
+  }
 
-    font-size: 2rem;
-    color: lightgray;
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 255, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgreen;
+    outline: 1px solid green;
+  }
+
+  .tea-container {
+    height: 4em;
+    width: 4em;
+    margin: 0.5em;
+    border: 1px solid darkseagreen;
+  }
+
+  .tea {
+    width: 32%;
+    padding-bottom: 18%;
+    margin-bottom: 2%;
+  }
 }
 
 mat-sidenav-container {
-    height: calc(100vh - 65px);
+  height: calc(100vh - 65px);
+
+  .mat-drawer-content {
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 3em !important;
+
+    p {
+      margin: 0;
+      color: purple;
+    }
+  }
+
+  .logo {
+    height: 8em;
+    width: 4em;
+    margin-bottom: -1em;
+  }
 }
 
-.example-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+mat-sidenav-content {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2.5em;
+
+    h1,
+    p {
+      margin: 0;
+      color: purple;
+    }
   }
-  
-  .example-events {
-    width: 300px;
-    height: 200px;
-    overflow: auto;
-    border: 1px solid #555;
-  }
+}
+
+.user-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 92%;
+}

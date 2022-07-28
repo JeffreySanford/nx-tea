@@ -1,49 +1,45 @@
-<mat-toolbar>
-  Responsive side navigation
-</mat-toolbar>
-
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-    (closed)="events.push('close!')">
-    
-    <button mat-button class="menu-button">
+<mat-sidenav-container class="user-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <button class="action-icon">
       <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    
-    <button mat-button class="menu-button">
-      <mat-icon>person</mat-icon>
-      <span>Profile</span>
+      <label class="menu-button">tea selection</label>
     </button>
 
-    <button mat-button class="menu-button">
-      <mat-icon>info</mat-icon>
-      <span>About</span>
+    <button class="action-icon">
+      <mat-icon>shopping_cart</mat-icon>
+      <label class="menu-button">shopping cart</label>
     </button>
 
-    <mat-divider></mat-divider>
+    <button class="action-icon">
+      <mat-icon>subscription</mat-icon>
+      <label class="menu-button">subscription</label>
+    </button>
 
-    <button mat-button class="menu-button">
+    <button class="action-icon">
+      <mat-icon>settings</mat-icon>
+      <label class="menu-button">user settings</label>
+    </button>
+
+    <button class="action-icon">
       <mat-icon>help</mat-icon>
-      <span>Help</span>
+      <label class="menu-button">help</label>
     </button>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <p>
-      <mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox>
-    </p>
-    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-    <p>Events:</p>
-    <div class="example-events">
-      <div *ngFor="let e of events">{{e}}</div>
+  <mat-sidenav-content (click)="sidenav.toggle()">
+    <div class="header">
+      <img src="../assets/green-tea-basic.png" class="logo" />
+      <h1>Broken Leaf</h1>
+      <p>A Stutsman County Tea Company</p>
     </div>
 
-    <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
-        Main content here!
-      </div>
-    </mat-sidenav-content>
+    <div class="focus-tea"></div>
 
+    <div class="content mat-elevation-z8">
+      <div class="tea-container" *ngFor="let tea of teas">
+        <p class="tea">{{ tea }}</p>
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<tea-footer></tea-footer>

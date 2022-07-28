@@ -12,6 +12,9 @@ export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');
   opened?:BooleanInput;
   events: string[] = [];
+  teas = ['One', 'Two', 'Three', 'Four','One', 'Two', 'Three', 'Four','One', 'Two', 'Three', 'Four','Four','One', 'Two', 'Three', 'Four'];
 
   constructor(private http: HttpClient) {}
+
+
 }

@@ -1,0 +1,32 @@
+<button mat-button class="menu-button user">
+  <mat-icon class="icon">person</mat-icon>
+  <span>{{currentUser.name}}</span>
+</button>
+
+<button mat-button class="menu-button" (click)="toggleCartItems()" style="z-index:10;">
+  <mat-icon matBadge="{{totalCartItems}}" matBadgePosition="after" matBadgeColor="accent">add_shopping_cart</mat-icon>
+  <span>Shopping Cart ({{totalCartItems}})</span>
+</button>
+
+<div [hidden]="!showCartItems">
+  <mat-expansion-panel *ngFor="let product of cart">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{product.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{product.instructions}}</p>
+  </mat-expansion-panel>
+</div>
+
+<button mat-button class="menu-button">
+  <mat-icon>subscriptions</mat-icon>
+  <span>Subscription</span>
+</button>
+
+<mat-divider></mat-divider>
+
+<button mat-button class="menu-button">
+  <mat-icon>help</mat-icon>
+  <span>Help</span>
+</button>

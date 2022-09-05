@@ -12,7 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+
 import { FormsModule } from '@angular/forms';
+import { SidebarContentComponent } from './sidebar-content/sidebar-content.component';
+import { StageComponent } from './stage/stage.component';
+import { MatBadgeModule } from '@angular/material/badge'
 
 @NgModule({
   imports: [
@@ -25,9 +32,18 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatBadgeModule
   ],
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    SidebarContentComponent,
+    StageComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

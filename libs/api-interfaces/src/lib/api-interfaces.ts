@@ -3,8 +3,14 @@ export interface Message {
 }
 
 export interface Tea {
-  name : string;
-  cost : number;
+  name: string;
+  cost: number;
   price: number;
   id: number;
+  orderQuantity: number;
+  instructions?: string;
+}
+
+export interface Products {
+  teas?: Array<Tea>
 }

@@ -1,0 +1,31 @@
+.content {
+  height: calc(92vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1em;
+  color: black;
+}
+
+.tile {
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 7em;
+  height: 7em;
+  border: 1px solid purple;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 100%;
+}

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@tea/api-interfaces';
+import { Message, Tea } from '@tea/api-interfaces';
 
 import { AppService } from './app.service';
 
@@ -11,5 +11,10 @@ export class AppController {
   @Get('hello')
   getData(): Message {
     return this.appService.getData();
+  }
+
+  @Get('tea')
+  getInventory(): Array<Tea> {
+    return this.appService.getInventory();
   }
 }

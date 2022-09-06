@@ -35,7 +35,6 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
   }
 
   toggleCartItems() {
-    debugger
     this.showCartItems = !this.showCartItems;
     this.cd.detectChanges();
   }

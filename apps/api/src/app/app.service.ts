@@ -8,19 +8,22 @@ export class AppService {
       name: 'Vanilla Tea',
       cost: 2.50,
       price: 7.5,
-      id: 100
+      id: 100,
+      orderQuantity: 0
     },
     {
       name: 'Apricot Tea',
       cost: 2.50,
       price: 7.5,
-      id: 101
+      id: 101,
+      orderQuantity: 0
     },
     {
       name: 'Plains Tea',
       cost: 2.50,
       price: 7.5,
-      id: 102
+      id: 102,
+      orderQuantity: 0
     },
   ];
   getData(): Message {

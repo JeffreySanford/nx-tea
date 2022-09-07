@@ -1,6 +1,6 @@
 {
-  "/api": {
-    "target": "brokenleaf.us:3333",
+  "/api/tea": {
+    "target": "http://brokenleaf.us:3333",
     "secure": false
   }
 }

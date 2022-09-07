@@ -3,6 +3,7 @@ import { Tea } from '@tea/api-interfaces';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { CartService } from './cart.service';
 import { InventoryService } from './inventory.service';
+import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'tea-root',
@@ -19,40 +20,41 @@ export class AppComponent implements OnInit, AfterContentChecked {
     price: 0,
     cost: 0,
     id: 0,
-    orderQuantity:0
+    orderQuantity:0,
+    image: 'assets/teas/default-tea-container-image.png'
   }
 
   totalCartItems: number = 0;
   cart?: Tea[];
   inventoryService: InventoryService;
   cartService: CartService;
+  sidebarService: SidebarService;
 
 
-  constructor(cartService: CartService, inventoryService: InventoryService, private cd: ChangeDetectorRef) {
+  constructor(sidebarService: SidebarService, cartService: CartService, inventoryService: InventoryService, private cd: ChangeDetectorRef, ) {
     this.inventoryService = inventoryService;
     this.cartService = cartService;
+    this.sidebarService = sidebarService;
   }
 
 
   ngAfterContentChecked() {
     this.totalCartItems = this.cartService.getTotalCartItems();
-    this.cart = this.cartService.getCart();
+    // this.cart = this.cartService.getCart();
+    
     this.cd.detectChanges();
   }
 
   ngOnInit(): void {
     this.inventoryService.getInventory().subscribe((inventory: Array<Tea>)=> this.inventory = inventory);
+    this.cartService.getCart().subscribe((cart: Tea[])=>this.cart = cart);
   }
 
-  toggleSidebar(isSidebarOpen: boolean): void {
-    this.opened = isSidebarOpen;
-    this.cd.detectChanges();
-
-
-    if (!this.opened) {
-      color: 'red';
-    } else {
-      color: 'green';
-    }
+  toggleSidebar(isOpen: boolean) {
+    this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean)=>this.opened = isOpen);
+    // this.sidebarService.getSidebar().subscribe((isOpen: boolean)=>{
+    //   debugger
+    //   this.opened = isOpen
+    // })
   }
 }

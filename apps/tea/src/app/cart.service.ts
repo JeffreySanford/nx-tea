@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tea } from '@tea/api-interfaces';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { InventoryService } from './inventory.service';
 
 @Injectable({
@@ -10,11 +10,13 @@ export class CartService {
   totalCartItems: number = 0;
   cart: Array<Tea> = [];
   inventory: Tea[] = [];
+  subject$ = new BehaviorSubject<Tea[]>(this.cart);
 
   constructor(inventoryService: InventoryService) {
     inventoryService.getInventory().subscribe((inventory: Array<Tea>) => this.inventory = inventory);
   }
 
+  // TODO Convert this to a behavior subject
   getTotalCartItems(): number {
     let total: number = 0;
     this.cart.forEach((item) => {
@@ -24,8 +26,10 @@ export class CartService {
     return total;
   }
 
-  getCart(): Array<Tea> {
-    return this.cart;
+  getCart(): BehaviorSubject<Tea[]> {
+    this.subject$.next(this.cart);
+    
+    return this.subject$;
   }
 
   addToCart(id: number): Array<Tea> {

@@ -1,32 +1,61 @@
-<button mat-button class="menu-button user">
-  <mat-icon class="icon">person</mat-icon>
-  <span>{{currentUser.name}}</span>
-</button>
+<span class="sidebar-button-wrapper">
+  <button mat-button class="menu-button user">
+    <mat-icon class="icon">person</mat-icon>
+    <span class="icon-label">{{currentUser.name}}</span>
+  </button>
 
-<button mat-button class="menu-button" (click)="toggleCartItems()" style="z-index:10;">
-  <mat-icon matBadge="{{totalCartItems}}" matBadgePosition="after" matBadgeColor="accent">add_shopping_cart</mat-icon>
-  <span>Shopping Cart ({{totalCartItems}})</span>
-</button>
+  <button mat-button class="menu-button" (click)="showCartItems()" style="z-index:10;">
+    <mat-icon>add_shopping_cart</mat-icon>
+    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after" matBadgeColor="accent"></span>
+    <span class="icon-label"> Shopping Cart ({{totalCartItems}})</span>
+  </button>
 
-<div [hidden]="!showCartItems">
-  <mat-expansion-panel *ngFor="let product of cart">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{product.name}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>{{product.instructions}}</p>
-  </mat-expansion-panel>
-</div>
+  <div [hidden]="totalCartItems === 0">
+    <mat-table [dataSource]="dataSource">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Tea </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
 
-<button mat-button class="menu-button">
-  <mat-icon>subscriptions</mat-icon>
-  <span>Subscription</span>
-</button>
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price | currency}} ({{element.orderQuantity}}) </mat-cell>
+      </ng-container>
 
-<mat-divider></mat-divider>
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span style="display: flex;">
+            <mat-icon click="cartItemAction('add')">add_circle_outline</mat-icon>
+            <mat-icon click="cartItemAction('remove')">remove_circle_outline</mat-icon>
+          </span>
+        </mat-cell>
+      </ng-container>
 
-<button mat-button class="menu-button">
-  <mat-icon>help</mat-icon>
-  <span>Help</span>
-</button>
+      <!-- Sub Totals Column -->
+      <ng-container matColumnDef="sub-totals">
+        <mat-header-cell *matHeaderCellDef> Subtotal </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price * element.orderQuantity | currency}} </mat-cell>
+      </ng-container>
+      <mat-footer-cell style="border: 1px solid blue;" *matCellDef="let element"> {{getTotal() | currency}}
+      </mat-footer-cell>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <!-- Totals Row -->
+    </mat-table>
+  </div>
+
+  <button mat-button class="menu-button">
+    <mat-icon>subscriptions</mat-icon>
+    <span class="icon-label">Subscription</span>
+  </button>
+
+  <button mat-button class="menu-button">
+    <mat-icon>help</mat-icon>
+    <span class="icon-label">Help</span>
+  </button>
+</span>

@@ -9,6 +9,11 @@ export interface Tea {
   id: number;
   orderQuantity: number;
   instructions?: string;
+  image: string;
+}
+
+export interface Cart extends Tea {
+  
 }
 
 export interface Products {

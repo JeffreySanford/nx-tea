@@ -1,23 +1,29 @@
 <div class="page">
   <div class="header">
-    <h1>Broken Leaf</h1>
-    <h4>A Stutsman County Tea Company</h4>
+    <img src="assets/green-tea-basic.png" />
+    <span class="title">
+      <h1>Broken Leaf</h1>
+      <h4>A Stutsman County Tea Company</h4>
+    </span>
   </div>
 
   <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened" (click)="toggleSidebar(!opened)">
       <tea-sidebar-content [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <span style="display: flex;z-index: 5;">
-        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar(true)">
+      <span style="z-index: 5; display: flex;">
+        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar(!opened)">
           <button mat-button class="menu-button user">
             <mat-icon class="icon">person</mat-icon>
           </button>
 
           <button mat-button class="menu-button">
-            <mat-icon matBadge="{{totalCartItems}}" matBadgePosition="after" matBadgeColor="accent">add_shopping_cart</mat-icon>
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}"
+              matBadgePosition="after" matBadgeColor="accent"></span>
+
           </button>
 
           <button mat-button class="menu-button">

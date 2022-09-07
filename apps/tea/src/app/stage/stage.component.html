@@ -1,13 +1,16 @@
 <div class="content mat-elevation-z8">
-    <div *ngFor="let tea of inventory">
-      <div class="row">
-        <div class="column">
-          <div class="tile mat-elevation-z8">
-            <p>{{tea.name}}</p>
-            <p>{{tea.price | currency }}</p>
-            <button mat-mini-fab (click)="addToCart(tea.id)">add</button>
-          </div>
+  <div *ngFor="let tea of inventory">
+    <div class="row">
+      <div class="column">
+        <div class="tile mat-elevation-z8" style="display: flex;flex-wrap: wrap;">
+          <img [src]="tea.image" style="width: 3em; height: 3em;"/>
+          <span style="display: flex; flex-direction:column">
+            <p class="tea-name">{{tea.name}}</p>
+            <p class="price">{{tea.price | currency }}</p>
+            <mat-icon (click)="addToCart(tea.id)">add_circle_icon</mat-icon>
+          </span>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -19,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SidebarContentComponent } from './sidebar-content/sidebar-content.component';
 import { StageComponent } from './stage/stage.component';
-import { MatBadgeModule } from '@angular/material/badge'
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { MatBadgeModule } from '@angular/material/badge'
     MatSlideToggleModule,
     MatExpansionModule,
     MatInputModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTableModule
   ],
   declarations: [
     AppComponent,

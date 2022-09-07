@@ -1,0 +1,16 @@
+.sidebar-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mat-table {
+    width: 21em;
+    .mat-header, .mat-cell {
+        font-size: 0.8em;
+    }
+}
+
+.icon-label {
+    margin-left: 1em;
+}

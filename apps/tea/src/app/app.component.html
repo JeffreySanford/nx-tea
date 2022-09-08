@@ -8,7 +8,7 @@
   </div>
 
   <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="push" [(opened)]="opened" (click)="toggleSidebar(!opened)">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (click)="toggleSidebar(!opened)">
       <tea-sidebar-content [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 

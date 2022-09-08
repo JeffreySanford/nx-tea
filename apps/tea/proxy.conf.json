@@ -1,11 +1,11 @@
 {
   "/api/tea": {
-    "target": "http://0.0.0.0:3333",
+    "target": "http://localhost:3333",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {
       "^/api": ""
     },
-    "changeOrigin": true
+    "changeOrigin": false
   }
 }

@@ -1,6 +1,6 @@
 {
-  "/api/*": {
-    "target": "http://brokenlead:3333/api/tea",
+  "/api/tea": {
+    "target": "http://brokenleaf:3333/api/tea",
     "secure": false
   }
 }

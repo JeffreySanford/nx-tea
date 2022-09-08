@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve --host=127.0.0.1 --proxy-config proxy.conf.json",
+    "start": "nx serve --host=brokenleaf.us",
     "build": "nx build",
     "test": "nx test"
   },

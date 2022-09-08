@@ -1,6 +1,7 @@
 {
   "/api/tea": {
     "target": "http://localhost:3333",
+    "port": 3333,
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {

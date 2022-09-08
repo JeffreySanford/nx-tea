@@ -8,4 +8,11 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+
+  static port: string
+  constructor() {
+    //  AppModule.port = configService.get('HTTP_PORT')
+    AppModule.port = '3333';
+  }
+}

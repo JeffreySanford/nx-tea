@@ -15,7 +15,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3333;
 
   
-  await app.listen(port);
+  await app.listen(AppModule.port);
   Logger.log(
     `🚀 Application is running on: http://brokenleaf.us:${port}/${globalPrefix}`
   );

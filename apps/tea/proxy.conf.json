@@ -1,6 +1,6 @@
 {
   "/api/tea": {
-    "target": "http://brokenleaf.us:3333",
+    "target": "http://0.0.0.0:3333",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {

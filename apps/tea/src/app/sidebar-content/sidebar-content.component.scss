@@ -1,16 +1,49 @@
 .sidebar-button-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .mat-table {
-    width: 21em;
-    .mat-header, .mat-cell {
-        font-size: 0.8em;
-    }
+  width: 15em;
+  .mat-header-cell,
+  .mat-cell {
+    font-size: 0.8em;
+  }
+}
+
+.mat-header-row,
+.mat-row {
+  min-height: 2em;
+}
+
+mat-header-cell,
+mat-cell {
+  &:first-of-type {
+    padding-left: 0.5em;
+  }
+  &.mat-column-name {
+    min-width: 6em;
+  }
+
+  &.mat-column-price {
+    min-width: 5em;
+  }
+
+  &.mat-column-sub-totals {
+    min-width: 4em;
+  }
+
+  &.mat-column-actions {
+    min-width: 5em;
+  }
+}
+
+.material-icons {
+  font-size: 1em;
+  margin-top: 1em;
 }
 
 .icon-label {
-    margin-left: 1em;
+  margin-left: 1em;
 }

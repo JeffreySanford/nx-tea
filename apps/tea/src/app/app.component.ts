@@ -50,8 +50,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.cartService.getCart().subscribe((cart: Tea[])=>this.cart = cart);
   }
 
-  toggleSidebar(isOpen: boolean) {
-    this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean)=>this.opened = isOpen);
+  toggleSidebar(action: string, isOpen: boolean) {
+    if (action==='toggle') {
+      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean)=>this.opened = isOpen);
+    } else {
+      
+    }
     // this.sidebarService.getSidebar().subscribe((isOpen: boolean)=>{
     //   debugger
     //   this.opened = isOpen

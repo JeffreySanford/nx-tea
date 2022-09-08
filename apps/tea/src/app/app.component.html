@@ -8,13 +8,13 @@
   </div>
 
   <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (click)="toggleSidebar(!opened)">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (click)="toggleSidebar('toggle',!opened)">
       <tea-sidebar-content [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <span style="z-index: 5; display: flex;">
-        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar(!opened)">
+        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar('toggle', !opened)">
           <button mat-button class="menu-button user">
             <mat-icon class="icon">person</mat-icon>
           </button>

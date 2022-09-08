@@ -1,6 +1,6 @@
 {
   "/api/tea": {
-    "target": "localhost:3333",
+    "target": "brokenleaf.us:3333",
     "secure": false
   }
 }

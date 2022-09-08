@@ -1,6 +1,6 @@
 {
   "/api/tea": {
-    "target": "0.0.0.0:3333",
+    "target": "localhost",
     "secure": false
   }
 }

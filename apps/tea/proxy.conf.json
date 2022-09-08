@@ -4,7 +4,7 @@
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {
-      "^/api/tea": ""
+      "^/api": ""
     },
     "changeOrigin": true
   }

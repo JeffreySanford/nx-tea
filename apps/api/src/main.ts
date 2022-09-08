@@ -14,8 +14,8 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3333;
 
-  
-  await app.listen(AppModule.port);
+
+  await app.listen(port);
   Logger.log(
     `🚀 Application is running on: http://brokenleaf.us:${port}/${globalPrefix}`
   );

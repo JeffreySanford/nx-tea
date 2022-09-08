@@ -33,7 +33,8 @@
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
-        "buildTarget": "api:build"
+        "buildTarget": "api:build",
+        "proxyConfig": "apps/myapp/proxy.conf.js"
       },
       "configurations": {
         "production": {

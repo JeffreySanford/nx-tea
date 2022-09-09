@@ -61,12 +61,16 @@
   font-size: 0.8em;
   margin-bottom: 1em;
   border-radius: 5em;
-  color: maroon;
+  max-width: 3em;
+  color: darkred;
+  border: .5px solid maroon;
+  min-width: 3em;
+  padding: 0;
+  margin: 0 0 1em 0;
 
   &.user {
     background: rgba(blue, 0.1);
-    padding-left: 1.55em;
-  }
+   }
 
   &.shopping {
     background-color: rgba(purple, 0.1);
@@ -78,17 +82,6 @@
 
   &.help {
     background-color: rgba(orange, 0.2);
-  }
-}
-
-
-
-.user {
-  width: 100%;
-  display: flex;
-
-  .icon {
-    justify-content: left;
   }
 }
 

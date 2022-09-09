@@ -5,9 +5,11 @@
 }
 
 .menu-button {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   width: 17em;
   text-align: left;
+  color: rgb(83, 1, 1);
+  border: .5px solid maroon;
 
   &.user {
     background: rgba(blue, 0.1);

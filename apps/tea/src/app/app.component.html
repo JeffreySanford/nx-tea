@@ -15,22 +15,22 @@
     <mat-sidenav-content>
       <span style="z-index: 5; display: flex;">
         <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar('toggle', !opened)">
-          <button mat-button class="menu-button user">
+          <button mat-button class="menu-button user mat-elevation-z2" >
             <mat-icon class="icon">person</mat-icon>
           </button>
 
-          <button mat-button class="menu-button">
+          <button mat-button class="menu-button shopping mat-elevation-z2">
             <mat-icon>add_shopping_cart</mat-icon>
             <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}"
               matBadgePosition="after" matBadgeColor="accent"></span>
 
           </button>
 
-          <button mat-button class="menu-button">
+          <button mat-button class="menu-button subscription mat-elevation-z2">
             <mat-icon>subscriptions</mat-icon>
           </button>
 
-          <button mat-button class="menu-button">
+          <button mat-button class="menu-button help mat-elevation-z2">
             <mat-icon>help</mat-icon>
           </button>
         </div>

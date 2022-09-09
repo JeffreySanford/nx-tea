@@ -37,7 +37,6 @@
   width: 16em;
   overflow: hidden;
   border-right: none;
-  color: purple;
   border-radius: 10px;
   padding: 1em 1em 1em 0;
   text-align: left;
@@ -55,15 +54,34 @@
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 3em;
+  width: 3.5em;
 }
 
-button {
+.menu-button {
   font-size: 0.8em;
-  .mat-icon {
-    margin-right: 0.25em;
+  margin-bottom: 1em;
+  border-radius: 5em;
+  color: maroon;
+
+  &.user {
+    background: rgba(blue, 0.1);
+    padding-left: 1.55em;
+  }
+
+  &.shopping {
+    background-color: rgba(purple, 0.1);
+  }
+
+  &.subscription {
+    background-color: rgba(red, 0.1);
+  }
+
+  &.help {
+    background-color: rgba(orange, 0.2);
   }
 }
+
+
 
 .user {
   width: 100%;

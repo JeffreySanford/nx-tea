@@ -1,4 +1,4 @@
-* {
+.page {
   background-color: white;
 }
 
@@ -18,19 +18,19 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
     h1 {
       margin: 0.25em 0 0 0.5em;
       padding: 0;
     }
-  
+
     h4 {
       margin: 0 0 0 1.1em;
       padding: 0;
+      color: cadetblue;
     }
   }
 }
-
 
 .mat-sidenav {
   margin: 0 0 0 1em;
@@ -51,7 +51,6 @@
   height: 100%;
   overflow: hidden !important;
 }
-
 
 .collapsed-sidenav {
   display: flex;
@@ -76,7 +75,7 @@ button {
 }
 
 mat-sidenav-container {
-  height: calc(92vh - 6em);
+  height: calc(92vh - 6.5em);
   overflow: hidden;
 }
 

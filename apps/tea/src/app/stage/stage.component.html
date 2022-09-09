@@ -3,7 +3,7 @@
     <div class="row">
       <div class="column">
         <div class="tile mat-elevation-z8" style="display: flex;flex-wrap: wrap;">
-          <img [src]="tea.image" style="width: 3em; height: 3em;"/>
+          <img class="tea-image" [src]="tea.image" />
           <span style="display: flex; flex-direction:column">
             <p class="tea-name">{{tea.name}}</p>
             <p class="price">{{tea.price | currency }}</p>

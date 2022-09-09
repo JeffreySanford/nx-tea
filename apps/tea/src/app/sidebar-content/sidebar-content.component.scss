@@ -4,6 +4,28 @@
   align-items: flex-start;
 }
 
+.menu-button {
+  margin-bottom: 0.5em;
+  width: 15em;
+
+  &.user {
+    background: rgba(blue, 0.1);
+  }
+
+  &.shopping {
+    background-color: rgba(purple, 0.1);
+  }
+
+  &.subscription {
+    background-color: rgba(red, 0.1);
+  }
+
+  &.help {
+    background-color: rgba(orange, 0.2);
+  }
+
+}
+
 .mat-table {
   width: 15em;
   .mat-header-cell,

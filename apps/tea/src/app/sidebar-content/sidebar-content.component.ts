@@ -54,7 +54,7 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
     return currentTotal;
   }
 
-  showCartItems(): void {
-    this.cartItemsDisplay = true;
+  showCartItems(showCart: boolean): void {
+    this.cartItemsDisplay = showCart;
   }
 }

@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+.tea-stage {
+  width: 100%;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -34,7 +38,7 @@
 
 .collapsed-wrapper {
   display: flex !important;
-  
+
 }
 
 .mat-sidenav {

@@ -5,6 +5,7 @@
         "nestjs",
         "ngcc",
         "nrwl",
+        "sidenav",
         "Stutsman"
     ]
 }

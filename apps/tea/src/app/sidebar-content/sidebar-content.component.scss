@@ -5,28 +5,31 @@
 }
 
 .menu-button {
-  margin-bottom: 1em;
+  margin: 0 0.5em 1em;
   width: 17em;
   text-align: left;
-  color: rgb(83, 1, 1);
-  border: .5px solid maroon;
+  color: rgb(maroon, 1);
+  border: 0.5px solid maroon;
 
   &.user {
-    background: rgba(blue, 0.1);
+    background: rgba(#b5ed00, 1);
+    color: rgba(black, 1);
   }
 
   &.shopping {
-    background-color: rgba(purple, 0.1);
+    background-color: rgba(#31d34a, 1);
+    color: rgba(black, 1);
   }
 
   &.subscription {
-    background-color: rgba(red, 0.1);
+    background-color: rgba(#007fcc, 1);
+    color: rgba(white, 1);
   }
 
   &.help {
-    background-color: rgba(orange, 0.2);
+    background-color: rgba(#5f0fd7, .3);
+    color: rgba(white, 1);
   }
-
 }
 
 .mat-table {

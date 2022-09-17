@@ -2,22 +2,19 @@
   background-color: white;
 }
 
-.tea-stage {
-  width: 100%;
-}
-
 .header {
   display: flex;
   flex-direction: row;
   padding: 1em;
+  margin: 1em;
+  background-color: #b5ed00;
 
   img {
     width: 4em;
     justify-content: left;
   }
 
-  .title {
-    background-color: white;
+  .masthead {
     color: #6667ab;
     width: 100%;
     display: flex;
@@ -52,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
 }
 
 :host ::ng-deep .mat-drawer-inner-container {
@@ -63,7 +61,7 @@
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 3.5em;
+  width: 4em;
 }
 
 .menu-button {
@@ -75,28 +73,34 @@
   border: .5px solid maroon;
   min-width: 3em;
   padding: 0;
-  margin: 0 0 1em 0;
+  margin: 0 1em 1em;
 
   &.user {
-    background: rgba(blue, 0.1);
-   }
+    background: rgba(#b5ed00, 1);
+    color: rgba(black, 1);
+  }
 
   &.shopping {
-    background-color: rgba(purple, 0.1);
+    background-color: rgba(#31d34a, 1);
+    color: rgba(black, 1);
   }
 
   &.subscription {
-    background-color: rgba(red, 0.1);
+    background-color: rgba(#007fcc, 1);
+    color: rgba(white, 1);
   }
 
   &.help {
-    background-color: rgba(orange, 0.2);
+    background-color: rgba(#5f0fd7, 1);
+    color: rgba(white, 1);
   }
 }
 
 mat-sidenav-container {
   height: calc(92vh - 6.5em);
   overflow: hidden;
+  background-color: transparent;
+
 }
 
 .footer {

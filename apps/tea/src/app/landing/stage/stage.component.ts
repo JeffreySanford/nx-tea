@@ -15,6 +15,7 @@ export class StageComponent implements OnInit {
   cartService: CartService;
   cd: ChangeDetectorRef;
   sidebarService: SidebarService;
+  cartItems: Array<Tea> = [];
   constructor(cartService: CartService, cd: ChangeDetectorRef, sidebarService: SidebarService) {
     this.cartService = cartService;
     this.cd = cd;
@@ -24,11 +25,24 @@ export class StageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToCart(id: number): void {
-    this.cartService.addToCart(id);
-    // this.sidebarService.toggleSidebar(true);
-    //  When add to cart is trigger, the sidebar should be set to open.  The sidebar is currently controlled in the sidebar component and need to be a hot observable in the sidebar service (create)
-    this.totalCartItems = this.cartService.getTotalCartItems();
-    this.cd.detectChanges();
+  addToCart(id: number, addition: boolean): void {
+    console.log('add to cart', id, addition)
+    this.cartService.addToCart(id, addition);
+    this.cartService.getCart().subscribe((cart: Tea[]) => {
+      this.cart = cart;
+      this.totalCartItems = this.cartService.getTotalCartItems();
+      this.cd.detectChanges();
+    });
+  }
+
+  getQuantity(id: number): number {
+    let quantity = 0;
+    this.cart.forEach((tea: Tea) => {
+      if (tea.id === id) {
+        quantity = tea.orderQuantity;
+      }
+    });
+
+    return quantity;
   }
 }

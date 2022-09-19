@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Tea } from '@tea/api-interfaces';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { InventoryService } from './inventory.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  totalCartItems: number = 0;
   cart: Array<Tea> = [];
   inventory: Tea[] = [];
   subject$ = new BehaviorSubject<Tea[]>(this.cart);
@@ -16,7 +15,43 @@ export class CartService {
     inventoryService.getInventory().subscribe((inventory: Array<Tea>) => this.inventory = inventory);
   }
 
-  // TODO Convert this to a behavior subject
+  getCart(): BehaviorSubject<Tea[]> {
+    this.subject$.next(this.cart);
+
+    return this.subject$;
+  }
+
+  addToCart(id: number, addition: boolean): void {
+    let found = false;
+    this.cart.forEach((product: Tea) => {
+      if (id === product.id) {
+        if (product.orderQuantity >= 0)  {
+          (addition) ? product.orderQuantity++ : product.orderQuantity--;
+          found = true;
+        } else {
+
+          if (addition) {
+            debugger
+            product.orderQuantity++ 
+          } else {
+            debugger
+          }
+        }
+      }
+    });
+
+    if (!found && addition) {
+      this.inventory.forEach((product) => {
+
+        if (id === product.id) {
+          product.orderQuantity = 1;
+          this.cart.push(product);
+        }
+      });
+    }
+    this.subject$.next(this.cart);
+  }
+
   getTotalCartItems(): number {
     let total: number = 0;
     this.cart.forEach((item) => {
@@ -24,35 +59,5 @@ export class CartService {
     });
 
     return total;
-  }
-
-  getCart(): BehaviorSubject<Tea[]> {
-    this.subject$.next(this.cart);
-    
-    return this.subject$;
-  }
-
-  addToCart(id: number): Array<Tea> {
-    let found = false;
-    this.cart.forEach((product: Tea) => {
-      if (id === product.id) {
-        if (product.orderQuantity) {
-          product.orderQuantity++;
-          found = true;
-        }
-      }
-    });
-
-    if (!found) {
-      this.inventory.forEach((product) => {
-        if (id === product.id) {
-          product.orderQuantity = 1;
-          this.cart.push(product);
-        }
-      });
-    }
-
-    this.totalCartItems = this.cart.length;
-    return this.cart;
   }
 }

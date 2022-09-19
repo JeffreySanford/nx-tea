@@ -43,11 +43,12 @@
   margin-block-start: 1em;
   display: flex;
   flex-wrap: wrap;
-  background-color: lime;
+  background-color: darkgreen;
+  border-radius: 0.5em;
 
   .tea-image {
-    width: 5.5em;
-    height: 5.5em;
+    width: 5em;
+    height: 5em;
   }
 
   .header {
@@ -60,16 +61,16 @@
     margin-block-end: 0;
 
     &.tea-name {
-      width: 5.5em;
+      width: 6em;
       margin-bottom: 0.5em;
       text-align: right;
-      color: purple;
+      color: lime;
       font-weight: 500;
       font-size: 1em;
     }
 
     &.price {
-      color: darkgreen;
+      color: lime;
       text-align: right;
     }
   }
@@ -78,7 +79,7 @@
     align-self: flex-end;
     position: sticky;
     top: 17.5em;
-    color: firebrick;
+    color: lightskyblue;
   }
 }
 

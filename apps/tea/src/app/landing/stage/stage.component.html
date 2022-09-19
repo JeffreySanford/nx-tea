@@ -7,7 +7,11 @@
           <span style="display: flex; flex-direction:column">
             <p class="tea-name">{{tea.name}}</p>
             <p class="price">{{tea.price | currency }}</p>
-            <mat-icon (click)="addToCart(tea.id)">add_circle_icon</mat-icon>
+            <span style="display: flex;color: white;">
+              <p>{{ getQuantity(tea.id) }} in cart</p>
+              <mat-icon (click)="addToCart(tea.id, false)">remove_circle_icon</mat-icon>
+              <mat-icon (click)="addToCart(tea.id, true)">add_circle_icon</mat-icon>
+            </span>
           </span>
         </div>
       </div>

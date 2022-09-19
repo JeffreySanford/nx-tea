@@ -20,7 +20,7 @@ export class LandingComponent implements OnInit {
     price: 0,
     cost: 0,
     id: 0,
-    orderQuantity:0,
+    orderQuantity: 0,
     image: 'assets/teas/default-tea-container-image.png'
   }
 
@@ -29,9 +29,10 @@ export class LandingComponent implements OnInit {
   inventoryService: InventoryService;
   cartService: CartService;
   sidebarService: SidebarService;
+  cartItems: Tea[] = [];
 
 
-  constructor(sidebarService: SidebarService, cartService: CartService, inventoryService: InventoryService, private cd: ChangeDetectorRef, ) {
+  constructor(sidebarService: SidebarService, cartService: CartService, inventoryService: InventoryService, private cd: ChangeDetectorRef,) {
     this.inventoryService = inventoryService;
     this.cartService = cartService;
     this.sidebarService = sidebarService;
@@ -39,22 +40,25 @@ export class LandingComponent implements OnInit {
 
 
   ngAfterContentChecked() {
-    this.totalCartItems = this.cartService.getTotalCartItems();
-    // this.cart = this.cartService.getCart();
-    
-    this.cd.detectChanges();
+
+
+   
   }
 
   ngOnInit(): void {
-    this.inventoryService.getInventory().subscribe((inventory: Array<Tea>)=> this.inventory = inventory);
-    this.cartService.getCart().subscribe((cart: Tea[])=>this.cart = cart);
+    this.inventoryService.getInventory().subscribe((inventory: Array<Tea>) => this.inventory = inventory);
+    this.cartService.getCart().subscribe((cart: Tea[]) => {
+      this.cart = cart;
+      this.totalCartItems = this.cartService.getTotalCartItems();
+      this.cd.detectChanges();
+    });
   }
 
   toggleSidebar(action: string, isOpen: boolean) {
-    if (action==='toggle') {
-      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean)=>this.opened = isOpen);
+    if (action === 'toggle') {
+      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
     } else {
-      
+
     }
   }
 }

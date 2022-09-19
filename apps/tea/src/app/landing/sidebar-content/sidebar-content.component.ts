@@ -9,7 +9,7 @@ import { SidebarService } from '../sidebar.service';
   templateUrl: './sidebar-content.component.html',
   styleUrls: ['./sidebar-content.component.scss'],
 })
-export class SidebarContentComponent implements OnInit, AfterContentChecked {
+export class SidebarContentComponent implements OnInit {
   @Input() cart?: Array<Tea>;
   totalCartItems = 0;
   currentUser = {
@@ -19,35 +19,34 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
   itemsInCart = 0;
   cartService: CartService;
   cd: ChangeDetectorRef;
-  dataSource!: MatTableDataSource<Tea>;
   displayedColumns = ['name', 'price', 'sub-totals', 'actions'];
   cartItemsDisplay: boolean = false;
-
+  dataSource = new MatTableDataSource<Tea>();
 
   constructor(cartService: CartService, cd: ChangeDetectorRef) {
     this.cartService = cartService;
     this.cd = cd;
-   }
-
-  ngAfterContentChecked() {
-    this.totalCartItems = this.cartService.getTotalCartItems();
-    this.cartService.getCart().subscribe((cart: Tea[])=>this.cart = cart)
-    this.dataSource = new MatTableDataSource<Tea>(this.cart);
-    this.cd.detectChanges();
   }
+
   ngOnInit(): void {
-    this.totalCartItems = this.cartService.getTotalCartItems();
-    this.cd.detectChanges();
+    this.cartService.getCart().subscribe((cart: Tea[]) => {
+      this.cart = cart;
+      this.dataSource.data = this.cart;
+      this.totalCartItems = this.cartService.getTotalCartItems();
+
+      this.cd.detectChanges();
+    });
+
   }
 
   toggleCartItems(isCartOpened: boolean) {
-    this.cartItemsDisplay  = !this.cartItemsDisplay;
+    this.cartItemsDisplay = !this.cartItemsDisplay;
     this.cd.detectChanges();
   }
 
   getTotal(): number {
     let currentTotal = 0;
-    this.cart?.forEach((tea: Tea)=>{
+    this.cart?.forEach((tea: Tea) => {
       currentTotal = currentTotal + tea.price;
     });
 

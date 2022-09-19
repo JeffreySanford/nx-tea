@@ -25,14 +25,16 @@ export class CartService {
     let found = false;
     this.cart.forEach((product: Tea) => {
       if (id === product.id) {
-        if (product.orderQuantity >= 0)  {
-          (addition) ? product.orderQuantity++ : product.orderQuantity--;
-          found = true;
+        found = true;
+        if (product.orderQuantity >= 1) {
+          console.log('add? ', addition)
+          addition ? product.orderQuantity++ : product.orderQuantity--;
+
         } else {
 
           if (addition) {
             debugger
-            product.orderQuantity++ 
+            product.orderQuantity++
           } else {
             debugger
           }

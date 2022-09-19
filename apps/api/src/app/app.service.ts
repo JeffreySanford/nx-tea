@@ -5,7 +5,7 @@ import { Message, Tea } from '@tea/api-interfaces';
 export class AppService {
   inventory: Array<Tea> = [
     {
-      name: 'Vanilla Tea',
+      name: 'Vanilla',
       cost: 2.50,
       price: 7.5,
       id: 100,
@@ -13,7 +13,7 @@ export class AppService {
       image: 'assets/teas/default-tea-container-image.png'
     },
     {
-      name: 'Apricot Tea',
+      name: 'Apricot',
       cost: 2.50,
       price: 7.5,
       id: 101,
@@ -22,7 +22,7 @@ export class AppService {
 
     },
     {
-      name: 'Plains Tea',
+      name: 'Plains',
       cost: 2.50,
       price: 7.5,
       id: 102,
@@ -31,7 +31,7 @@ export class AppService {
 
     },
     {
-      name: 'English Breakfast Tea',
+      name: 'English Breakfast',
       cost: 2.50,
       price: 7.5,
       id: 103,
@@ -39,7 +39,7 @@ export class AppService {
       image: 'assets/teas/default-tea-container-image.png'
     },
     {
-      name: 'Vanilla Green Tea',
+      name: 'Vanilla Green',
       cost: 2.50,
       price: 7.5,
       id: 104,
@@ -48,7 +48,7 @@ export class AppService {
 
     },
     {
-      name: 'White Cloud Tea',
+      name: 'White Cloud',
       cost: 2.50,
       price: 7.5,
       id: 105,

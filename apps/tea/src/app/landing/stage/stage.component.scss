@@ -51,9 +51,24 @@
     height: 5em;
   }
 
-  .header {
+  .summary {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: -8em;
+    left: 5em;
+
+    p {
+      position: relative;
+      right: 5em;
+      color: lime;
+    }
+
+    .mat-icon {
+      color: lightskyblue;
+      position: relative;
+      right: 0em;
+    }
   }
 
   p {
@@ -61,7 +76,7 @@
     margin-block-end: 0;
 
     &.tea-name {
-      width: 6em;
+      width: 13em;
       margin-bottom: 0.5em;
       text-align: right;
       color: lime;
@@ -73,13 +88,6 @@
       color: lime;
       text-align: right;
     }
-  }
-
-  .mat-icon {
-    align-self: flex-end;
-    position: sticky;
-    top: 17.5em;
-    color: lightskyblue;
   }
 }
 

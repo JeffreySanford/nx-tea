@@ -4,14 +4,14 @@
       <div class="column">
         <div class="tile mat-elevation-z8">
           <img class="tea-image" [src]="tea.image" />
-          <span style="">
+          <span style="position: relative;top: -6em;">
             <p class="tea-name">{{tea.name}}</p>
             <p class="price">{{tea.price | currency }}</p>
-            <span style="display: flex;color: white;">
+            <div class="summary">
               <p>{{ getQuantity(tea.id) }} in cart</p>
               <mat-icon (click)="addToCart(tea.id, false)">remove_circle_icon</mat-icon>
               <mat-icon (click)="addToCart(tea.id, true)">add_circle_icon</mat-icon>
-            </span>
+            </div>
           </span>
         </div>
       </div>

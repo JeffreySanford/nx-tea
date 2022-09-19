@@ -31,12 +31,8 @@ export class CartService {
           addition ? product.orderQuantity++ : product.orderQuantity--;
 
         } else {
-
           if (addition) {
-            debugger
             product.orderQuantity++
-          } else {
-            debugger
           }
         }
       }

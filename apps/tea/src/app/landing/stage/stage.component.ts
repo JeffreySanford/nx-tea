@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Products, Tea } from '@tea/api-interfaces';
-import { CartService } from '../cart.service';
+import { CartService } from '../../services/cart.service';
 import { SidebarService } from '../sidebar.service';
 
 @Component({

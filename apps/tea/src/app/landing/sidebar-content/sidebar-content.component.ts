@@ -1,7 +1,7 @@
 import { AfterContentChecked, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
-import { CartService } from '../cart.service';
+import { CartService } from '../../services/cart.service';
 import { SidebarService } from '../sidebar.service';
 
 @Component({

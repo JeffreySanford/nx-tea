@@ -1,5 +1,5 @@
 .content {
-  height: calc(92vh - 12em);
+  height: calc(72vh);
   margin: 1em 1em 1em 2em;
   display: flex;
   justify-content: center;
@@ -8,6 +8,7 @@
   font-size: 0.8em;
   color: black;
   overflow-y: scroll;
+  overflow-x: hidden;
   // background-image: url("../../assets/tea-stained-paper.jpg");
   // background-repeat: no-repeat;
   // background-size: 100% 100%;

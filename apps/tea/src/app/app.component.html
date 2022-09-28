@@ -6,8 +6,36 @@
       <h4>A Stutsman County Tea Company</h4>
     </span>
   </div>
-<tea-landing></tea-landing>
-  <footer class="footer">
-    <p>Jamestown, North Dakota, USA</p>
-  </footer>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home
+          <span class="sr-only" routerLink="/">(current)</span>
+
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/expenses">Report</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add Expense</a>
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <div *ngIf="isUserLoggedIn; else isLogOut">
+          <a [routerLink]="['/landing']">LogOut</a>
+        </div>
+
+        <ng-template #isLogOut>
+          <a [routerLink]="['/login']">LogIn</a>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
 </div>
+<footer class="footer">
+  <p>Jamestown, North Dakota, USA</p>
+</footer>

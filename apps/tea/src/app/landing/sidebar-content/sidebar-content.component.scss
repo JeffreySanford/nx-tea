@@ -66,6 +66,11 @@ mat-cell {
     min-width: 5em;
   }
 }
+.totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .material-icons {
   font-size: 1em;

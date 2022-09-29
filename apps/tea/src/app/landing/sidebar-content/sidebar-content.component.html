@@ -6,11 +6,12 @@
 
   <button mat-button class="menu-button shopping" (click)="showCartItems(true)">
     <mat-icon>add_shopping_cart</mat-icon>
-    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after" matBadgeColor="accent"></span>
+    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"
+      matBadgeColor="accent"></span>
     <span class="icon-label"> Shopping Cart ({{totalCartItems}})</span>
   </button>
 
-  <div [hidden]="totalCartItems === 0">
+  <div [hidden]="!showCartItems">
     <mat-table [dataSource]="dataSource">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
@@ -40,13 +41,18 @@
         <mat-header-cell *matHeaderCellDef> Subtotal </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.price * element.orderQuantity | currency}} </mat-cell>
       </ng-container>
-      <mat-footer-row style="border: 1px solid blue;" *matCellDef="let element"> {{getTotal() | currency}}
-      </mat-footer-row>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      <!-- Totals Row -->
     </mat-table>
+
+    <!-- Totals Row -->
+    <span class="totals">
+      <p style="font-style: bold;">Total</p>
+      <div> {{getTotal() | currency}}</div>
+      <p>Weight</p>
+    </span>
+    <button mat-button [disabled]="this.cart?.length === 0" (click)="checkout()">checkout</button>
   </div>
 
   <button mat-button class="menu-button subscription">

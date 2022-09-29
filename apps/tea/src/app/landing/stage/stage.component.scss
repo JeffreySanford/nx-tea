@@ -1,5 +1,5 @@
 .content {
-  height: calc(92vh - 12em);
+  height: calc(72vh);
   margin: 1em 1em 1em 2em;
   display: flex;
   justify-content: center;
@@ -8,11 +8,26 @@
   font-size: 0.8em;
   color: black;
   overflow-y: scroll;
+  overflow-x: hidden;
   // background-image: url("../../assets/tea-stained-paper.jpg");
   // background-repeat: no-repeat;
   // background-size: 100% 100%;
+<<<<<<< HEAD
   background-color: whitesmoke;
    background-size: 5px 5px;
+=======
+  background-image: linear-gradient(
+    45deg,
+    rgba(lime, 0.5) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(lime, 0.5) 50%,
+    rgba(lime, 0.5) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 5px 5px;
+>>>>>>> b8feb996308d2b0434c8e176df2c60b65b3600ec
   width: 95.5%;
 
   &::-webkit-scrollbar {
@@ -90,4 +105,15 @@
 
 .column {
   flex-basis: 100%;
+}
+
+.mat-table {
+  width: 90vw;
+}
+
+.totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }

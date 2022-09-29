@@ -2,6 +2,7 @@ import { AfterContentChecked, ChangeDetectorRef, Component, Input, OnInit } from
 import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../../services/cart.service';
+import { DashboardService } from '../../services/dashboard.service';
 import { SidebarService } from '../sidebar.service';
 
 @Component({
@@ -22,10 +23,19 @@ export class SidebarContentComponent implements OnInit {
   displayedColumns = ['name', 'price', 'sub-totals', 'actions'];
   cartItemsDisplay: boolean = false;
   dataSource = new MatTableDataSource<Tea>();
+  sidebarService: SidebarService;
+  dashboard: DashboardService;
 
-  constructor(cartService: CartService, cd: ChangeDetectorRef) {
+  constructor(
+    cartService: CartService, 
+    cd: ChangeDetectorRef, 
+    sidebarService: SidebarService,
+    dashboard: DashboardService
+    ) {
     this.cartService = cartService;
     this.cd = cd;
+    this.sidebarService = sidebarService;
+    this.dashboard = dashboard;
   }
 
   ngOnInit(): void {
@@ -33,21 +43,21 @@ export class SidebarContentComponent implements OnInit {
       this.cart = cart;
       this.dataSource.data = this.cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
-
+      cart.length > 0 ? this.toggleCartItems(true) : this.toggleCartItems(false)
       this.cd.detectChanges();
     });
-
   }
 
   toggleCartItems(isCartOpened: boolean) {
-    this.cartItemsDisplay = !this.cartItemsDisplay;
+    this.cartItemsDisplay = isCartOpened ? true : false;
+    this.sidebarService.toggleSidebar(this.cartItemsDisplay).subscribe();
     this.cd.detectChanges();
   }
 
   getTotal(): number {
     let currentTotal = 0;
     this.cart?.forEach((tea: Tea) => {
-      currentTotal = currentTotal + tea.price;
+      currentTotal = currentTotal + (tea.price * tea.orderQuantity);
     });
 
     return currentTotal;
@@ -55,5 +65,9 @@ export class SidebarContentComponent implements OnInit {
 
   showCartItems(showCart: boolean): void {
     this.cartItemsDisplay = showCart;
+  }
+
+  checkout(): void {
+    this.dashboard.isDashboardOpen(false).subscribe();
   }
 }

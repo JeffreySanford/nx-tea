@@ -31,8 +31,8 @@
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let element">
             <span class="action-container">
-              <mat-icon click="cartItemAction('add')">add_circle_outline</mat-icon>
-              <mat-icon click="cartItemAction('remove')">remove_circle_outline</mat-icon>
+              <mat-icon (click)="addToCart(element.id, true)">add_circle_outline</mat-icon>
+              <mat-icon (click)="addToCart(element.id, false)">remove_circle_outline</mat-icon>
             </span>
           </mat-cell>
         </ng-container>

@@ -70,4 +70,15 @@ export class SidebarContentComponent implements OnInit {
   checkout(): void {
     this.dashboard.isDashboardOpen(false).subscribe();
   }
+
+  addToCart(id: number, addition: boolean): void {
+    console.log('add to cart', id, addition)
+    this.cartService.addToCart(id, addition);
+    this.cartService.getCart().subscribe((cart: Tea[]) => {
+      this.cart = cart;
+      this.sidebarService.toggleSidebar(true).subscribe();
+      this.totalCartItems = this.cartService.getTotalCartItems();
+      this.cd.detectChanges();
+    });
+  }
 }

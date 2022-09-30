@@ -15,7 +15,7 @@ export class InventoryService {
   }
 
   getInventory(): Observable<Array<Tea>> {
-    return this.http.get<Array<Tea>>('http://brokenleaf.us:3333/api/tea');
-  }
 
+    return this.http.get<Array<Tea>>('http://localhost:3333/api/product/tea');
+  }
 }

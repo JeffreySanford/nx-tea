@@ -4,7 +4,7 @@
 
 .mat-sidenav {
   margin: 0 0 0 1em;
-  width: 16em;
+  width: 12em;
   overflow: hidden;
   border-right: none;
   border-radius: 10px;
@@ -13,11 +13,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  .mat-drawer-content {
-    height: 100%;
-    overflow: auto;
+  overflow: hidden;
+  background: transparent;
 }
+
+:host ::ng-deep .mat-drawer-content {
+  height: 99%;
+  overflow: hidden !important;
 }
 
 :host ::ng-deep .mat-drawer-inner-container {
@@ -29,7 +31,7 @@
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 4em;
+  width: 8em;
 }
 
 .menu-button {
@@ -63,7 +65,7 @@
 }
 
 mat-sidenav-container {
-  height: calc(76vh);
+  height: calc(85vh);
   overflow: hidden;
   background-color: transparent;
 }

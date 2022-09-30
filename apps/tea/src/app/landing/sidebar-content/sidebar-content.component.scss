@@ -2,11 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 82vh;
+  width: 34vw;
+}
+
+.cart-display {
+  background-color: lime;
+  margin-bottom: 1em;
 }
 
 .menu-button {
   margin: 0 0.5em 1em;
-  width: 17em;
+  width: 11em;
   text-align: left;
   color: rgb(maroon, 1);
   border: 0.5px solid maroon;
@@ -27,22 +34,29 @@
   }
 
   &.help {
-    background-color: rgba(#5f0fd7, .3);
+    background-color: rgba(#5f0fd7, 0.3);
     color: rgba(white, 1);
   }
 }
 
 .mat-table {
-  width: 15em;
+  width: 10.5em;
+  background-color: lime;
+
   .mat-header-cell,
   .mat-cell {
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
 }
 
-.mat-header-row,
+.mat-header-row {
+  min-height: 2em;
+  width: 10em;
+}
+
 .mat-row {
   min-height: 2em;
+  max-width: 9.5em;
 }
 
 mat-header-cell,
@@ -51,7 +65,7 @@ mat-cell {
     padding-left: 0.5em;
   }
   &.mat-column-name {
-    min-width: 6em;
+    min-width: 5em;
   }
 
   &.mat-column-price {
@@ -63,13 +77,23 @@ mat-cell {
   }
 
   &.mat-column-actions {
-    min-width: 5em;
+    max-width: 3em;
   }
 }
+
 .totals {
+  width: 10em;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.action-container {
+  display: flex;
+  max-width: 2em;
 }
 
 .material-icons {
@@ -79,4 +103,8 @@ mat-cell {
 
 .icon-label {
   margin-left: 1em;
+}
+
+.submit-button {
+  justify-self: end;
 }

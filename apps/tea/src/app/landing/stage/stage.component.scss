@@ -1,37 +1,18 @@
 .content {
-  height: calc(72vh);
-  margin: 1em 1em 1em 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 0.8em;
-  color: black;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  // background-image: url("../../assets/tea-stained-paper.jpg");
-  // background-repeat: no-repeat;
-  // background-size: 100% 100%;
-<<<<<<< HEAD
-  background-color: whitesmoke;
-   background-size: 5px 5px;
-=======
-  background-image: linear-gradient(
-    45deg,
-    rgba(lime, 0.5) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(lime, 0.5) 50%,
-    rgba(lime, 0.5) 75%,
-    transparent 75%,
-    transparent
-  );
-  background-size: 5px 5px;
->>>>>>> b8feb996308d2b0434c8e176df2c60b65b3600ec
+  margin: 0;
+  background: url('../../../assets/light_tea_stained_paper.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   width: 95.5%;
+  height: 82vh;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: 0.1em;
+    overflow-x: scroll;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -39,41 +20,71 @@
     outline: 1px solid purple;
     scroll-margin-top: 5em;
   }
+
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.8em;
+    color: black;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
 }
 
 .tile {
+  position: relative;
   margin: 0.5em;
   padding: 0.5em;
-  width: 13em;
-  height: 13em;
-  margin-block-start: 1em;
+  width: 10em;
+  height: 10em;
   display: flex;
   flex-wrap: wrap;
   background-color: darkgreen;
   border-radius: 0.5em;
 
+  .tea-name {
+    position: relative;
+    top: -5em;
+  }
+
+  .price {
+    position: relative;
+    top: -5em;
+
+  }
+
   .tea-image {
     width: 5em;
     height: 5em;
+    position: relative;
+    top: 0;
+  }
+
+  .tile-contents {
+    position: relative;
+    top: 0;
+    right: 0;
   }
 
   .summary {
     display: flex;
-    align-items: center;
-    position: relative;
-    bottom: -8em;
-    left: 5em;
+    position: absolute;
+    bottom: 0.25em;
+    width: 10.5em;
 
     p {
       position: relative;
-      right: 5em;
       color: lime;
+      width: 7em;
     }
 
     .mat-icon {
       color: lightskyblue;
       position: relative;
-      right: 0em;
+      right: 0.2em;
+      bottom: 0.2em;
     }
   }
 
@@ -82,8 +93,9 @@
     margin-block-end: 0;
 
     &.tea-name {
-      width: 13em;
+      width: 6em;
       margin-bottom: 0.5em;
+      margin-left: 4em;
       text-align: right;
       color: lime;
       font-weight: 500;
@@ -105,6 +117,8 @@
 
 .column {
   flex-basis: 100%;
+  width: 10em;
+  margin: 1em;
 }
 
 .mat-table {

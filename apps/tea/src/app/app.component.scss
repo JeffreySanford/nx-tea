@@ -4,8 +4,8 @@
     45deg,
     white,
     white 2px,
-    #b5ed00 2px,
-    #b5ed00 4px
+    rgba(#b5ed00, 0.5) 2px,
+    rgba(#b5ed00, 0.5) 4px
   );
 }
 
@@ -59,11 +59,13 @@
   }
 }
 
-@media screen and (min-width: 800px) {
+@media (max-width: 800px) {
   .column {
     flex: 1;
   }
 }
+
+
 
 .peri {
   color: #6667ab;

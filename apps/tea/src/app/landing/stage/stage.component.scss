@@ -6,7 +6,7 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  width: 79.5%;
+  width: 87%;
   height: 74vh;
   overflow-y: scroll;
   position: absolute;
@@ -120,7 +120,7 @@
 .column {
   flex-basis: 100%;
   width: 10em;
-  margin: 1em;
+  margin: 0.75em;
 }
 
 .mat-table {
@@ -132,4 +132,10 @@
   justify-content: space-between;
   align-items: center;
   width: 50%;
+}
+
+@media (max-width: 800px) {
+  .content {
+    width: 73%;
+  }
 }

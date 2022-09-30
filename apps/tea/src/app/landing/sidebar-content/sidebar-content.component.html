@@ -6,8 +6,7 @@
 
   <button mat-stroked-button class="menu-button shopping" (click)="showCartItems(true)">
     <mat-icon>add_shopping_cart</mat-icon>
-    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"
-      matBadgeColor="accent"></span>
+    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"></span>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
@@ -53,7 +52,7 @@
         <p>Total</p>
         <div> {{getTotal() | currency}}</div>
       </span>
-      <button class="submit-button" mat-stroked-button [disabled]="this.cart?.length === 0" (click)="checkout()">checkout</button>
+      <button *ngIf="this.cart?.length != 0" class="submit-button" mat-stroked-button (click)="checkout()"><p style="position: relative;bottom: 2.25em;">checkout</p></button>
     </div>
   </div>
 

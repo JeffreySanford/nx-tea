@@ -65,7 +65,7 @@ mat-cell {
     padding-left: 0.5em;
   }
   &.mat-column-name {
-    min-width: 5em;
+    min-width: 4em;
   }
 
   &.mat-column-price {
@@ -78,6 +78,7 @@ mat-cell {
 
   &.mat-column-actions {
     max-width: 3em;
+    min-width: 3.25em;
   }
 }
 
@@ -91,14 +92,19 @@ mat-cell {
   margin-bottom: 1em;
 }
 
-.action-container {
-  display: flex;
-  max-width: 2em;
+.material-icons {
+  font-size: 2em;
 }
 
-.material-icons {
-  font-size: 1em;
-  margin-top: 1em;
+.action-container {
+  display: flex;
+  max-width: 3em;
+  min-width: 3.75em;
+
+  .material-icons {
+    font-size: 2em;
+    margin-top: 0;
+  }
 }
 
 .icon-label {
@@ -106,5 +112,11 @@ mat-cell {
 }
 
 .submit-button {
+  height: 2em;
+  width: 4em;
   justify-self: end;
+  background-color: darkgreen;
+  color: white;
+  margin: 0 0 0.5em 12.5em;
+  font-size: 0.5em;
 }

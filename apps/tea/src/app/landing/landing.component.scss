@@ -28,6 +28,11 @@
   overflow: hidden !important;
 }
 
+:host ::ng-deep [class*="mat-badge"] {
+  background-color: purple;
+  color: white;
+}
+
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;

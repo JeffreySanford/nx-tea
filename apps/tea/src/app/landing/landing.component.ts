@@ -54,8 +54,8 @@ export class LandingComponent implements OnInit {
     });
   }
 
-  toggleSidebar(action: string, isOpen: boolean) {
-    if (action === 'toggle') {
+  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
+    if (action === 'toggle' && !isAction) {
       this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
     }
   }

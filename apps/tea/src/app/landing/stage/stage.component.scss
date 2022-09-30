@@ -1,3 +1,4 @@
+
 .content {
   margin: 0;
   background: url('../../../assets/light_tea_stained_paper.jpg')
@@ -11,6 +12,7 @@
   overflow-y: scroll;
   position: absolute;
   right: 1em;
+  
 
   &::-webkit-scrollbar {
     width: 0.1em;

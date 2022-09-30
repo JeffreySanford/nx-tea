@@ -76,7 +76,7 @@ export class SidebarContentComponent implements OnInit {
     this.cartService.addToCart(id, addition);
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
-      this.sidebarService.toggleSidebar(true).subscribe();
+      this.sidebarService.toggleSidebar(false).subscribe();
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });

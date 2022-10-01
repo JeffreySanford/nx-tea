@@ -16,6 +16,9 @@
   overflow: hidden;
   background: transparent;
 }
+// .mat-drawer-transition .mat-drawer-content {
+//   margin-left: 7em;
+// }
 
 :host ::ng-deep .mat-drawer-content {
   height: 99%;
@@ -29,14 +32,15 @@
 }
 
 :host ::ng-deep [class*="mat-badge"] {
-  background-color: purple;
+  background-color: violet;
   color: white;
 }
 
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 8em;
+  width: 4em;
+  border: 1px solid blue;
 }
 
 .menu-button {

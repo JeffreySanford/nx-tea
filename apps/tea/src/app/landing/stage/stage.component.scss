@@ -1,8 +1,4 @@
-
 .content {
-  margin: 0;
-  background: url('../../../assets/light_tea_stained_paper.jpg')
-    no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -12,7 +8,6 @@
   overflow-y: scroll;
   position: absolute;
   right: 1em;
-  
 
   &::-webkit-scrollbar {
     width: 0.1em;
@@ -32,8 +27,21 @@
     flex-wrap: wrap;
     font-size: 0.8em;
     color: black;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: visible;
+
+    &::after {
+      content: "";
+      background: url('../../../assets/light_tea_stained_paper.jpg') no-repeat
+      center center fixed;
+      transform: scale(2);
+      width: 66%;
+      height: 66%;
+      position: absolute;
+      top: 1%;
+      left: 1%;
+      opacity: .7;
+      z-index: -1;
+    }
   }
 }
 
@@ -56,7 +64,6 @@
   .price {
     position: relative;
     top: -5em;
-
   }
 
   .tea-image {

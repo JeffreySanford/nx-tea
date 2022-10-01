@@ -43,7 +43,7 @@ export class SidebarContentComponent implements OnInit {
       this.cart = cart;
       this.dataSource.data = this.cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
-      cart.length > 0 ? this.toggleCartItems(true) : this.toggleCartItems(false)
+      // cart.length > 0 ? this.toggleCartItems(true) : this.toggleCartItems(false)
       this.cd.detectChanges();
     });
   }

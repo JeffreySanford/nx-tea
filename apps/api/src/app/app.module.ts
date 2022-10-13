@@ -4,28 +4,19 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ProductModule } from './product/product.module';
-import { ProductController } from './product/product.controller';
-import { ProductService } from './product/product.service';
-
-import { SubscriptionModule } from './subscription/subscription.module';
-import { SubscriptionController } from './subscription/subscription.controller';
-import { SubscriptionService } from './subscription/subscription.service';
-
+import { SquareModule } from './square/square.module';
 
 @Module({
   imports: [
     ProductModule,
-    SubscriptionModule
+    SquareModule
   ],
   controllers: [
-    AppController,
-    ProductController,
-    SubscriptionController
+    AppController
+
   ],
   providers: [
-    AppService,
-    ProductService,
-    SubscriptionService
+    AppService
   ]
 })
 export class AppModule { }

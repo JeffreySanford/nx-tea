@@ -11,6 +11,8 @@ export class AuthService {
 
   isUserLoggedIn: boolean = false;
 
+  constructor() { }
+
   login(userName: string, password: string): Observable<boolean> {
     console.log(userName);
     console.log(password);
@@ -30,5 +32,12 @@ export class AuthService {
     localStorage.removeItem('isUserLoggedIn');
   }
 
-  constructor() { }
+  signIn() {
+    debugger
+    console.log('User sign in triggered');
+  }
+
+  getAccessToken() {
+    
+  }
 }

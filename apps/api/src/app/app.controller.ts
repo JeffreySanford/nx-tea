@@ -1,5 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { Message, Tea } from '@tea/api-interfaces';
+import { Controller, Get } from '@nestjs/common';
+import { Message } from '@tea/api-interfaces';
 import { AppService } from './app.service';
 
 @Controller()

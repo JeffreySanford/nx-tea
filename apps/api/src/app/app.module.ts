@@ -4,12 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ProductModule } from './product/product.module';
-import { SquareModule } from './square/square.module';
+import { CustomerSubscriptionsModule } from './customer-subscription/customer-subscriptions.module';
+
 
 @Module({
   imports: [
     ProductModule,
-    SquareModule
+    CustomerSubscriptionsModule
   ],
   controllers: [
     AppController

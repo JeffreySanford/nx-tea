@@ -1,4 +1,5 @@
 {
+  "name": "tea",
   "projectType": "application",
   "sourceRoot": "apps/tea/src",
   "prefix": "tea",

@@ -4,8 +4,8 @@
     45deg,
     white,
     white 2px,
-    rgba(#b5ed00, 0.5) 2px,
-    rgba(#b5ed00, 0.5) 4px
+    rgba(#b5ed00, 0.2) 2px,
+    rgba(#b5ed00, 0.2) 4px
   );
 }
 
@@ -49,6 +49,9 @@
   flex-direction: column;
   justify-content: flex-end;
   align-content: right;
+  position: fixed;
+  bottom: 0em;
+  right: 0.5em;
 
   p {
     text-align: right;

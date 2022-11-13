@@ -17,6 +17,7 @@ import { AppFooterComponent } from './footer/footer.component';
 import { LandingModule } from './landing/landing.module';
 import { BusyService } from './services/busy.service';
 import { httpInterceptorProviders } from './interceptors';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { httpInterceptorProviders } from './interceptors';
     ReactiveFormsModule,
     RouterModule,
     RouterTestingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule
   ],
   declarations: [
     AppHeaderComponent,

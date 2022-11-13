@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: left;
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
+  position: fixed;
+  bottom: 0em;
+  right: 0.5em;
 
   .social-buttons-container {
     display: flex;

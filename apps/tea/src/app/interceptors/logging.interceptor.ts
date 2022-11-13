@@ -3,7 +3,7 @@ import { Observable, tap } from "rxjs";
 
 export class LoggingHttpInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.logRequest(request); //Do something to modify the request
+        this.logRequest(request);
 
         return next.handle(request).pipe(
             tap(response => this.logResponce(response),
@@ -17,7 +17,7 @@ export class LoggingHttpInterceptor implements HttpInterceptor {
     }
 
     logResponce(response: HttpEvent<any>) {
-        console.log('logger response: ' + response)
+        console.log('logger response: ' + response.type)
     }
 
     logError(error: HttpErrorResponse) {

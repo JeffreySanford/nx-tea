@@ -30,17 +30,17 @@
     color: black;
     overflow: visible;
 
-    &::after {
+    &::before {
       content: '';
       background: url('../../../assets/light_tea_stained_paper.jpg') no-repeat
         center center fixed;
       transform: scale(2);
-      width: 66%;
+      width: 100%;
       height: 66%;
       position: absolute;
       top: 1%;
       left: 1%;
-      opacity: 0.7;
+      opacity: 0.3;
       z-index: -1;
     }
   }

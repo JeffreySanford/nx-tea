@@ -13,10 +13,10 @@ export class ReadOnlyInterceptor implements HttpInterceptor {
 
     const readOnly = this.sessionService.status();
 
-    debugger
     if (!readOnly) { //|| okIfReadOnly(request)
       return next.handle(request)
     } else {
+      debugger
       const msg = 'Error: cannot ${req.method} ${req/url} when read-only'
       this.logger.error(msg);
 

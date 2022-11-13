@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 
@@ -11,11 +11,26 @@ export class AuthService {
 
   isUserLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  checkLogin(url: string): any {
+    console.log("Url: " + url)
+    let isUserLoggedIn: string | true = localStorage.getItem('isUserLoggedIn') ?? true;
+
+    if (isUserLoggedIn != null && isUserLoggedIn === true) {
+      debugger
+      if (url === "/login") {
+        return this.router.parseUrl('/landing');
+      }
+      
+      else {
+        return this.router.parseUrl('/login');
+      }
+    }
+  }
 
   login(userName: string, password: string): Observable<boolean> {
-    console.log(userName);
-    console.log(password);
+    console.log('Attempting login for '+ userName);
     this.isUserLoggedIn = userName == 'admin' && password == 'admin';
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
 

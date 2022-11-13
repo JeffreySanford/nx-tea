@@ -1,4 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { Tea } from '../schemas/tea.schema';
 import { TeasService } from './teas.service';
 
@@ -11,11 +12,8 @@ export class TeasController {
         const url = "mongodb://localhost:27017/tea"
 
         // Connecting to database
-        mongoose.connect(url).then((ans) => {
-            console.log("ConnectedSuccessful")
-        }).catch((err) => {
-            console.log("Error in the Connection")
-        });
+        MongooseModule.forRoot(url);
+        
         this.teasService = teasService;
 
     }

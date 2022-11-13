@@ -15,8 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tea/api-interfaces": ["libs/api-interfaces/src/index.ts"]
-    }
+      "@tea/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "crypto": [
+        "./node_modules/crypto-browserify"
+      ]
+    } 
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,10 +1,21 @@
-.form-signin {
-    max-width: 330px;
- 
-    padding: 15px;
-    margin: 0 auto;
- }
- 
- input {
-    margin-bottom: 20px;
- }
+.login-box {
+  text-align: center;
+  width: 40%;
+  margin: 20% auto;
+
+  h2 {
+    color: darkgreen;
+  }
+
+  label {
+   color: black;
+   font-size: 1.5em;
+   margin-bottom: 1em;
+  }
+
+  .form-control {
+   color: black;
+   width: 15em;
+   max-height: 1.5em;
+  }
+}

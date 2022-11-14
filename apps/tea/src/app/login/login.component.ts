@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
+export interface User {
+  userName: string;
+  password: string;
+} 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,18 +26,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onClickSubmit(data: any) {
-    this.userName = data.userName;
-    this.password = data.password;
+  onClickSubmit(user: User): void {
+    this.authService.login(user.userName, user.password)
+      .subscribe(
+        (nextUser) => {
+          this.userName = user.userName;
+          this.password = user.password;
+          console.log("Is Login Success: " + this.userName);
 
-    console.log("Login page: " + this.userName);
-    console.log("Login page: " + this.password);
+          this.router.navigate(['landing'])
+        },
+        (error)=>{
+          console.log("Is Login Failed: " + user.userName + '' + error);
 
-    this.authService.login(this.userName, this.password)
-      .subscribe(data => {
-        console.log("Is Login Success: " + data);
-
-        if (data) this.router.navigate(['/expenses']);
-      });
+          this.router.navigate(['login'])
+        });
   }
 }

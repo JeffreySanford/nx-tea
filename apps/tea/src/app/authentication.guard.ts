@@ -5,7 +5,7 @@ import { AuthService } from './services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ExpenseGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -14,21 +14,8 @@ export class ExpenseGuard implements CanActivate {
     state: RouterStateSnapshot): boolean | UrlTree {
     let url: string = state.url;
 
-    return this.checkLogin(url);
+    return this.authService.checkLogin(url);
   }
 
-  checkLogin(url: string): any { // was true | UrlTree
-    console.log("Url: " + url)
-    let val: string | true = localStorage.getItem('isUserLoggedIn') ?? true;
-
-    if (val != null && val === true) {
-      if (url === "/login") {
-        return this.router.parseUrl('/landing');
-      }
-      
-      else {
-        return this.router.parseUrl('/login');
-      }
-    }
-  }
+  
 }

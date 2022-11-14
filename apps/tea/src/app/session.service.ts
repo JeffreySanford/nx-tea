@@ -10,6 +10,7 @@ export class SessionService {
   constructor() { }
 
   status() {
+    debugger
     return false;
   }
 }

@@ -46,7 +46,10 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.inventoryService.getInventory().subscribe((inventory: Array<Tea>) => this.inventory = inventory);
+    this.inventoryService.getInventory().subscribe((inventory: Array<Tea>) => {
+      this.inventory = inventory;
+      debugger
+    });
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
       this.totalCartItems = this.cartService.getTotalCartItems();

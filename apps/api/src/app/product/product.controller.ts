@@ -1,23 +1,18 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { Tea } from '@tea/api-interfaces';
 import { ProductService } from './product.service';
 @Controller('product')
 export class ProductController {
     productService: ProductService;
 
-    constructor(productService: ProductService) {
-        this.productService = productService;
+    constructor(productService: ProductService, private mongoose: MongooseModule) {
+        this.productService = productService
     }
     @Get('tea')
-    getInventory(): Array<any> {
-        console.log('get inventory');
-        // CReate a subject here that gets passed back
-        const inventory = this.productService.getInventory();
-        // const inventory = [{}]
-        console.log('inventory ' + inventory);
-        console.log(inventory);
-
-        return inventory;
+    async getInventory() {
+    
+        return this.productService.getInventory();
     }
 
     @Get('tea:id')

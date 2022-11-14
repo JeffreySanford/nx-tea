@@ -60,7 +60,6 @@
     "@nrwl/nx-cloud": "15.0.2",
     "@nrwl/workspace": "15.0.13",
     "@types/jest": "28.1.8",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "5.36.1",
     "@typescript-eslint/parser": "5.36.1",

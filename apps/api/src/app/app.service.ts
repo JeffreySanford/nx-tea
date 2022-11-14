@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Message, Tea } from '@tea/api-interfaces';
-import { take } from 'rxjs';
+import { Message } from '@tea/api-interfaces';
 
 @Injectable()
 export class AppService {

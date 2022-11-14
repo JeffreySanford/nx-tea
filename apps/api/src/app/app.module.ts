@@ -20,8 +20,8 @@ import { TeasModule } from './teas/tea.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
-        uri: config.get<string>('DATABASE')
-      })
+        uri: 'mongodb://teaadmin:p4ssw0rd@localhost/tea'
+      }),
     }),
     TeasModule,
     CustomerSubscriptionsModule

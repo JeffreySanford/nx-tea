@@ -14,7 +14,7 @@ export class InventoryService {
   }
 
   getInventory(): Tea[] {
-    const sub = this.http.get<Array<Tea>>('localhost:4200/api/inventory/tea');
+    const sub = this.http.get<Array<Tea>>('http://localhost:3333/api/inventory/tea');
 
     sub.subscribe(
       (inventory: Tea[]) => {

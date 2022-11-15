@@ -5,6 +5,7 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -19,5 +20,6 @@ async function bootstrap() {
     `🚀 Application is running on: http://brokenleaf.us:${port}/${globalPrefix}`
   );
 }
+
 
 bootstrap();

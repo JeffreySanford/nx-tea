@@ -13,15 +13,7 @@ import { TeasModule } from './teas/tea.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
-    }),
-    MongooseModule.forRootAsync({
-      connectionName: 'tea',
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (config: ConfigService) => ({
-        uri: 'mongodb://teaadmin:p4ssw0rd@localhost/tea'
-      }),
+      load: [configuration]
     }),
     TeasModule,
     CustomerSubscriptionsModule

@@ -3,11 +3,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { TeasController } from './teas.controller';
 import { TeasService } from './teas.service';
 import { Tea, TeaSchema } from '../schemas/tea.schema';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import configuration from '../config/configuration';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/tea'),
-    MongooseModule.forFeature([{ name: Tea.name, schema: TeaSchema }])],
+    ConfigModule.forRoot({
+      load: [configuration],
+    })
+  ],
   controllers: [TeasController],
   providers: [TeasService],
 })

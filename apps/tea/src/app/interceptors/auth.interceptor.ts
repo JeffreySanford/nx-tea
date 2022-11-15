@@ -28,6 +28,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
         return source.pipe(
             catchError((error: HttpErrorResponse) => {
                 debugger
+                console.error('Auth interceptor error: ' + error.message);
                 return error.status === 401 ? this.handle401(error) : throwError(error);
             })
         )
@@ -38,6 +39,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
         if (authResHeader) {
             debugger
+            console.error('Auth interceptor error: ' + error.message);
             if (/is expired/.test(authResHeader)) {
                 this.authService.signIn();  // Token expired, leave app amd sign-in again
             }

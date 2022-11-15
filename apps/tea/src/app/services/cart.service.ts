@@ -11,11 +11,10 @@ export class CartService {
   inventory: Tea[] = [];
   subject$ = new BehaviorSubject<Tea[]>(this.cart);
 
-  constructor(inventoryService: InventoryService) {
-    inventoryService.getInventory().subscribe((inventory: Array<Tea>) => this.inventory = inventory);
-  }
+  constructor(private inventoryService: InventoryService) {}
 
   getCart(): BehaviorSubject<Tea[]> {
+    this.inventory = this.inventoryService.getInventory();
     this.subject$.next(this.cart);
 
     return this.subject$;
@@ -51,7 +50,7 @@ export class CartService {
   }
 
   getTotalCartItems(): number {
-    let total: number = 0;
+    let total = 0;
     this.cart.forEach((item) => {
       total = total + item.orderQuantity;
     });

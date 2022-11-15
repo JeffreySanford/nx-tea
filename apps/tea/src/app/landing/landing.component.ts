@@ -12,8 +12,8 @@ import { SidebarService } from './sidebar.service';
 })
 export class LandingComponent implements OnInit {
   opened: BooleanInput = false;
-  color: string = "green";
-  showCartItems: boolean = false;
+  color= "green";
+  showCartItems= false;
   inventory: Tea[] = [];
   currentTea: Tea = {
     name: '',
@@ -24,7 +24,7 @@ export class LandingComponent implements OnInit {
     image: 'assets/teas/default-tea-container-image.png'
   }
 
-  totalCartItems: number = 0;
+  totalCartItems = 0;
   cart?: Tea[];
   inventoryService: InventoryService;
   cartService: CartService;
@@ -38,18 +38,8 @@ export class LandingComponent implements OnInit {
     this.sidebarService = sidebarService;
   }
 
-
-  ngAfterContentChecked() {
-
-
-   
-  }
-
   ngOnInit(): void {
-    this.inventoryService.getInventory().subscribe((inventory: Array<Tea>) => {
-      this.inventory = inventory;
-      debugger
-    });
+    this.inventory = this.inventoryService.getInventory();
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
       this.totalCartItems = this.cartService.getTotalCartItems();

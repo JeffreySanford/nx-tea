@@ -21,7 +21,6 @@ export class LoggingHttpInterceptor implements HttpInterceptor {
     }
 
     logError(error: HttpErrorResponse) {
-        debugger
-        console.log('logger error: ' + error.message)
+        console.error('logger error: ' + error.message)
     }
 }

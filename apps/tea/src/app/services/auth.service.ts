@@ -9,35 +9,30 @@ import { tap, delay } from 'rxjs/operators';
 
 export class AuthService {
 
-  isUserLoggedIn: boolean = false;
+  isUserLoggedIn = false;
 
   constructor(private router: Router) { }
 
-  checkLogin(url: string): any {
+  checkLogin(url: string): boolean {
     console.log("Url: " + url)
-    let isUserLoggedIn: string | true = localStorage.getItem('isUserLoggedIn') ?? true;
+    this.isUserLoggedIn = true;
 
-    if (isUserLoggedIn != null && isUserLoggedIn === true) {
-      debugger
-      if (url === "/login") {
-        return this.router.parseUrl('/landing');
-      }
-      
-      else {
-        return this.router.parseUrl('/login');
-      }
-    }
+    const canActivate = (this.isUserLoggedIn === true) ? true : false;
+    const status = canActivate ? 'User Auth sucess for: ' + url : 'User needs to log in...';
+    console.log(status);
+
+    return canActivate;
   }
 
   login(userName: string, password: string): Observable<boolean> {
     console.log('Attempting login for '+ userName);
-    this.isUserLoggedIn = userName == 'admin' && password == 'admin';
+    this.isUserLoggedIn = userName === 'admin' && password == 'admin';
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
 
     return of(this.isUserLoggedIn).pipe(
       delay(1000),
       tap(val => {
-        console.log("Is User Authentication is successful: " + val);
+        console.log("User Authentication is successful: " + val);
       })
     );
   }
@@ -53,6 +48,6 @@ export class AuthService {
   }
 
   getAccessToken() {
-    
+    return 'ACCESS-TOKEN';
   }
 }

@@ -35,9 +35,9 @@ export class TeasService {
 
     console.log('get inventory service')
 
-    mongoose.connect('mongodb+srv://teaadmin:p4ssw0rd@127.0.0.1/tea');
+    mongoose.connect('mongodb+srv://teaadmin:p4ssw0rd@127.0.0.1:27017/tea');
     mongoose.connection.on('open', function (ref) {
-      console.log('Connected to mongo server. Messge: ' + ref);
+      console.log('Connected to mongo server. Message: ' + ref);
       this.inventory.next(this.teaModel.find().exec())
     });
 

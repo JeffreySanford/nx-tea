@@ -1,0 +1,17 @@
+[{
+  "department": "Accounting",
+  "studentCount": 145
+},{
+  "department": "Development",
+  "studentCount": 50
+},{
+  "department": "Business",
+  "studentCount": 366
+
+},{
+  "department": "Marketing",
+  "studentCount": 259
+},{
+  "department": "Sales",
+  "studentCount": 178
+}]

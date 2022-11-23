@@ -1,0 +1,60 @@
+.mat-brand-nx {
+  width: 25%;
+}
+
+.toaster {
+  padding: 10px;
+  margin: 0px;
+  background-color: red;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 0px;
+}
+
+.chart-display {
+  width: 95%;
+  height: 25em;
+  display: block;
+  margin: 1em auto;
+}
+
+.add-department {
+  width: 15em;
+  position: absolute;
+  left: 3em;
+  bottom: 1em;
+  background-color: orange;
+  opacity: 1;
+  font-size: 1em;
+  border-radius: 0.5em;
+
+  &.collapse {
+    background-color: tan;
+  }
+
+  .department {
+    margin: 1em 0 0 0.5em;
+    width: 90%;
+  }
+
+  .add-dialog {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.5em;
+  
+    .cost {
+      max-width: 75%;
+    }
+  
+    .add-button {
+      height: 2.5em;
+      justify-self: flex-end;
+      background-color: red;
+      color: yellow;
+
+    }
+
+}
+
+
+}

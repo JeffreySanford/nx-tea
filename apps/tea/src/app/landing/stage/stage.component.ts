@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Products, Tea } from '@tea/api-interfaces';
-import { CartService } from '../../services/cart.service';
-import { DashboardService } from '../../services/dashboard.service';
+import { Tea } from '@tea/api-interfaces';
+import { CartService } from '../../common/services/cart.service';
+import { DashboardService } from '../../common/services/dashboard.service';
 import { SidebarService } from '../sidebar.service';
 
 @Component({
@@ -52,11 +52,9 @@ export class StageComponent implements OnInit {
   }
 
   addToCart(id: number, addition: boolean): void {
-    console.log('add to cart', id, addition)
     this.cartService.addToCart(id, addition);
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
-      this.sidebarService.toggleSidebar(true).subscribe();
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });

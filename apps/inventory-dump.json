@@ -1,0 +1,50 @@
+[
+  {
+  "name": "Vanilla",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 100,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+},{
+  "name": "Apricot",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 101,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+},{
+  "name": "Plains",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 102,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+},{
+  "name": "English Breakfast",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 103,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+},{
+  "name": "Vanilla Green",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 104,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+},{
+  "name": "White Cloud",
+  "cost": 2.5,
+  "price": 7.5,
+  "id": 105,
+  "orderQuantity": 0,
+  "image": "assets/teas/default-tea-container-image.png",
+  "__v": 0
+}]

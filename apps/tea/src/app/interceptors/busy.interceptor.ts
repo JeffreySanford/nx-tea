@@ -2,7 +2,7 @@
 import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { finalize } from "rxjs";
-import { BusyService } from "../services/busy.service";
+import { BusyService } from "../common/services/busy.service";
 
 @Injectable({ providedIn: 'root' })
 

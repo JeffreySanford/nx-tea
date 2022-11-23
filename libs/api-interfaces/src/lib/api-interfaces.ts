@@ -8,8 +8,12 @@ export interface Tea {
   price: number;
   id: number;
   orderQuantity: number;
-  instructions?: string;
   image: string;
+}
+
+export interface Department {
+  department: string;
+  studentcount: number;
 }
 
 export interface Cart extends Tea {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../common/services/auth.service';
 import { Router } from '@angular/router';
 export interface User {
   userName: string;

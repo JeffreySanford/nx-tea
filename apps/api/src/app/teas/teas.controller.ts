@@ -1,32 +1,20 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { Subject } from 'rxjs';
-import { Tea } from '../schemas/tea.schema';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+
+import { CreateTeaDto } from './dto/create-tea.dto';
 import { TeasService } from './teas.service';
 
 @Controller('inventory')
 export class TeasController {
-    teasService: TeasService;
+    constructor(private readonly teasService: TeasService) { }
 
-    constructor(teasService: TeasService) {     
-        this.teasService = teasService;
+    @Post()
+    create(@Body() createDepartmentDto: CreateTeaDto) {
+      return this.teasService.create(createDepartmentDto);
     }
 
-    @Get('tea')
-    getInventory(): Tea[] {
-        let tempArray;
-        console.log('get inventory controller')
-            debugger
-        this.teasService.findAll().subscribe((res)=>{
-            debugger
-            tempArray = res;
-        }); 
-        return tempArray;
-    }
+    @Get()
+    async findAll() {
 
-    @Get('tea:id')
-    getTea(@Param('id') id: Tea["id"]) {
-
-        debugger
-        return this.teasService.findOne(id);
+      return  await this.teasService.findAllTeas();
     }
 }

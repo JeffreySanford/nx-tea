@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve",
+    "start": "nx serve --host=127.0.0.1",
     "build": "nx build",
     "test": "nx test"
   },
@@ -34,11 +34,14 @@
     "cors": "^2.8.5",
     "crypto-browserify": "^3.12.0",
     "mongoose": "^6.7.2",
+    "ngx-toastr": "^16.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "stream-browserify": "^3.0.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "highcharts-angular": "^3.0.0",
+    "highcharts-chart": "^3.0.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "14.2.1",
@@ -77,4 +80,3 @@
     "typescript": "4.8.4"
   }
 }
-

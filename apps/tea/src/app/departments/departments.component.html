@@ -1,0 +1,27 @@
+<form class="form-inline">
+  <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions"
+    class="chart-display mat-elevation-z10">
+  </highcharts-chart>
+  <div class="add-department mat-elevation-z10">
+
+    <mat-form-field appearance="fill" class="department">
+      <mat-label>Department</mat-label>
+      <input matInput #department placeholder="department" formControl="department" type="text">
+      <mat-icon matSuffix>sentiment_neutral</mat-icon>
+      <mat-hint>New Business Unit</mat-hint>
+    </mat-form-field>
+    
+    <div class="add-dialog">
+        <mat-form-field appearance="outline" class="cost">
+          <mat-label>Cost</mat-label>
+          <input matInput #count placeholder="count" formControl="count" type="number">
+          <mat-icon matSuffix>sentiment_neutral</mat-icon>
+          <mat-hint>Yearly salary</mat-hint>
+        </mat-form-field>
+    
+      <button mat-button-raised type="button" class="add-button" (click)="submit(department, count)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>

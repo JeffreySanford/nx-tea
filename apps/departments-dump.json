@@ -1,0 +1,24 @@
+[{
+  "_id": 1002,
+  "department": "Eclogues",
+  "professor": "Dante"
+},{
+  "_id": 1000,
+  "department": "The Banquet",
+  "professor": "Dante"
+},{
+  "_id": 1004,
+  "department": "Iliad",
+  "professor": "Homer",
+  "studentCount": 10
+},{
+  "_id": 1003,
+  "department": "The Odyssey",
+  "professor": "Homer",
+  "studentCount": 10
+},{
+  "_id": 1001,
+  "department": "Divine Comedy",
+  "professor": "Dante",
+  "studentCount": 1
+}]

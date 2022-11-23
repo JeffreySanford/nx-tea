@@ -10,7 +10,7 @@
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
-  <div [hidden]="!showCartItems">
+  <div *ngIf="this.cart?.length != 0">
     <div class="cart-display">
       <mat-table [dataSource]="dataSource">
         <!-- Name Column -->

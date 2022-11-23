@@ -1,12 +1,12 @@
 <div class="login-box">
     <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <div style="display: flex;  justify-content: space-between;margin-bottom: 1em;">
+        <div class="username-container">
             <label for="inputEmail">Email address</label>
             <input type="text" id="username" class="form-control" formControlName="userName" placeholder="Username"
                 required autofocus>
         </div>
-        <div style="display: flex; justify-content: space-between;">
+        <div class="password-container" style="display: flex; justify-content: space-between;">
             <label for="inputPassword">Password</label>
             <input type="password" id="inputPassword" class="form-control" formControlName="password"
                 placeholder="Password" required>

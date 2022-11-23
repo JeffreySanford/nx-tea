@@ -5,7 +5,7 @@
 
 .menu-button {
   margin: 0 0.5em 1em;
-  width: 11em;
+  width: 12em;
   text-align: left;
   color: rgb(maroon, 1);
 
@@ -43,11 +43,13 @@
 .mat-header-row {
   min-height: 2em;
   width: 10em;
+  margin-left: 0.5em;
 }
 
 .mat-row {
   min-height: 2em;
   max-width: 9.5em;
+  margin-left: 0.5em;
 }
 
 mat-header-cell,
@@ -84,7 +86,7 @@ mat-cell {
 }
 
 .material-icons {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .action-container {

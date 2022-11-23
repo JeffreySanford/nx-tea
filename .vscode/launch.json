@@ -24,7 +24,7 @@
       "name": "Debug Node App",
       "type": "node",
       "request": "attach",
-      "port": 3000
+      "port": 3333
     }
   ]
 }

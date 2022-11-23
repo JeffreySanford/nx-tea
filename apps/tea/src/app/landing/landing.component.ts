@@ -1,8 +1,8 @@
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Tea } from '@tea/api-interfaces';
-import { CartService } from '../services/cart.service';
-import { InventoryService } from '../services/inventory.service';
+import { CartService } from '../common/services/cart.service';
+import { InventoryService } from '../common/services/inventory.service';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { SidebarService } from './sidebar.service';
 })
 export class LandingComponent implements OnInit {
   opened: BooleanInput = false;
-  color= "green";
-  showCartItems= false;
+  color = "green";
+  showCartItems = false;
   inventory: Tea[] = [];
   currentTea: Tea = {
     name: '',
@@ -26,25 +26,34 @@ export class LandingComponent implements OnInit {
 
   totalCartItems = 0;
   cart?: Tea[];
-  inventoryService: InventoryService;
   cartService: CartService;
   sidebarService: SidebarService;
   cartItems: Tea[] = [];
+  inventoryService: InventoryService;
 
 
-  constructor(sidebarService: SidebarService, cartService: CartService, inventoryService: InventoryService, private cd: ChangeDetectorRef,) {
-    this.inventoryService = inventoryService;
+  constructor(
+    sidebarService: SidebarService,
+    cartService: CartService,
+    private cd: ChangeDetectorRef,
+    inventoryService: InventoryService
+  ) {
     this.cartService = cartService;
     this.sidebarService = sidebarService;
+    this.inventoryService = inventoryService;
   }
 
   ngOnInit(): void {
-    this.inventory = this.inventoryService.getInventory();
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });
+
+    this.inventoryService.getInventory().subscribe(
+      (inventory: Tea[]) => {
+        this.inventory = inventory;
+      });
   }
 
   toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {

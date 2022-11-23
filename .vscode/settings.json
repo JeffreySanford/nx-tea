@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "brokenleaf",
+        "highcharts",
         "idempotency",
         "myapp",
         "nestjs",
@@ -9,7 +10,9 @@
         "Responce",
         "sidenav",
         "signin",
+        "studentcount",
         "Stutsman",
-        "teaadmin"
+        "teaadmin",
+        "toastr"
     ]
 }

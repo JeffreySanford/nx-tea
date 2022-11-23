@@ -1,58 +1,33 @@
 
 import { Injectable } from '@nestjs/common';
-import { Tea } from '../schemas/tea.schema';
+import { Tea } from '../entities/tea.entity';
 import { CreateTeaDto } from './dto/create-tea.dto';
-import * as mongoose from 'mongoose';
-import { Subject } from 'rxjs';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class TeasService {
-  teaModel: any;
-  private inventory = new Subject<Tea[]>;
+  constructor(
+    @InjectModel('Tea')
+    private readonly TeaModel: Model<Tea>
+  ) { }
 
-  constructor() {
-    // this.teaModel = mongoose.connect('mongodb://teaadmin:p4ssw0rd@localhost/tea');
-    // mongoose.connect('mongodb://teaadmin:p4ssw0rd@localhost/tea');
-    // mongoose.connection.on('open', function(ref) {
-    //   console.log('Connected to mongo server.');
-    //   debugger
-    // });
+  async create(createTeaDto: CreateTeaDto): Promise<Tea> {
+    const newTea = new this.TeaModel(createTeaDto);
+    const result = await newTea.save();
 
-    // mongoose.connection.on('error', function(err) {
-    //   console.log('Could not connect to mongo server!');
-    //   debugger
-    //   return console.log(err);
-    // });
+    return result.id;
   }
 
-  create(createTeaDto: CreateTeaDto): Promise<Tea> {
-
-    const createdTea = new this.teaModel(createTeaDto);
-    return createdTea.save();
+  async findAllTeas() {
+    
+    return await this.TeaModel.find().exec();
   }
 
-  findAll(): Subject<Tea[]> {
+  async findOne(id: number) {
+    console.log('Find one fired: ' + id);
+    debugger
+    return await this.TeaModel.find({ id }).exec();
 
-    console.log('get inventory service')
-
-    mongoose.connect('mongodb+srv://teaadmin:p4ssw0rd@localhost/tea');
-    mongoose.connection.on('open', function (ref) {
-      console.log('Connected to mongo server. Message: ' + ref);
-      this.inventory.next(this.teaModel.find().exec())
-    });
-
-    mongoose.connection.on('error', function (err) {
-      console.log('Could not connect to mongo server!');
-
-      return console.log(err);
-    });
-
-    return this.inventory;
-
-  }
-
-  findOne(id: number): Promise<Array<Tea>> {
-
-    return this.teaModel.findById(id);
   }
 }

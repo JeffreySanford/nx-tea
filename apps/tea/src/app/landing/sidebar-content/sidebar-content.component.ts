@@ -1,8 +1,8 @@
-import { AfterContentChecked, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
-import { CartService } from '../../services/cart.service';
-import { DashboardService } from '../../services/dashboard.service';
+import { CartService } from '../../common/services/cart.service';
+import { DashboardService } from '../../common/services/dashboard.service';
 import { SidebarService } from '../sidebar.service';
 
 @Component({

@@ -11,10 +11,12 @@ export class CartService {
   inventory: Tea[] = [];
   subject$ = new BehaviorSubject<Tea[]>(this.cart);
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(private inventoryService: InventoryService) {
+    this.inventoryService.getInventory().subscribe((inventory)=>{this.inventory = inventory},(error)=>{console.log(error)});
+  }
 
   getCart(): BehaviorSubject<Tea[]> {
-    this.inventory = this.inventoryService.getInventory();
+
     this.subject$.next(this.cart);
 
     return this.subject$;

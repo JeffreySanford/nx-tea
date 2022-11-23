@@ -8,14 +8,22 @@
   }
 
   label {
-   color: black;
-   font-size: 1.5em;
-   margin-bottom: 1em;
+    color: black;
+    font-size: 1.5em;
+    margin-bottom: 1em;
   }
 
+  .username-container,
+  .password-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  
   .form-control {
-   color: black;
-   width: 15em;
-   max-height: 1.5em;
+    color: black;
+    width: 15em;
+    max-height: 1.5em;
   }
 }

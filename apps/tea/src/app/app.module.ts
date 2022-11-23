@@ -7,21 +7,31 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppRoutingModule } from './app.routing.module';
 
+
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
-import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './header/header.component';
-import { AppFooterComponent } from './footer/footer.component';
+import { AppHeaderComponent } from './common/header/header.component';
+import { AppFooterComponent } from './common/footer/footer.component';
 
 import { LandingModule } from './landing/landing.module';
-import { BusyService } from './services/busy.service';
+import { BusyService } from './common/services/busy.service';
 import { httpInterceptorProviders } from './interceptors';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
+import { ToastrModule } from 'ngx-toastr';
+import { AppComponent } from './app.component';
+import { ToasterComponent } from './common/components/toaster/toaster.component';
+import { DepartmentsModule } from './departments/departments.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -31,16 +41,28 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     RouterTestingModule,
     AppRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    DepartmentsModule
   ],
   declarations: [
     AppHeaderComponent,
-    AppComponent,
     LoginComponent,
     LogoutComponent,
     AppFooterComponent,
+    AppComponent,
+    ToasterComponent
   ],
   providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     httpInterceptorProviders,
     BusyService
   ],

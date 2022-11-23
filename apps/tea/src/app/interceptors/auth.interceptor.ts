@@ -3,8 +3,8 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, EMPTY, finalize, Observable, throwError } from "rxjs";
-import { AuthService } from "../services/auth.service";
-import { BusyService } from "../services/busy.service";
+import { AuthService } from "../common/services/auth.service";
+import { BusyService } from "../common/services/busy.service";
 
 @Injectable({ providedIn: 'root' })
 

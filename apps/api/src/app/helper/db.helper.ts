@@ -2,7 +2,7 @@
 const mongoose = require("mongoose")
   
 // Database Address
-const url = "mongodb://localhost:27017/tea"
+const url = "mongodb://teaadmin:p4ssw0rd@localhost:27017/teas"
   
 // Connecting to database
 mongoose.connect(url).then((ans) => {

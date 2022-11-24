@@ -1,21 +1,41 @@
+.footer {
+  height: 3em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: right;
+  position: fixed;
+  bottom: 0em;
+  right: 0.5em;
+
+  p {
+    text-align: right;
+    margin-right: 0.5em;
+    margin-bottom: 2.25em;
+    color: #6c8e00;
+    font-size: 1.25em;
+  }
+}
+
 .footer-row {
   display: flex;
   flex-direction: row;
   justify-content: left;
   position: fixed;
-  bottom: 0em;
+  bottom: 1em;
   right: 0.5em;
 
   .social-buttons-container {
     display: flex;
     flex-direction: row;
-    height: 3em;
+    max-height: 2em;
 
     .button-container {
       display: flex;
       flex-direction: row;
       padding: 0 0.25em;
-      margin: 0.25em 1em 0;
+      margin: 0.25em 0.75em 0;
       background-color: darkseagreen;
       color: purple;
       border-radius: 2em;
@@ -29,8 +49,8 @@
 
       .button-name {
         font-size: 1em;
-        margin-top: 0.35em;
-        margin-right: 0.5em;
+        margin: 0.35em 0.5em 0 0.5em;
+        color: purple;
       }
 
       .mat-icon {

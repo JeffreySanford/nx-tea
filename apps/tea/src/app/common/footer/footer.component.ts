@@ -22,5 +22,17 @@ export class AppFooterComponent {
       icon: 'code',
       disabled: false,
     },
+    {
+      name: 'Twitter',
+      url: 'twitter.com',
+      icon: 'code',
+      disabled: false,
+    },
+    {
+      name: 'Facebook',
+      url: 'https://facebook.com',
+      icon: 'facebook',
+      disabled: false,
+    }
   ];
 }

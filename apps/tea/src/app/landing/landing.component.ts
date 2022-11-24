@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../common/services/cart.service';
 import { InventoryService } from '../common/services/inventory.service';
-import { SidebarService } from './sidebar.service';
+import { SidebarService } from '../common/services/sidebar.service';
 
 @Component({
   selector: 'tea-landing',

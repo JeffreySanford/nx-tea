@@ -1,0 +1,33 @@
+.masthead {
+    color: #b5ed00;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    .header {
+      display: flex;
+      flex-direction: row;
+      background-color: rgba(#6c8e00, 1);
+      border-radius: 0.25em;
+      margin: 0.5em;
+      height: 5em;
+  
+      img {
+        margin-left: 1em;
+        width: 4em;
+        justify-content: left;
+      }
+      h1 {
+        margin: 0.25em 0 0 0.5em;
+        padding: 0;
+        color: lightgreen;
+      }
+  
+      h4 {
+        margin: 0 0 0 2.5em;
+        padding: 0;
+        color: #b5ed00;
+        font-size: 0.75em;
+      }
+    }
+  }

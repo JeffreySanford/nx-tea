@@ -1,9 +1,13 @@
-<div class="footer">
-  <span *ngFor="let button of projectLove">
-    <span class="social-buttons-container">
-      <button [disabled]="button.disabled" class="button-container mat-elevation-z4">
-        <p class="button-name">{{ button.name }}</p>
-      </button>
+<footer class="footer">
+  <p>Stutsman County, North Dakota, USA</p>
+  <span class="footer-row">
+    <span *ngFor="let project of projectLove"> 
+      <span class="social-buttons-container">
+        <button [disabled]="project.disabled" class="button-container mat-elevation-z4">
+          <p class="button-name">{{ project.name }}</p>
+          <mat-icon>{{project.icon}}</mat-icon>
+        </button>
+      </span>
     </span>
   </span>
-</div>
+</footer>

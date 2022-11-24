@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../../common/services/cart.service';
 import { DashboardService } from '../../common/services/dashboard.service';
-import { SidebarService } from '../sidebar.service';
+import { SidebarService } from '../../common/services/sidebar.service';
 
 @Component({
   selector: 'tea-sidebar-content',

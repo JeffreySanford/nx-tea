@@ -9,59 +9,9 @@
   );
 }
 
-.masthead {
-  color: #b5ed00;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 
-  .header {
-    display: flex;
-    flex-direction: row;
-    background-color: rgba(#6c8e00, 1);
-    border-radius: 0.25em;
-    margin: 0.5em;
-    height: 5em;
 
-    img {
-      margin-left: 1em;
-      width: 4em;
-      justify-content: left;
-    }
-    h1 {
-      margin: 0.25em 0 0 0.5em;
-      padding: 0;
-      color: lightgreen;
-    }
 
-    h4 {
-      margin: 0 0 0 2em;
-      padding: 0;
-      color: #b5ed00;
-      font-size: 0.75em;
-    }
-  }
-}
-
-.footer {
-  height: 3em;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-content: right;
-  position: fixed;
-  bottom: 0em;
-  right: 0.5em;
-
-  p {
-    text-align: right;
-    margin-right: 1em;
-    margin-bottom: 2em;
-    color: #6c8e00;
-    font-size: 1em;
-  }
-}
 
 @media (max-width: 800px) {
   .column {

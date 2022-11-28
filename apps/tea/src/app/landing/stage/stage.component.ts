@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../../common/services/cart.service';
 import { DashboardService } from '../../common/services/dashboard.service';
+import { InventoryService } from '../../common/services/inventory.service';
 import { SidebarService } from '../../common/services/sidebar.service';
 
 @Component({
@@ -11,7 +12,6 @@ import { SidebarService } from '../../common/services/sidebar.service';
   styleUrls: ['./stage.component.scss'],
 })
 export class StageComponent implements OnInit {
-  @Input() inventory: Array<Tea> = [];
   cart: Array<Tea> = [];
   totalCartItems: number = 0;
   cartService: CartService;
@@ -23,25 +23,25 @@ export class StageComponent implements OnInit {
   dashboardService: DashboardService;
   displayedColumns = ['name', 'price', 'quantity', 'sub-totals', 'actions'];
   dataSource = new MatTableDataSource<Tea>();
+  inventoryService: any;
+  inventory: Tea[]= [];
 
   constructor(
     cartService: CartService,
     cd: ChangeDetectorRef,
     sidebarService: SidebarService,
-    dashboard: DashboardService
+    dashboard: DashboardService,
+    inventoryService: InventoryService
   ) {
     this.cartService = cartService;
     this.cd = cd;
     this.sidebarService = sidebarService;
     this.dashboardService = dashboard;
+    this.inventoryService = inventoryService;
   }
 
   ngOnInit(): void {
-    this.dashboardService.isDashboardOpen(this.dashboard).subscribe((next) => {
-      this.dashboard = next ? true : false;
-      this.checkout = next ? false : true;
-      this.cd.detectChanges();
-    });
+
 
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
@@ -49,6 +49,11 @@ export class StageComponent implements OnInit {
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });
+
+    this.inventoryService.getInventory().subscribe(
+      (inventory: Tea[]) => {
+        this.inventory = inventory;
+      });
   }
 
   addToCart(id: number, addition: boolean): void {

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../../common/services/cart.service';
 import { DashboardService } from '../../common/services/dashboard.service';
@@ -25,12 +26,14 @@ export class SidebarContentComponent implements OnInit {
   dataSource = new MatTableDataSource<Tea>();
   sidebarService: SidebarService;
   dashboard: DashboardService;
+  opened = false;
 
   constructor(
     cartService: CartService, 
     cd: ChangeDetectorRef, 
     sidebarService: SidebarService,
-    dashboard: DashboardService
+    dashboard: DashboardService,
+    private router: Router
     ) {
     this.cartService = cartService;
     this.cd = cd;
@@ -47,6 +50,33 @@ export class SidebarContentComponent implements OnInit {
       this.cd.detectChanges();
     });
   }
+
+  viewUser() {
+    this.router.navigate(['/user']);
+  }
+
+  viewStage() {
+    this.router.navigate(['/stage']);
+
+  }
+
+  viewSubscriptions() {
+    this.router.navigate(['/subscriptions']);
+
+  }
+
+  viewHelp() {
+    this.router.navigate(['/help']);
+
+  }
+
+  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
+    debugger
+    if (action === 'toggle' && !isAction) {
+      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
+    }
+  }
+
 
   toggleCartItems(isCartOpened: boolean) {
     this.cartItemsDisplay = isCartOpened ? true : false;

@@ -4,6 +4,8 @@ import { Tea } from '@tea/api-interfaces';
 import { CartService } from '../common/services/cart.service';
 import { InventoryService } from '../common/services/inventory.service';
 import { SidebarService } from '../common/services/sidebar.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DashboardService } from '../common/services/dashboard.service';
 
 @Component({
   selector: 'tea-landing',
@@ -11,7 +13,7 @@ import { SidebarService } from '../common/services/sidebar.service';
   styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent implements OnInit {
-  opened: BooleanInput = false;
+  opened: BooleanInput = true;
   color = "green";
   showCartItems = false;
   inventory: Tea[] = [];
@@ -29,36 +31,63 @@ export class LandingComponent implements OnInit {
   cartService: CartService;
   sidebarService: SidebarService;
   cartItems: Tea[] = [];
-  inventoryService: InventoryService;
-
+  dashboard = false;
+  checkout = false;
+  isAction = false;
 
   constructor(
     sidebarService: SidebarService,
     cartService: CartService,
     private cd: ChangeDetectorRef,
-    inventoryService: InventoryService
+    private router: Router,
+    private dashboardService: DashboardService
   ) {
     this.cartService = cartService;
     this.sidebarService = sidebarService;
-    this.inventoryService = inventoryService;
   }
 
   ngOnInit(): void {
+    this.dashboardService.isDashboardOpen(this.dashboard).subscribe((next) => {
+      this.dashboard = next ? true : false;
+      this.checkout = next ? false : true;
+      this.cd.detectChanges();
+    });
+
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });
-
-    this.inventoryService.getInventory().subscribe(
-      (inventory: Tea[]) => {
-        this.inventory = inventory;
-      });
   }
 
-  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
-    if (action === 'toggle' && !isAction) {
+  viewUser() {
+    debugger
+    this.isAction = true;
+    this.router.navigate(['/user']);
+  }
+
+  viewStage() {
+    this.isAction = true;
+    this.router.navigate(['/stage']);
+  }
+
+  viewSubscriptions() {
+    this.isAction = true;
+    this.router.navigate(['/subscriptions']);
+  }
+
+  viewHelp() {
+    this.isAction = true;
+    this.router.navigate(['/help']);
+  }
+
+  toggleSidebar(action: string, isOpen: boolean) {
+    debugger
+    if (action === 'toggle' && !this.isAction) {
       this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
+    } else {
+      debugger
+      this.isAction = false;
     }
   }
 }

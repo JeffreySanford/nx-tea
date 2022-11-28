@@ -1,10 +1,10 @@
-<span class="sidebar-button-wrapper">
-  <button mat-stroked-button class="menu-button user">
+<div class="sidebar-button-wrapper">
+  <button mat-stroked-button class="menu-button user" (click)="viewUser()">
     <mat-icon class="icon">person</mat-icon>
     <span class="icon-label">{{currentUser.name}}</span>
   </button>
 
-  <button mat-stroked-button class="menu-button shopping" (click)="showCartItems(true)">
+  <button mat-stroked-button class="menu-button shopping" (click)="viewStage()">
     <mat-icon>add_shopping_cart</mat-icon>
     <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"></span>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
@@ -56,13 +56,13 @@
     </div>
   </div>
 
-  <button mat-stroked-button class="menu-button subscription">
+  <button mat-stroked-button class="menu-button subscription" (click)="viewSubscriptions()">
     <mat-icon>subscriptions</mat-icon>
     <span class="icon-label">Subscription</span>
   </button>
 
-  <button mat-stroked-button class="menu-button help">
+  <button mat-stroked-button class="menu-button help" (click)="viewHelp()">
     <mat-icon>help</mat-icon>
     <span class="icon-label">Help</span>
   </button>
-</span>
+</div>

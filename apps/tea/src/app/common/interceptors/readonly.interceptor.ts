@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { LoggerService } from '../common/services/logger.service';
-import { SessionService } from '../common/services/session.service';
+import { LoggerService } from '../services/logger.service';
+import { SessionService } from '../services/session.service';
 
 @Injectable()
 export class ReadOnlyInterceptor implements HttpInterceptor {

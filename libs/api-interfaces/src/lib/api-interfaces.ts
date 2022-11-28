@@ -23,3 +23,12 @@ export interface Cart extends Tea {
 export interface Products {
   teas?: Array<Tea>
 }
+
+export interface User {
+  id: number;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  token?: string;
+}

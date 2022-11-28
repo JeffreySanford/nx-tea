@@ -3,16 +3,16 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, EMPTY, finalize, Observable, throwError } from "rxjs";
-import { AuthService } from "../common/services/auth.service";
-import { BusyService } from "../common/services/busy.service";
+import { AuthenticationService } from "../services/authentication.service";
+import { BusyService } from "../services/busy.service";
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthHttpInterceptor implements HttpInterceptor {
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private authenticationService: AuthenticationService, private router: Router) { }
     intercept(request: HttpRequest<any>, next: HttpHandler) {
 
-        const accessToken = this.authService.getAccessToken();
+        const accessToken = this.authenticationService.getAccessToken();
         const headers = { 'Authorization': 'Bearer ${accessToken}' };
 
         request = request.clone({
@@ -41,7 +41,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             debugger
             console.error('Auth interceptor error: ' + error.message);
             if (/is expired/.test(authResHeader)) {
-                this.authService.signIn();  // Token expired, leave app amd sign-in again
+                this.authenticationService.signIn();  // Token expired, leave app amd sign-in again
             }
         }
 

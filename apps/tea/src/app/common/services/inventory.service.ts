@@ -16,7 +16,6 @@ export class InventoryService {
   getInventory(): Subject<Tea[]> {
     this.http.get<any>('/api/inventory').subscribe(
       (data) => {
-
       this.subject$.next(data);
     });
 

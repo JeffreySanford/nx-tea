@@ -9,9 +9,12 @@ import { CustomerSubscriptionsModule } from './customer-subscription/customer-su
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { TeasModule } from './teas/tea.module';
+import { TeaSchema } from './entities/tea.entity';
 import { DepartmentsModule } from './departments/departments.module';
 import { DepartmentSchema } from './entities/department.entity';
-import { TeaSchema } from './entities/tea.entity';
+import { UserModule } from './authentication/user.module';
+import { UserSchema } from './entities/user.entity';
+
 
 @Module({
   imports: [
@@ -22,11 +25,12 @@ import { TeaSchema } from './entities/tea.entity';
     MongooseModule.forFeature([
       { name: 'Department', schema: DepartmentSchema },
     ]),
+    DepartmentsModule,
     MongooseModule.forFeature([
       { name: 'Tea', schema: TeaSchema },
     ]),
-    DepartmentsModule,
     TeasModule,
+    UserModule,
     CustomerSubscriptionsModule
   ],
   controllers: [

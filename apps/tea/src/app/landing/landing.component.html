@@ -1,31 +1,30 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (click)="toggleSidebar('toggle',!opened, false)">
+<mat-sidenav-container  (click)="toggleSidebar('toggle', !opened)">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
       <tea-sidebar-content [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <span class="collapsed-wrapper">
-        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" (click)="toggleSidebar('toggle', !opened, false)">
-          <button mat-button class="menu-button user mat-elevation-z8" >
+        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" >
+          <button mat-button class="menu-button user mat-elevation-z8" (click)="viewUser()">
             <mat-icon class="icon">person</mat-icon>
           </button>
 
-          <button mat-button class="menu-button shopping mat-elevation-z8">
+          <button mat-button class="menu-button shopping mat-elevation-z8" (click)="viewStage()">
             <mat-icon>add_shopping_cart</mat-icon>
             <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}"
               matBadgePosition="after" matBadgeColor="accent"></span>
           </button>
 
-          <button mat-button class="menu-button subscription mat-elevation-z8">
+          <button mat-button class="menu-button subscription mat-elevation-z8" (click)="viewSubscriptions()">
             <mat-icon>subscriptions</mat-icon>
           </button>
 
-          <button mat-button class="menu-button help mat-elevation-z8">
+          <button mat-button class="menu-button help mat-elevation-z8" (click)="viewHelp()">
             <mat-icon>help</mat-icon>
           </button>
         </div>
-
-        <tea-stage [inventory]="inventory"></tea-stage>
+        <router-outlet></router-outlet>
       </span>
 
     </mat-sidenav-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../common/services/auth.service';
+import { AuthenticationService } from '../common/services/authentication.service';
 import { Router } from '@angular/router';
 export interface User {
   userName: string;
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   formData!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.formData = new FormGroup({
@@ -27,17 +27,17 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit(user: User): void {
-    this.authService.login(user.userName, user.password)
+    this.authenticationService.login(user.userName, user.password)
       .subscribe(
         (nextUser) => {
           this.userName = user.userName;
           this.password = user.password;
           console.log("Is Login Success: " + this.userName);
 
-          this.router.navigate(['landing'])
+          this.router.navigate(['stage'])
         },
         (error)=>{
-          console.log("Is Login Failed: " + user.userName + '' + error);
+          console.log("Is Login Failed: " + user.userName + '' + error.message);
 
           this.router.navigate(['login'])
         });

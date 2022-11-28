@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterContentChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Message } from '@tea/api-interfaces';
 import { NotificationService } from './common/services/notification.service';
-import { AuthService } from './common/services/auth.service';
+import { AuthenticationService } from './common/services/authentication.service';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.notifyService.showSuccess(next.message, 'API Message')
 
 
-        // this.authService.login('admin', 'admin');
+        // this.authenticationService.login('admin', 'admin');
         let storeData = localStorage.getItem("isUserLoggedIn");
         console.log("StoreData: " + storeData);
 

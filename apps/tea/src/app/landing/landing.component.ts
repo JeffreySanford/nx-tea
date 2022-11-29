@@ -1,11 +1,12 @@
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Tea } from '@tea/api-interfaces';
+import { Tea, User } from '@tea/api-interfaces';
 import { CartService } from '../common/services/cart.service';
 import { InventoryService } from '../common/services/inventory.service';
 import { SidebarService } from '../common/services/sidebar.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DashboardService } from '../common/services/dashboard.service';
+import { AuthenticationService } from '../common/services/authentication.service';
 
 @Component({
   selector: 'tea-landing',
@@ -33,14 +34,17 @@ export class LandingComponent implements OnInit {
   cartItems: Tea[] = [];
   dashboard = false;
   checkout = false;
-  isAction = false;
+  isAction = true;
+  isUserLoggedIn=  false;
+  user?: User;
 
   constructor(
     sidebarService: SidebarService,
     cartService: CartService,
     private cd: ChangeDetectorRef,
     private router: Router,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private authenticationService: AuthenticationService
   ) {
     this.cartService = cartService;
     this.sidebarService = sidebarService;
@@ -51,6 +55,12 @@ export class LandingComponent implements OnInit {
       this.dashboard = next ? true : false;
       this.checkout = next ? false : true;
       this.cd.detectChanges();
+      this.authenticationService.currentUser?.subscribe((user: User)=>{
+        debugger
+        this.isUserLoggedIn = true;
+        this.user = user;
+      },(error)=>{console.log(error.message)})
+    
     });
 
     this.cartService.getCart().subscribe((cart: Tea[]) => {
@@ -84,7 +94,10 @@ export class LandingComponent implements OnInit {
   toggleSidebar(action: string, isOpen: boolean) {
     debugger
     if (action === 'toggle' && !this.isAction) {
-      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
+      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => {
+        debugger
+        this.opened = isOpen
+      });
     } else {
       debugger
       this.isAction = false;

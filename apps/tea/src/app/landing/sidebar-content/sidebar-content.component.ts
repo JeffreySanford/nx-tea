@@ -27,6 +27,7 @@ export class SidebarContentComponent implements OnInit {
   sidebarService: SidebarService;
   dashboard: DashboardService;
   opened = false;
+  isAction = false;
 
   constructor(
     cartService: CartService, 
@@ -70,12 +71,16 @@ export class SidebarContentComponent implements OnInit {
 
   }
 
-  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
+  toggleSidebar(action: string, isOpen: boolean) {
     debugger
-    if (action === 'toggle' && !isAction) {
-      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => this.opened = isOpen);
-    }
+    if (action === 'toggle' && !this.isAction) {
+      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen) => this.opened = isOpen);
   }
+  else {
+      debugger;
+      this.isAction = false;
+  }
+}
 
 
   toggleCartItems(isCartOpened: boolean) {

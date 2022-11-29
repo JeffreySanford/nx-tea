@@ -20,6 +20,7 @@ export class SidebarService {
   toggleSidebar(isSidebarOpen: boolean): Observable<boolean> {
     this.sidebar$.next(isSidebarOpen);
 
+    debugger
     return this.sidebar$;
   }
 }

@@ -6,9 +6,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SidebarService {
   opened: boolean = false;
-  sidebar$ = new BehaviorSubject<boolean>(this.opened);
+  sidebar$: BehaviorSubject<boolean>;
+  
 
   constructor() {
+    console.log('sidebar subject init')
+    this.sidebar$ = new BehaviorSubject<boolean>(this.opened);
   }
 
   getSidebar(): Observable<boolean> {
@@ -20,7 +23,7 @@ export class SidebarService {
   toggleSidebar(isSidebarOpen: boolean): Observable<boolean> {
     this.sidebar$.next(isSidebarOpen);
 
-    debugger
+    console.log('sidebar service toggles ' + isSidebarOpen)
     return this.sidebar$;
   }
 }

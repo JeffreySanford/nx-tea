@@ -26,16 +26,16 @@ export class SidebarContentComponent implements OnInit {
   dataSource = new MatTableDataSource<Tea>();
   sidebarService: SidebarService;
   dashboard: DashboardService;
-  opened = false;
+  opened = true;
   isAction = false;
 
   constructor(
-    cartService: CartService, 
-    cd: ChangeDetectorRef, 
+    cartService: CartService,
+    cd: ChangeDetectorRef,
     sidebarService: SidebarService,
     dashboard: DashboardService,
     private router: Router
-    ) {
+  ) {
     this.cartService = cartService;
     this.cd = cd;
     this.sidebarService = sidebarService;
@@ -53,34 +53,43 @@ export class SidebarContentComponent implements OnInit {
   }
 
   viewUser() {
+    this.isAction = true;
     this.router.navigate(['/user']);
+    this.isAction = false;
   }
 
   viewStage() {
+    this.isAction = true;
     this.router.navigate(['/stage']);
-
+    this.isAction = false;
   }
 
   viewSubscriptions() {
+    this.isAction = true;
     this.router.navigate(['/subscriptions']);
-
+    this.isAction = false;
   }
 
   viewHelp() {
+    this.isAction = true;
     this.router.navigate(['/help']);
-
+    this.isAction = false;
   }
 
-  toggleSidebar(action: string, isOpen: boolean) {
+  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
     debugger
+    if(!isAction) {
+
+    }
     if (action === 'toggle' && !this.isAction) {
+      console.log('sidebar toggle sidebar trigger')
       this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen) => this.opened = isOpen);
+    }
+    else {
+      debugger
+      console.log('toggle sidebar caught action')
+    }
   }
-  else {
-      debugger;
-      this.isAction = false;
-  }
-}
 
 
   toggleCartItems(isCartOpened: boolean) {

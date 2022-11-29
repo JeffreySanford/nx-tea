@@ -1,17 +1,17 @@
 <div class="sidebar-button-wrapper">
-  <button mat-stroked-button class="menu-button user" (click)="viewUser()">
+  <button mat-stroked-button class="menu-button user mat-elevation-z4" (click)="viewUser()">
     <mat-icon class="icon">person</mat-icon>
     <span class="icon-label">{{currentUser.name}}</span>
   </button>
 
-  <button mat-stroked-button class="menu-button shopping" (click)="viewStage()">
+  <button mat-stroked-button class="menu-button shopping mat-elevation-z4" (click)="viewStage()">
     <mat-icon>add_shopping_cart</mat-icon>
     <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"></span>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
   <div *ngIf="this.cart?.length != 0">
-    <div class="cart-display">
+    <div class="cart-display mat-elevation-z4">
       <mat-table [dataSource]="dataSource">
         <!-- Name Column -->
         <ng-container matColumnDef="name">
@@ -56,12 +56,12 @@
     </div>
   </div>
 
-  <button mat-stroked-button class="menu-button subscription" (click)="viewSubscriptions()">
+  <button mat-stroked-button class="menu-button subscription mat-elevation-z4" (click)="viewSubscriptions()">
     <mat-icon>subscriptions</mat-icon>
     <span class="icon-label">Subscription</span>
   </button>
 
-  <button mat-stroked-button class="menu-button help" (click)="viewHelp()">
+  <button mat-stroked-button class="menu-button help mat-elevation-z4" (click)="viewHelp()">
     <mat-icon>help</mat-icon>
     <span class="icon-label">Help</span>
   </button>

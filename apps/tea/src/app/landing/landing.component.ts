@@ -56,7 +56,6 @@ export class LandingComponent implements OnInit {
       this.checkout = next ? false : true;
       this.cd.detectChanges();
       this.authenticationService.currentUser?.subscribe((user: User)=>{
-        debugger
         this.isUserLoggedIn = true;
         this.user = user;
       },(error)=>{console.log(error.message)})
@@ -71,35 +70,36 @@ export class LandingComponent implements OnInit {
   }
 
   viewUser() {
-    debugger
-    this.isAction = true;
+    this.isAction = false;
     this.router.navigate(['/user']);
   }
 
   viewStage() {
-    this.isAction = true;
+    this.isAction = false;
     this.router.navigate(['/stage']);
   }
 
   viewSubscriptions() {
-    this.isAction = true;
+    this.isAction = false;
     this.router.navigate(['/subscriptions']);
+
   }
 
   viewHelp() {
-    this.isAction = true;
+    this.isAction = false;
     this.router.navigate(['/help']);
+
   }
 
-  toggleSidebar(action: string, isOpen: boolean) {
-    debugger
+  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
+
     if (action === 'toggle' && !this.isAction) {
       this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => {
-        debugger
+        console.log('landing toggle sidebar trigger')
         this.opened = isOpen
       });
     } else {
-      debugger
+      console.log('landing toggle sidebar trap');
       this.isAction = false;
     }
   }

@@ -63,7 +63,8 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "tea:build:production"
+          "browserTarget": "tea:build:production",
+          "proxyConfig": "apps/tea/proxy-prod.conf.json"
         },
         "development": {
           "browserTarget": "tea:build:development"
@@ -71,7 +72,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "proxyConfig": "apps/tea/proxy.conf.json"
+        "proxyConfig": "apps/tea/proxy-local.conf.json"
       }
     },
     "extract-i18n": {

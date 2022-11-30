@@ -27,10 +27,13 @@ import { UserSchema } from './entities/user.entity';
     MongooseModule.forFeature([
       { name: 'Department', schema: DepartmentSchema },
     ]),
-    DepartmentsModule,
     MongooseModule.forFeature([
       { name: 'Tea', schema: TeaSchema },
     ]),
+    MongooseModule.forFeature([
+      { name: 'User', schema: UserSchema },
+    ]),
+    DepartmentsModule,
     TeasModule,
     UserModule,
     CustomerSubscriptionsModule

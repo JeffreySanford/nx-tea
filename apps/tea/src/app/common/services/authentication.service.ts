@@ -25,13 +25,15 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(isUserAuthenticated => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(username));
-                
-                return isUserAuthenticated;
-            }));
+        const api = environment.apiUrl;
+        
+        return this.http.post<Response>(api + '/users/authenticate', { username, password })
+            .pipe(map(
+                res => {
+                    debugger
+                    console.log(username + ' authenticated: ' + res)
+                })
+            );
     }
 
     logout() {
@@ -47,7 +49,7 @@ export class AuthenticationService {
     getAccessToken() {
         return 'access-token-string'
     }
-    
+
     getPublicContent(): Observable<any> {
         const API_URL = 'http://localhost:3333/api/test/';
         return this.http.get(API_URL + 'all', { responseType: 'text' });

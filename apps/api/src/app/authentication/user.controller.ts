@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Subject } from 'rxjs/internal/Subject';
+import { AuthenticatePostDTO } from './dto/authenticate-post.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 
@@ -13,10 +14,11 @@ export class UserController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-  @Post('authenticate')
-    authenticate(userName: string, password: string): boolean {
-      console.log(userName, password)
-
+  @Post('authenticate/')
+    authenticate(@Body() body: AuthenticatePostDTO): boolean {
+      
+      console.log(`user controller authenticated with ${JSON.stringify(body.username)}`)
+      debugger
       // Here reach out to the mongo collection and verify
       return true;
     }

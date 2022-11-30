@@ -14,7 +14,7 @@ export class InventoryService {
   constructor(private http: HttpClient) {}
 
   getInventory(): Subject<Tea[]> {
-    this.http.get<any>(':3333/api/inventory').subscribe(
+    this.http.get<any>('brokenleaf.us:3333/api/inventory').subscribe(
       (data) => {
       this.subject$.next(data);
     });

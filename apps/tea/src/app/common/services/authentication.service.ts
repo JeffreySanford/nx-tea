@@ -49,22 +49,22 @@ export class AuthenticationService {
     }
     
     getPublicContent(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/test/';
+        const API_URL = 'http://brokenleaf.us:3333/api/test/';
         return this.http.get(API_URL + 'all', { responseType: 'text' });
     }
 
     getUserBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/user-board/';
+        const API_URL = 'http://brokenleaf.us:3333/api/user-board/';
         return this.http.get(API_URL + 'user', { responseType: 'text' });
     }
 
     getModeratorBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/moderator-board/';
+        const API_URL = 'http://brokenleaf.us:3333/api/moderator-board/';
         return this.http.get(API_URL + 'mod', { responseType: 'text' });
     }
 
     getAdminBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/admin-board/';
+        const API_URL = 'http://brokenleaf.us:3333/api/admin-board/';
         return this.http.get(API_URL + 'admin', { responseType: 'text' });
     }
 }

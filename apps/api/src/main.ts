@@ -1,17 +1,13 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppModule } from './app/app.module';
 import * as session from 'express-session';
+import { environment } from '../../tea/src/environments/environment';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api/';
+  const apiUrl = environment.apiUrl;
   app.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3333;
 
@@ -26,7 +22,7 @@ async function bootstrap() {
   app.enableCors();
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: http://brokenleaf.us:${port}/${globalPrefix}`
+    `🚀 Broken Leaf backend application is running on: ${apiUrl}`
   );
 }
 

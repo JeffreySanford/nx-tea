@@ -15,7 +15,6 @@ const routes: Routes = [
    { path: 'logout', component: LogoutComponent },
    { path: 'landing', component: LandingComponent, canActivate: [AuthenticationGuard]},
    { path: 'stage', component: StageComponent, canActivate: [AuthenticationGuard]},
-   { path: 'departments', component: DepartmentsComponent, canActivate: [AuthenticationGuard]},
    { path: 'subscriptions', component: SubscriptionComponent, canActivate: [AuthenticationGuard]},
    { path: 'help', component: HelpComponent, canActivate: [AuthenticationGuard]},
    { path: 'user', component: UserComponent, canActivate: [AuthenticationGuard]},

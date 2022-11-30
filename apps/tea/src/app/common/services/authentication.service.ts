@@ -26,6 +26,8 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         const api = environment.apiUrl;
+        console.log('API: ' + environment.apiUrl)
+        debugger
         
         return this.http.post<Response>(api + '/users/authenticate', { username, password })
             .pipe(map(

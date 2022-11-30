@@ -21,7 +21,9 @@ import { UserSchema } from './entities/user.entity';
     ConfigModule.forRoot({
       load: [configuration]
     }),
-    MongooseModule.forRoot('mongodb://0.0.0.0:27017/brokenleaf'),
+    MongooseModule.forRoot('mongodb://teaadmin:p4ssw0rd@brokenleaf.us:27017/admin', {
+      dbName: 'brokenleaf'
+    }),
     MongooseModule.forFeature([
       { name: 'Department', schema: DepartmentSchema },
     ]),

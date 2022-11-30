@@ -47,55 +47,24 @@ export class SidebarContentComponent implements OnInit {
       this.cart = cart;
       this.dataSource.data = this.cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
-      // cart.length > 0 ? this.toggleCartItems(true) : this.toggleCartItems(false)
       this.cd.detectChanges();
     });
   }
 
   viewUser() {
-    this.isAction = true;
     this.router.navigate(['/user']);
-    this.isAction = false;
   }
 
   viewStage() {
-    this.isAction = true;
     this.router.navigate(['/stage']);
-    this.isAction = false;
   }
 
   viewSubscriptions() {
-    this.isAction = true;
     this.router.navigate(['/subscriptions']);
-    this.isAction = false;
   }
 
   viewHelp() {
-    this.isAction = true;
     this.router.navigate(['/help']);
-    this.isAction = false;
-  }
-
-  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
-    debugger
-    if(!isAction) {
-
-    }
-    if (action === 'toggle' && !this.isAction) {
-      console.log('sidebar toggle sidebar trigger')
-      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen) => this.opened = isOpen);
-    }
-    else {
-      debugger
-      console.log('toggle sidebar caught action')
-    }
-  }
-
-
-  toggleCartItems(isCartOpened: boolean) {
-    this.cartItemsDisplay = isCartOpened ? true : false;
-    this.sidebarService.toggleSidebar(this.cartItemsDisplay).subscribe();
-    this.cd.detectChanges();
   }
 
   getTotal(): number {
@@ -120,7 +89,7 @@ export class SidebarContentComponent implements OnInit {
     this.cartService.addToCart(id, addition);
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
-      this.sidebarService.toggleSidebar(false).subscribe();
+
       this.totalCartItems = this.cartService.getTotalCartItems();
       this.cd.detectChanges();
     });

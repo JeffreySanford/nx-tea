@@ -34,7 +34,7 @@ export class LandingComponent implements OnInit {
   cartItems: Tea[] = [];
   dashboard = false;
   checkout = false;
-  isAction = true;
+  isAction = false;
   isUserLoggedIn=  false;
   user?: User;
 
@@ -70,23 +70,23 @@ export class LandingComponent implements OnInit {
   }
 
   viewUser() {
-    this.isAction = false;
+    this.isAction = true;
     this.router.navigate(['/user']);
   }
 
   viewStage() {
-    this.isAction = false;
+    this.isAction = true;
     this.router.navigate(['/stage']);
   }
 
   viewSubscriptions() {
-    this.isAction = false;
+    this.isAction = true;
     this.router.navigate(['/subscriptions']);
 
   }
 
   viewHelp() {
-    this.isAction = false;
+    this.isAction = true;
     this.router.navigate(['/help']);
 
   }
@@ -94,11 +94,13 @@ export class LandingComponent implements OnInit {
   toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
 
     if (action === 'toggle' && !this.isAction) {
+      debugger
       this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => {
         console.log('landing toggle sidebar trigger')
         this.opened = isOpen
       });
     } else {
+      debugger
       console.log('landing toggle sidebar trap');
       this.isAction = false;
     }

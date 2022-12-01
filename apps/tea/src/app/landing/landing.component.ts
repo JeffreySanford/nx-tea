@@ -61,13 +61,12 @@ export class LandingComponent implements OnInit {
       this.cartService.getCart().subscribe((cart: Tea[]) => {
         this.cart = cart;
         this.totalCartItems = this.cartService.getTotalCartItems();
-  
+
         this.authenticationService.getUser().subscribe((user: User) => {
           if (user.id !== 0) {
-            debugger
+            console.log('Landing detects user login: ' + user.username)
             this.isAuthenticated = true;
-            console.log('Sidebar detects user login: ' + user.username)
-  
+
             this.authenticationService.isAdmin().subscribe((isAdmin) => {
               this.isAdmin = isAdmin;
             });

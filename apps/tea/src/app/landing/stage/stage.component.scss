@@ -3,12 +3,13 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  width: 92%;
+  width: 89%;
   height: 70vh;
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
   right: 1em;
+  border-radius: 0.25em;
 
   &::-webkit-scrollbar {
     width: 0.1em;
@@ -40,7 +41,7 @@
       position: absolute;
       top: 1%;
       left: 1%;
-      opacity: 0.3;
+      opacity: 0.5;
       z-index: -1;
     }
   }

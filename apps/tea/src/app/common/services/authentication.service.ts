@@ -27,22 +27,14 @@ export class AuthenticationService {
         return this.isLoggedIn;
     }
 
-
-    public get currentUserValue(): User {
-        return this.currentUserSubject.value;
-    }
-
     login(username: string, password: string) {
         const api = environment.apiUrl;
-        console.log('API: ' + environment.apiUrl)
-        debugger
-
+        
         this.currentUserSubject.next(username);
 
         return this.http.post<Response>(api + '/users/authenticate', { username, password })
             .pipe(map(
                 res => {
-                    debugger
                     console.log(username + ' authenticated: ' + res);
                     this.isLoggedIn = true;
                 })
@@ -54,32 +46,11 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.closed;
     }
-
     signIn() {
         this.router.navigate(['login']);
     }
 
     getAccessToken() {
         return 'access-token-string'
-    }
-
-    getPublicContent(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/test/';
-        return this.http.get(API_URL + 'all', { responseType: 'text' });
-    }
-
-    getUserBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/user-board/';
-        return this.http.get(API_URL + 'user', { responseType: 'text' });
-    }
-
-    getModeratorBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/moderator-board/';
-        return this.http.get(API_URL + 'mod', { responseType: 'text' });
-    }
-
-    getAdminBoard(): Observable<any> {
-        const API_URL = 'http://localhost:3333/api/admin-board/';
-        return this.http.get(API_URL + 'admin', { responseType: 'text' });
     }
 }

@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           this.userName = user.userName;
           this.password = user.password;
           console.log("Is Login Success: " + this.userName);
+          
 
           this.router.navigate(['stage'])
         },

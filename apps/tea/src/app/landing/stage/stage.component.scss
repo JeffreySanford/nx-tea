@@ -93,10 +93,11 @@
     }
 
     .mat-icon {
-      color: lightskyblue;
+      color: #b5ed00;
       position: relative;
       right: 0.2em;
       bottom: 0.2em;
+      z-index: 20;
     }
   }
 

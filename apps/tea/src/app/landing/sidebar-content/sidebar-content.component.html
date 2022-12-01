@@ -1,16 +1,15 @@
 <div class="sidebar-button-wrapper">
   <button mat-stroked-button class="menu-button user mat-elevation-z4" (click)="viewUser()">
     <mat-icon class="icon">person</mat-icon>
-    <span class="icon-label">{{currentUser.name}}</span>
+    <span class="icon-label">{{currentUser.firstName}}</span>
   </button>
 
   <button mat-stroked-button class="menu-button shopping mat-elevation-z4" (click)="viewStage()">
     <mat-icon>add_shopping_cart</mat-icon>
-    <span [hidden]="totalCartItems === 0" matBadgeSize="small" matBadge="{{totalCartItems}}" matBadgePosition="after"></span>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
-  <div *ngIf="this.cart?.length != 0">
+  <div *ngIf="this.cart?.length != 0" [hidden]="!isAuthenticated">
     <div class="cart-display mat-elevation-z4">
       <mat-table [dataSource]="dataSource">
         <!-- Name Column -->
@@ -52,7 +51,7 @@
         <p>Total</p>
         <div> {{getTotal() | currency}}</div>
       </span>
-      <button *ngIf="this.cart?.length != 0" class="submit-button" mat-stroked-button (click)="checkout()"><p style="position: relative;bottom: 2.25em;">checkout</p></button>
+      <button *ngIf="this.cart?.length != 0" class="checkout-button" mat-stroked-button (click)="checkout()"><p>checkout</p></button>
     </div>
   </div>
 
@@ -60,6 +59,18 @@
     <mat-icon>subscriptions</mat-icon>
     <span class="icon-label">Subscription</span>
   </button>
+
+  <span [hidden]="!isAuthenticated">
+    <button mat-button class="menu-button membership mat-elevation-z8" (click)="viewMembership()" [hidden]="!isAdmin">
+      <mat-icon>supervisor_account</mat-icon>
+      <span class="icon-label">Administration</span>
+    </button>
+
+    <button mat-button class="menu-button groups mat-elevation-z8" (click)="viewGroups()" [hidden]="!isAdmin">
+      <mat-icon>groups</mat-icon>
+      <span class="icon-label">Groups</span>
+    </button>  
+  </span>
 
   <button mat-stroked-button class="menu-button help mat-elevation-z4" (click)="viewHelp()">
     <mat-icon>help</mat-icon>

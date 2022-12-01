@@ -44,12 +44,11 @@
 
 .menu-button {
   font-size: 0.8em;
-  margin-bottom: 1em;
   border-radius: 5em;
   max-width: 3em;
   min-width: 3em;
   padding: 0;
-  margin: 0 1em 1em;
+  margin: 0 0.25em 0.5em;
 
   &.user {
     background: rgba(#b5ed00, 1);
@@ -63,12 +62,22 @@
 
   &.subscription {
     background-color: rgba(#007fcc, 1);
-    color: rgba(white, 1);
+    color: rgba(black, 1);
+  }
+
+  &.membership {
+    background-color: rgba(red, 1);
+    color: rgba(black, 1);
+  }
+
+  &.groups {
+    background-color: rgba(magenta, 1);
+    color: rgba(black, 1);
   }
 
   &.help {
     background-color: rgba(#5f0fd7, 1);
-    color: rgba(white, 1);
+    color: rgba(black, 1);
   }
 }
 

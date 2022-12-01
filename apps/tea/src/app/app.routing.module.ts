@@ -18,7 +18,7 @@ const routes: Routes = [
    { path: 'subscriptions', component: SubscriptionComponent, canActivate: [AuthenticationGuard]},
    { path: 'help', component: HelpComponent, canActivate: [AuthenticationGuard]},
    { path: 'user', component: UserComponent, canActivate: [AuthenticationGuard]},
-   { path: 'departments', component: DepartmentsComponent, canActivate: [AuthenticationGuard]},
+   { path: 'departments', component: DepartmentsComponent},
    { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

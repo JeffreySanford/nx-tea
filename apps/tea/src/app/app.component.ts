@@ -13,7 +13,6 @@ import { AuthenticationService } from './common/services/authentication.service'
 export class AppComponent implements OnInit, AfterContentChecked {
 
   title = 'Broken Leaf';
-  isUserLoggedIn = false;
   hello$ = this.http.get<Message>('/api/hello');
   loading = true;
 
@@ -28,23 +27,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
       (next: Message) => {
         this.loading = false;
         this.cd.detectChanges();
-        this.notifyService.showSuccess(next.message, 'API Message')
-
-
-        // this.authenticationService.login('admin', 'admin');
-        let storeData = localStorage.getItem("isUserLoggedIn");
-        console.log("StoreData: " + storeData);
-
-        if (storeData != null && storeData == "true") {
-          console.log('User has logged in');
-          this.isUserLoggedIn = true;
-        } else {
-          console.log('User login failed');
-          this.isUserLoggedIn = false;
-        }
+        this.notifyService.showSuccess(next.message, 'API Message');
       }, (error) => {
         debugger
-        this.notifyService.showError(error.message, 'API Message')
+        this.notifyService.showError(error.message, 'API Message');
         console.log('Error fired.')
       });
   }

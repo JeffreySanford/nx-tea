@@ -35,8 +35,11 @@ export class LandingComponent implements OnInit {
   dashboard = false;
   checkout = false;
   isAction = false;
-  isUserLoggedIn=  false;
+  isUserLoggedIn = false;
   user?: User;
+  isAdmin = false;
+  isSidebarOpen = true;
+  isAuthenticated = true;
 
   constructor(
     sidebarService: SidebarService,
@@ -54,18 +57,23 @@ export class LandingComponent implements OnInit {
     this.dashboardService.isDashboardOpen(this.dashboard).subscribe((next) => {
       this.dashboard = next ? true : false;
       this.checkout = next ? false : true;
-      this.cd.detectChanges();
-      this.authenticationService.currentUser?.subscribe((user: User)=>{
-        this.isUserLoggedIn = true;
-        this.user = user;
-      },(error)=>{console.log(error.message)})
-    
-    });
 
-    this.cartService.getCart().subscribe((cart: Tea[]) => {
-      this.cart = cart;
-      this.totalCartItems = this.cartService.getTotalCartItems();
-      this.cd.detectChanges();
+      this.cartService.getCart().subscribe((cart: Tea[]) => {
+        this.cart = cart;
+        this.totalCartItems = this.cartService.getTotalCartItems();
+  
+        this.authenticationService.getUser().subscribe((user: User) => {
+          if (user.id !== 0) {
+            
+            this.isAuthenticated = true;
+            console.log('Sidebar detects user login: ' + user.username)
+  
+            this.authenticationService.isAdmin().subscribe((isAdmin) => {
+              this.isAdmin = isAdmin;
+            });
+          }
+        });
+      });
     });
   }
 
@@ -88,16 +96,29 @@ export class LandingComponent implements OnInit {
   viewHelp() {
     this.isAction = true;
     this.router.navigate(['/help']);
-
   }
 
-  toggleSidebar(action: string, isOpen: boolean, isAction: boolean) {
+  // Adminsitation
 
-    if (action === 'toggle' && !this.isAction) {
-      debugger
-      this.sidebarService.toggleSidebar(isOpen).subscribe((isOpen: boolean) => {
+  viewMembership() {
+    this.isAction = true;
+    this.router.navigate(['/membership']);
+  }
+
+  viewGroups() {
+    this.isAction = true;
+    this.router.navigate(['/membership']);
+  }
+
+  toggleSidebar() {
+
+    if (!this.isAction) {
+
+      this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
         console.log('landing toggle sidebar trigger')
-        this.opened = isOpen
+        this.opened = isOpen;
+        this.isSidebarOpen = isOpen;
+
       });
     } else {
       debugger

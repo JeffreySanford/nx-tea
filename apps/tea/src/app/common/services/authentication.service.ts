@@ -1,36 +1,80 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { User } from '@tea/api-interfaces';
 import { Router } from '@angular/router';
+import { NotificationService } from './notification.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject!: BehaviorSubject<any>;
-    public currentUser?: Observable<User>;
+    currentUserSubject = new BehaviorSubject<User>({
+        id: 0,
+        username: '',
+        password: 'not provided',
+        firstName: 'Sample',
+        lastName: 'Sam'
+    });
+    isAdminSubject = new BehaviorSubject<boolean>(false);
+    isLoggedIn = false;
+    user?: User;
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) {
+
         const user = localStorage.getItem('currentUser');
         if (user) {
-            this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(user));
-            this.currentUser = this.currentUserSubject.asObservable();
+            this.currentUserSubject = new BehaviorSubject<User>({
+                id: 0,
+                username: user,
+                password: 'not provided',
+                firstName: 'Sample',
+                lastName: 'Sam'
+            });
         }
     }
 
-    isLoggedIn = false;
-
     isAuthenticated() {
-        debugger
+        (this.isLoggedIn) ? this.notifyService.showSuccess('User Authenticated', 'Authentication'):this.notifyService.showError('User not logged in.', 'Authentication');
+
         return this.isLoggedIn;
+    }
+
+    isAdmin(): Subject<boolean> {
+        let isAdmin = false;
+
+        this.getUser().subscribe((user: User) => {
+            this.user = user;
+
+            if (user.username === 'admin') {
+                isAdmin = true;
+                this.isAdminSubject.next(true);
+                return true;
+            } else {
+                isAdmin = false;
+                this.isAdminSubject.next(false);
+                return false;
+            }
+        }, (error)=>{
+            console.log('Error: '+ error)
+        });
+
+        return this.isAdminSubject;
     }
 
     login(username: string, password: string) {
         const api = environment.apiUrl;
-        
-        this.currentUserSubject.next(username);
+
+        if (this.currentUserSubject) {
+            this.currentUserSubject.next({
+                id: 1,
+                username,
+                password,
+                firstName: 'Sample',
+                lastName: 'Sam'
+            });
+        }
 
         return this.http.post<Response>(api + '/users/authenticate', { username, password })
             .pipe(map(
@@ -41,10 +85,14 @@ export class AuthenticationService {
             );
     }
 
+    getUser(): Observable<User> {
+        return this.currentUserSubject;
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        this.currentUserSubject.closed;
+        this.currentUserSubject?.unsubscribe();
     }
     signIn() {
         this.router.navigate(['login']);

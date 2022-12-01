@@ -21,21 +21,6 @@ export class AuthenticationGuard implements CanActivate {
       console.log('CanActivate Guard Fail')
       return false;
     }
-    // canActivate(
-    //   next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-
-    //     debugger
-    //     const currentUser = this.authenticationService.currentUserValue;
-    //     debugger
-    //     if (currentUser) {
-    //         // logged in so return true
-    //         return true;
-    //     }
-
-    //     // not logged in so redirect to login page with the return url
-    //     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-    //     return false;
-    // }
   }
 
 }

@@ -1,16 +1,16 @@
 <div class="sidebar-button-wrapper">
-  <button mat-stroked-button class="menu-button user mat-elevation-z4" (click)="viewUser()">
+  <button mat-stroked-button class="menu-button user mat-elevation-z2" (click)="viewUser()">
     <mat-icon class="icon">person</mat-icon>
     <span class="icon-label">{{currentUser.firstName}}</span>
   </button>
 
-  <button mat-stroked-button class="menu-button shopping mat-elevation-z4" (click)="viewStage()">
+  <button mat-stroked-button class="menu-button shopping mat-elevation-z2" (click)="viewStage()">
     <mat-icon>add_shopping_cart</mat-icon>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
   <div *ngIf="this.cart?.length != 0" [hidden]="!isAuthenticated">
-    <div class="cart-display mat-elevation-z4">
+    <div class="cart-display mat-elevation-z2">
       <mat-table [dataSource]="dataSource">
         <!-- Name Column -->
         <ng-container matColumnDef="name">
@@ -55,24 +55,24 @@
     </div>
   </div>
 
-  <button mat-stroked-button class="menu-button subscription mat-elevation-z4" (click)="viewSubscriptions()">
+  <button mat-stroked-button class="menu-button subscription mat-elevation-z2" (click)="viewSubscriptions()">
     <mat-icon>subscriptions</mat-icon>
     <span class="icon-label">Subscription</span>
   </button>
 
   <span [hidden]="!isAuthenticated">
-    <button mat-button class="menu-button membership mat-elevation-z8" (click)="viewMembership()" [hidden]="!isAdmin">
+    <button mat-button class="menu-button membership mat-elevation-z2" (click)="viewMembership()" [hidden]="!isAdmin">
       <mat-icon>supervisor_account</mat-icon>
       <span class="icon-label">Administration</span>
     </button>
 
-    <button mat-button class="menu-button groups mat-elevation-z8" (click)="viewGroups()" [hidden]="!isAdmin">
+    <button mat-button class="menu-button groups mat-elevation-z2" (click)="viewGroups()" [hidden]="!isAdmin">
       <mat-icon>groups</mat-icon>
       <span class="icon-label">Groups</span>
     </button>  
   </span>
 
-  <button mat-stroked-button class="menu-button help mat-elevation-z4" (click)="viewHelp()">
+  <button mat-stroked-button class="menu-button help mat-elevation-z2" (click)="viewHelp()">
     <mat-icon>help</mat-icon>
     <span class="icon-label">Help</span>
   </button>

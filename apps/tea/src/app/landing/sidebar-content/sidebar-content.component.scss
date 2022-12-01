@@ -5,27 +5,27 @@
   color: rgb(maroon, 1);
 
   &.user {
-    background: rgba(#b5ed00, 1);
+    background: rgba(#b5ed00, 0.3);
     color: rgba(black, 1);
   }
 
   &.shopping {
-    background-color: rgba(#31d34a, 1);
+    background-color: rgba(#31d34a, 0.3);
     color: rgba(black, 1);
   }
 
   &.membership {
-    background-color: rgba(red, 1);
+    background-color: rgba(red, 0.3);
     color: rgba(black, 1);
   }
 
   &.groups {
-    background-color: rgba(magenta, 1);
+    background-color: rgba(magenta, 0.3);
     color: rgba(black, 1);
   }
 
   &.subscription {
-    background-color: rgba(#007fcc, 1);
+    background-color: rgba(#007fcc, 0.3);
     color: rgba(black, 1);
   }
 

@@ -1,7 +1,7 @@
 {
     "/api/*": {
         "target": "http://brokenleaf.us:3333",
-        "secure": false,
+        "secure": true,
         "changeOrigin": true,
         "logLevel": "debug"
     }

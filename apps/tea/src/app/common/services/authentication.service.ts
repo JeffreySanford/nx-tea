@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject!: BehaviorSubject<User>;
+    private currentUserSubject!: BehaviorSubject<any>;
     public currentUser?: Observable<User>;
 
     constructor(private http: HttpClient, private router: Router) {
@@ -20,6 +20,14 @@ export class AuthenticationService {
         }
     }
 
+    isLoggedIn = false;
+
+    isAuthenticated() {
+        debugger
+        return this.isLoggedIn;
+    }
+
+
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
@@ -28,12 +36,15 @@ export class AuthenticationService {
         const api = environment.apiUrl;
         console.log('API: ' + environment.apiUrl)
         debugger
-        
+
+        this.currentUserSubject.next(username);
+
         return this.http.post<Response>(api + '/users/authenticate', { username, password })
             .pipe(map(
                 res => {
                     debugger
-                    console.log(username + ' authenticated: ' + res)
+                    console.log(username + ' authenticated: ' + res);
+                    this.isLoggedIn = true;
                 })
             );
     }

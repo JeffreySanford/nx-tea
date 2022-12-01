@@ -59,8 +59,10 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
       this.dataSource.data = this.cart;
       this.totalCartItems = this.cartService.getTotalCartItems();
 
+      debugger
       this.authenticationService.getUser().subscribe((user: User) => {
         if (user.id !== 0) {
+          debugger
           this.currentUser = user
 
           this.isAuthenticated = true;

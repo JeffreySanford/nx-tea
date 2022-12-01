@@ -64,7 +64,7 @@ export class LandingComponent implements OnInit {
   
         this.authenticationService.getUser().subscribe((user: User) => {
           if (user.id !== 0) {
-            
+            debugger
             this.isAuthenticated = true;
             console.log('Sidebar detects user login: ' + user.username)
   

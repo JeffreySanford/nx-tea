@@ -21,22 +21,23 @@ export class AuthenticationService {
     isLoggedIn = false;
     user?: User;
 
-    constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) {
+    constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) {}
 
+    setUser() {
         const user = localStorage.getItem('currentUser');
         if (user) {
             this.currentUserSubject = new BehaviorSubject<User>({
                 id: 0,
                 username: user,
                 password: 'not provided',
-                firstName: 'Sample',
+                firstName: 'Administrator',
                 lastName: 'Sam'
             });
+            this.notifyService.showSuccess('User Authenticated', 'Authentication')
         }
     }
-
     isAuthenticated() {
-        (this.isLoggedIn) ? this.notifyService.showSuccess('User Authenticated', 'Authentication'):this.notifyService.showError('User not logged in.', 'Authentication');
+        (this.isLoggedIn) ? this.setUser():this.notifyService.showError('User not logged in.', 'Authentication');
 
         return this.isLoggedIn;
     }

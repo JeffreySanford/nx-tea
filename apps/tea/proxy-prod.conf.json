@@ -2,6 +2,7 @@
     "/api/*": {
       "target": "http://localhost:3333",
       "logLevel": "debug",
-      "pathRewrite": "{'^/api' : ''}"
+      "pathRewrite": "{'^/api' : ''}",
+      "changeOrigin": true
     }
   }

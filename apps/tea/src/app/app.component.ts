@@ -13,7 +13,7 @@ import { AuthenticationService } from './common/services/authentication.service'
 export class AppComponent implements OnInit, AfterContentChecked {
 
   title = 'Broken Leaf';
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<Message>('http://brokenleaf.us:3333/api/hello');
   loading = true;
 
   constructor(private http: HttpClient, private notifyService: NotificationService, private cd: ChangeDetectorRef) { }

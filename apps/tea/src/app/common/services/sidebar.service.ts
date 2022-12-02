@@ -4,15 +4,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SidebarService {
   opened: boolean = false;
-  sidebar$: BehaviorSubject<boolean>;
-  
+  sidebar$ = new BehaviorSubject<boolean>(this.opened);
 
-  constructor() {
-    console.log('sidebar subject init')
-    this.sidebar$ = new BehaviorSubject<boolean>(this.opened);
-  }
+  constructor() {}
 
   getSidebar(): Observable<boolean> {
     this.sidebar$.next(this.opened);
@@ -22,8 +19,8 @@ export class SidebarService {
 
   toggleSidebar(isSidebarOpen: boolean): Observable<boolean> {
     this.sidebar$.next(isSidebarOpen);
+    console.log('sidebar service toggles ' + isSidebarOpen);
 
-    console.log('sidebar service toggles ' + isSidebarOpen)
     return this.sidebar$;
   }
 }

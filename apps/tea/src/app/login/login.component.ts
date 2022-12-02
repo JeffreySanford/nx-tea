@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../common/services/authentication.service';
 import { Router } from '@angular/router';
+import { SidebarService } from '../common/services/sidebar.service';
+
 export interface User {
-  userName: string;
+  username: string;
   password: string;
 } 
 @Component({
@@ -13,32 +15,34 @@ export interface User {
 })
 export class LoginComponent implements OnInit {
 
-  userName: string = '';
+  username: string = '';
   password: string = '';
   formData!: FormGroup;
+  baseColor = 'green';
 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.formData = new FormGroup({
-      userName: new FormControl("admin"),
-      password: new FormControl("admin"),
+      username: new FormControl(),
+      password: new FormControl(),
     });
   }
 
   onClickSubmit(user: User): void {
-    this.authenticationService.login(user.userName, user.password)
+    debugger
+    this.authenticationService.login(user.username, user.password)
       .subscribe(
         (nextUser) => {
-          this.userName = user.userName;
+          this.username = user.username;
           this.password = user.password;
-          console.log("Is Login Success: " + this.userName);
+          console.log("Is Login Success: " + this.username);
           
 
           this.router.navigate(['stage'])
         },
         (error)=>{
-          console.log("Is Login Failed: " + user.userName + '' + error.message);
+          console.log("Is Login Failed: " + user.username + '' + error.message);
 
           this.router.navigate(['login'])
         });

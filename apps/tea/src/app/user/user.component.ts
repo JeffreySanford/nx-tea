@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@tea/api-interfaces';
+import { AuthenticationService } from '../common/services/authentication.service';
 
 @Component({
   selector: 'tea-user',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-  constructor() {}
+  user?: User;
+  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authenticationService.getUser().subscribe(
+      (user: User) => { this.user = user },
+      (error) => { console.log(error.message) }
+    );
+  }
 }

@@ -4,9 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from './app.routing.module';
-
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -26,9 +25,14 @@ import { ToasterComponent } from './common/components/toaster/toaster.component'
 import { DepartmentsModule } from './landing/departments/departments.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
+import { MatRippleModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisterComponent } from './login/register/register.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   imports: [
@@ -49,7 +53,11 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    DepartmentsModule
+    DepartmentsModule,
+    MatRippleModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatSelectModule
   ],
   declarations: [
     AppHeaderComponent,
@@ -57,16 +65,17 @@ import { RouterModule } from '@angular/router';
     LogoutComponent,
     AppFooterComponent,
     AppComponent,
-    ToasterComponent
+    ToasterComponent,
+    RegisterComponent,
   ],
   providers: [
     {
       provide: MatDialogRef,
-      useValue: {}
+      useValue: {},
     },
     httpInterceptorProviders,
-    BusyService
+    BusyService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

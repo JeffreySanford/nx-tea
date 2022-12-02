@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SessionService {
 
-  userName = "Sam"
+  username = "Sam"
   constructor() { }
 
   status() {

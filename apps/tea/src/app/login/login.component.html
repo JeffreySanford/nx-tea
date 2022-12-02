@@ -1,16 +1,20 @@
-<div class="login-box">
-    <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)" class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <div class="username-container">
-            <label for="inputEmail">Email address</label>
-            <input type="text" id="username" class="form-control" formControlName="userName" placeholder="Username"
-                required autofocus>
-        </div>
-        <div class="password-container" style="display: flex; justify-content: space-between;">
-            <label for="inputPassword">Password</label>
-            <input type="password" id="inputPassword" class="form-control" formControlName="password"
-                placeholder="Password" required>
-        </div>
-        <button mat-button-raised type="submit">Sign in</button>
-    </form>
-</div>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Please sign in</mat-card-title>
+      </mat-card-header>
+      <form class="login-form" [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+        <mat-card-content style="text-align: center;">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="email address" formControlName="username"
+            required autofocus>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput formControlName="password" placeholder="password"
+            required>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+      </form>
+    </mat-card>
+  </div>

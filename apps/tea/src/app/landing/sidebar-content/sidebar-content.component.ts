@@ -30,8 +30,7 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
   dataSource = new MatTableDataSource<Tea>();
   sidebarService: SidebarService;
   dashboard: DashboardService;
-  opened = true;
-  isAction = false;
+  opened = false;
   isAdmin = false;
   isAuthenticated = false;
 
@@ -75,28 +74,32 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
   }
 
   viewUser() {
+
     this.router.navigate(['/user']);
   }
 
   viewStage() {
+
     this.router.navigate(['/stage']);
   }
 
   viewSubscriptions() {
+
     this.router.navigate(['/subscriptions']);
   }
 
   viewMembership() {
-    this.isAction = true;
+
     this.router.navigate(['/membership']);
   }
 
   viewGroups() {
-    this.isAction = true;
+
     this.router.navigate(['/groups']);
   }
 
   viewHelp() {
+
     this.router.navigate(['/help']);
   }
 

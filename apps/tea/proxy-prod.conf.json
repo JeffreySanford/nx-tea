@@ -1,8 +1,9 @@
 {
     "/api/*": {
-      "target": "http://brokenleaf.us",
+      "target": "http://brokenleaf.us:3333/api",
       "secure": false,
       "logLevel": "debug",
-      "changeOrigin": "true"
+      "changeOrigin": "true",
+      "pathRewrite": "{'^/api' : ''}"
     }
   }

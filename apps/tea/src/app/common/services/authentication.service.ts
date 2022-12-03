@@ -76,8 +76,7 @@ export class AuthenticationService {
                 lastName: 'Sam'
             });
         }
-
-        debugger
+        
         return this.http.post<Response>(api + 'api/users/authenticate', { username, password })
             .pipe(map(
                 res => {

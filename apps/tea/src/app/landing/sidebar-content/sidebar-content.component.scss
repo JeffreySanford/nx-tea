@@ -93,7 +93,7 @@
 
 mat-header-cell,
 mat-cell {
-  font-size: 0.5em;
+  font-size: 0.6em;
   color: darkgreen;
 
   &:first-of-type {
@@ -104,7 +104,7 @@ mat-cell {
   }
 
   &.mat-column-price {
-    min-width: 7em;
+    min-width: 9em;
   }
 
   &.mat-column-sub-totals {

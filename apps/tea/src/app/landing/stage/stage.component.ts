@@ -59,7 +59,6 @@ export class StageComponent implements OnInit {
   }
 
   addToCart(id: number, addition: boolean): void {
-    debugger
     this.cartService.addToCart(id, addition);
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;

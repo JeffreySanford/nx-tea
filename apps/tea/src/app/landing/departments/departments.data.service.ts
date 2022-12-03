@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Tea } from '@tea/api-interfaces';
+import { environment } from 'apps/tea/src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,8 +11,8 @@ export class DepartmentsDataService {
   constructor(private http: HttpClient) {}
 
   getDepartments(): Observable<any> {
-  
-    this.http.get<any>('/api/departments').subscribe(
+    const api = environment.apiUrl;
+    this.http.get<any>(api + 'api/departments').subscribe(
       (data)=>{
         this.subject$.next(data);
       },

@@ -78,7 +78,7 @@ export class AuthenticationService {
         }
 
         debugger
-        return this.http.post<Response>(api + '/api/users/authenticate', { username, password })
+        return this.http.post<Response>(api + 'api/users/authenticate', { username, password })
             .pipe(map(
                 res => {
                     console.log(username + ' authenticated: ' + res);

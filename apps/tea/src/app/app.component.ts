@@ -3,6 +3,7 @@ import { AfterContentChecked, ChangeDetectorRef, Component, OnInit } from '@angu
 import { Message } from '@tea/api-interfaces';
 import { NotificationService } from './common/services/notification.service';
 import { AuthenticationService } from './common/services/authentication.service';
+import { environment } from '../environments/environment';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthenticationService } from './common/services/authentication.service'
 export class AppComponent implements OnInit, AfterContentChecked {
 
   title = 'Broken Leaf';
-  hello$ = this.http.get<Message>('http://brokenleaf.us:3333/api/hello');
+  hello$ = this.http.get<Message>(environment.apiUrl + 'api/hello');
   loading = true;
 
   constructor(private http: HttpClient, private notifyService: NotificationService, private cd: ChangeDetectorRef) { }

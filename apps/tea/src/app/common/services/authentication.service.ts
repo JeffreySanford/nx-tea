@@ -47,7 +47,6 @@ export class AuthenticationService {
 
         this.getUser().subscribe((user: User) => {
             this.user = user;
-            debugger
 
             if (user.username === 'admin') {
                 isAdmin = true;

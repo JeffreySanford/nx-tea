@@ -36,12 +36,27 @@
   z-index: -1;
 }
 
-.login-wrapper .mat-stroked-button {
-  line-height: 2em;
+.login-wrapper {
+  line-height: 1em;
   text-align: center;
-  margin: 0 35%;
-  background: green;
+
+  .full-width {
+  }
+
+  .mat-mdc-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-mdc-outlined-button {
+    margin: 1em 32%;
+    background-color: rgba(green, 0.3);
+  }
+
+  .mat-mdc-form-field-flex {
+    height: 2.5em;
+  }
 }
-.login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
-  padding: 0.8375em 0;
-}
+
+
+

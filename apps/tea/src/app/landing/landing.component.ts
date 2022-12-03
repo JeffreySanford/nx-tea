@@ -15,7 +15,7 @@ import { AuthenticationService } from '../common/services/authentication.service
 
 export class LandingComponent implements OnInit {
   @Input('isAction') isAction!: boolean
-  opened: BooleanInput = true;
+  opened = true;
   color = "green";
   showCartItems = false;
   inventory: Tea[] = [];
@@ -105,10 +105,10 @@ export class LandingComponent implements OnInit {
   }
 
   toggleSidebar() {
-      this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
-        console.log('landing toggle sidebar trigger')
-        this.opened = isOpen;
-        this.isSidebarOpen = isOpen;
-      });
+    this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
+      console.log('landing toggle sidebar trigger')
+      this.opened = isOpen;
+      this.isSidebarOpen = isOpen;
+    });
   }
 }

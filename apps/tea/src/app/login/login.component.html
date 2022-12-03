@@ -4,7 +4,7 @@
         <mat-card-title>Please sign in</mat-card-title>
       </mat-card-header>
       <form class="login-form" [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
-        <mat-card-content style="text-align: center;">
+        <mat-card-content>
           <mat-form-field class="full-width">
             <input matInput placeholder="email address" formControlName="username"
             required autofocus>
@@ -14,7 +14,7 @@
             required>
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+        <button mat-stroked-button class="btn-block">Log in</button>
       </form>
     </mat-card>
   </div>

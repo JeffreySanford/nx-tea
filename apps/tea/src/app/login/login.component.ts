@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '../common/services/authentication.service';
 import { Router } from '@angular/router';
 import { SidebarService } from '../common/services/sidebar.service';
@@ -20,9 +20,14 @@ export class LoginComponent implements OnInit {
   formData!: FormGroup;
   baseColor = 'green';
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, private fb:FormBuilder) { }
 
   ngOnInit() {
+    // this.formData = this.fb.group({
+    //   username: ["", Validators.email, Validators.required],
+    //   password: ["", Validators.email],
+    // });
+
     this.formData = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
@@ -30,7 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit(user: User): void {
-    debugger
     this.authenticationService.login(user.username, user.password)
       .subscribe(
         (nextUser) => {

@@ -11,6 +11,7 @@
   padding: 1em 1em 1em 0;
   text-align: left;
   display: flex;
+  flex: 0 1 auto;
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
@@ -39,7 +40,7 @@
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 4em;
+  width: 2em;
 }
 
 .menu-button {
@@ -51,7 +52,7 @@
   margin: 0 0.25em 0.5em;
 
   &.user {
-    background: rgba(#b5ed00, 1);
+    background: rgba(#b5ed00, 0.3);
     color: rgba(black, 1);
   }
 
@@ -87,3 +88,13 @@ mat-sidenav-container {
   background-color: transparent;
 }
 
+.mat-mdc-button>.mat-icon {
+  margin-top: 1em;
+  margin-left: 0.25em;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  font-size: 2em;
+  height: 2em;
+  width: 2em;
+}

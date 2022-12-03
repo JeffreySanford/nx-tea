@@ -1,11 +1,11 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (click)="toggleSidebar()">
+<mat-sidenav-container (click)="toggleSidebar()">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" *ngIf="isAuthenticated">
       <tea-sidebar-content [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 
-    <mat-sidenav-content (click)="toggleSidebar()">
-      <span class="collapsed-wrapper" >
-        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened" >
+    <mat-sidenav-content>
+      <span class="collapsed-wrapper">
+        <div class="mat-sidenav collapsed-sidenav" *ngIf="!opened && isAuthenticated">
           <button *ngIf="isAuthenticated" mat-button class="menu-button user mat-elevation-z4" (click)="viewUser()">
             <mat-icon class="icon">person</mat-icon>
           </button>

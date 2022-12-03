@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tea } from '@tea/api-interfaces';
+import { AuthenticationService } from '../../common/services/authentication.service';
 import { CartService } from '../../common/services/cart.service';
 import { DashboardService } from '../../common/services/dashboard.service';
 import { InventoryService } from '../../common/services/inventory.service';
@@ -25,24 +26,25 @@ export class StageComponent implements OnInit {
   dataSource = new MatTableDataSource<Tea>();
   inventoryService: any;
   inventory: Tea[]= [];
+  authenticationService: AuthenticationService;
 
   constructor(
     cartService: CartService,
     cd: ChangeDetectorRef,
     sidebarService: SidebarService,
     dashboard: DashboardService,
-    inventoryService: InventoryService
+    inventoryService: InventoryService,
+    authenticationService: AuthenticationService
   ) {
     this.cartService = cartService;
     this.cd = cd;
     this.sidebarService = sidebarService;
     this.dashboardService = dashboard;
     this.inventoryService = inventoryService;
+    this.authenticationService = authenticationService
   }
 
   ngOnInit(): void {
-
-
     this.cartService.getCart().subscribe((cart: Tea[]) => {
       this.cart = cart;
       this.dataSource.data = this.cart;

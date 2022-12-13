@@ -32,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RegisterComponent } from './login/register/register.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select'
+import { TokenStorageService } from './common/services/token-storage.service';
 
 @NgModule({
   imports: [
@@ -71,6 +72,7 @@ import { MatSelectModule } from '@angular/material/select'
       provide: MatDialogRef,
       useValue: {},
     },
+    TokenStorageService,
     httpInterceptorProviders,
     BusyService,
   ],

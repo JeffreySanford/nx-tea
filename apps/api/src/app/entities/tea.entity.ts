@@ -4,6 +4,7 @@ export interface Tea {
   name: string;
   cost: number;
   price?: number;
+  description?: string;
   id: number;
   orderQuantity?: number;
   instructions?: string;

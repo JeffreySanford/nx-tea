@@ -68,6 +68,13 @@
     top: -5em;
   }
 
+  .description {
+    position: absolute;
+    top: 7.25em;
+    font-size: 0.7em;
+    color: white;
+  }
+
   .tea-image {
     width: 5em;
     height: 5em;
@@ -84,7 +91,7 @@
   .summary {
     display: flex;
     position: absolute;
-    bottom: 0.25em;
+    bottom: 0;
     width: 10.5em;
 
     p {
@@ -119,6 +126,13 @@
     &.price {
       color: lime;
       text-align: right;
+    }
+
+    &.description {
+      color: white;
+      text-align: center;
+      font-size: 0.8em;
+      margin-top: -5em;
     }
   }
 }

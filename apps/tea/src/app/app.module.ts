@@ -65,7 +65,7 @@ import { TokenStorageService } from './common/services/token-storage.service';
     AppFooterComponent,
     AppComponent,
     ToasterComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   providers: [
     {

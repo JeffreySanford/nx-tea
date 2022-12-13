@@ -26,7 +26,7 @@ export class TeasService {
 
   async findOne(id: number) {
     console.log('Find one fired: ' + id);
-    debugger
+
     return await this.TeaModel.find({ id }).exec();
 
   }

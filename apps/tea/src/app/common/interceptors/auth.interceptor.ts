@@ -19,6 +19,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             setHeaders: headers,
             withCredentials: true
         });
+        debugger
 
         return next.handle(request).pipe(this.handleErrors);
     }

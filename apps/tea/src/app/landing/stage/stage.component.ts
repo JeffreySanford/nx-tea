@@ -22,7 +22,7 @@ export class StageComponent implements OnInit {
   dashboard = true;
   checkout = false;
   dashboardService: DashboardService;
-  displayedColumns = ['name', 'price', 'quantity', 'sub-totals', 'actions'];
+  displayedColumns = ['name', 'price', 'description', 'quantity', 'sub-totals', 'actions'];
   dataSource = new MatTableDataSource<Tea>();
   inventoryService: any;
   inventory: Tea[]= [];

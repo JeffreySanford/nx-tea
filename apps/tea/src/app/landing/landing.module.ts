@@ -23,7 +23,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     SidebarContentComponent,
     StageComponent,
-    LandingComponent
+    LandingComponent,
+    SidebarContentComponent
   ],
   imports: [
     CommonModule,

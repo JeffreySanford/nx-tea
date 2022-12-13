@@ -29,14 +29,25 @@ export class TokenStorageService {
   }
 
   public saveUser(user: User) {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+
+    const token = this.getUser(user);
+
+    if(token) {
+      window.sessionStorage.removeItem(USER_KEY);
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  
+    } else {
+      debugger
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
+
   }
 
-  public getUser() {
-    const user = sessionStorage.getItem(USER_KEY);
-    if (user){
-      return JSON.parse(user)
+  public getUser(user: User) {
+
+    const sessionUser = sessionStorage.getItem(USER_KEY);
+    if (sessionUser){
+      return JSON.parse(sessionUser)
     }else{
       return null
     }

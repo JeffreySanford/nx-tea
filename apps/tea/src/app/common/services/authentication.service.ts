@@ -7,99 +7,107 @@ import { environment } from '../../../environments/environment';
 import { User } from '@tea/api-interfaces';
 import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
+import { SessionService } from './session.service';
+import { TokenStorageService } from './token-storage.service';
+import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    currentUserSubject = new BehaviorSubject<User>({
-        id: 0,
-        username: '',
-        password: 'not provided',
-        firstName: 'Sample',
-        lastName: 'Sam'
-    });
-    isAdminSubject = new BehaviorSubject<boolean>(false);
-    isLoggedIn = false;
-    user?: User;
+  currentUserSubject = new BehaviorSubject<User>({
+    id: 0,
+    username: '',
+    password: 'not provided',
+    firstName: 'Sample',
+    lastName: 'Sam'
+  });
+  isAdminSubject = new BehaviorSubject<boolean>(false);
+  user?: User;
+  token: any;
+  isLoggedIn = new BehaviorSubject(false);
+  isAuthenticated = new BehaviorSubject(false);
 
-    constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private notifyService: NotificationService,
+    private sessionService: SessionService,
+    private tokenService: TokenStorageService
+  ) { }
 
-    setUser() {
-        const user = localStorage.getItem('currentUser');
-        if (user) {
-            this.currentUserSubject = new BehaviorSubject<User>({
-                id: 0,
-                username: user,
-                password: 'not provided',
-                firstName: 'Administrator',
-                lastName: 'Sam'
-            });
-            this.notifyService.showSuccess('User Authenticated', 'Authentication')
-        }
+  setUser(user: User) {
+    const local = sessionStorage.getItem('username');
+
+    if (local) {
+      this.currentUserSubject = new BehaviorSubject<User>({
+        id: user.id,
+        username: user.username,
+        password: user.password,
+        firstName: user.firstName,
+        lastName: user.firstName
+      });
+      this.isAuthenticated.next(true);
+      this.notifyService.showSuccess('User Authenticated', 'Authentication')
     }
-    isAuthenticated() {
-        (this.isLoggedIn) ? this.setUser():this.notifyService.showError('User not logged in.', 'Authentication');
-
-        return this.isLoggedIn;
+  }
+  isUserAuthenticated(user: User): BehaviorSubject<boolean> {
+    if (user) {
+      this.isAuthenticated.next(true);
     }
 
-    isAdmin(): Subject<boolean> {
-        let isAdmin = false;
+    return this.isAuthenticated;
+  }
 
-        this.getUser().subscribe((user: User) => {
+  isAdmin(user: User): Subject<boolean> {
+    let isAdmin = false;
+    if (user.username === 'admin') {
+      isAdmin = true;
+      this.isAdminSubject.next(true);
+
+    } else {
+      isAdmin = false;
+      this.isAdminSubject.next(false);
+    }
+
+    return this.isAdminSubject;
+  }
+
+  login(username: string, password: string): BehaviorSubject<boolean> {
+    const api = environment.apiUrl;
+
+    this.http.get(api + 'users/:' + username).subscribe((next)=>{
+      const user =  Object.values(next)[0];
+      this.getUser(user).subscribe((next)=>{},(error)=>{console.log(error)});
+      this.http.post<Response>(api + 'api/users/authenticate', { username, password })
+        .pipe(map(
+          res => {
+            debugger
+            console.log(username + ' authenticated: ' + res);
+            this.isLoggedIn.next(true);
+            this.isAuthenticated.next(true);
             this.user = user;
+          })
+        );
+    });
 
-            if (user.username === 'admin') {
-                isAdmin = true;
-                this.isAdminSubject.next(true);
-                return true;
-            } else {
-                isAdmin = false;
-                this.isAdminSubject.next(false);
-                return false;
-            }
-        }, (error)=>{
-            console.log('Error: '+ error)
-        });
+    return this.isLoggedIn;
+  }
 
-        return this.isAdminSubject;
-    }
+  getUser(user: User): Observable<User> {
+    this.currentUserSubject.next(user);
 
-    login(username: string, password: string) {
-        const api = environment.apiUrl;
+    return this.currentUserSubject;
+  }
 
-        if (this.currentUserSubject) {
-            this.currentUserSubject.next({
-                id: 1,
-                username,
-                password,
-                firstName: 'Sample',
-                lastName: 'Sam'
-            });
-        }
-        
-        return this.http.post<Response>(api + 'api/users/authenticate', { username, password })
-            .pipe(map(
-                res => {
-                    console.log(username + ' authenticated: ' + res);
-                    this.isLoggedIn = true;
-                })
-            );
-    }
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject?.unsubscribe();
+  }
+  signIn() {
+    this.router.navigate(['login']);
+  }
 
-    getUser(): Observable<User> {
-        return this.currentUserSubject;
-    }
-
-    logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject?.unsubscribe();
-    }
-    signIn() {
-        this.router.navigate(['login']);
-    }
-
-    getAccessToken() {
-        return 'access-token-string'
-    }
+  getAccessToken() {
+    return 'access-token-string'
+  }
 }

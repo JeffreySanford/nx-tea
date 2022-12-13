@@ -48,85 +48,56 @@
   background-color: rgba(lime, 0.3);
   margin-bottom: 1em;
   border-radius: 0.25em;
+  width: 15em;
+  margin-left: 0.25em;
 
   .mdc-data-table__table {
     background-color: rgba(lime, 0.3);
-    max-width: 5em;
- 
-  
   }
-  
 }
 
-
-table {
-  width: 9.5em;
-  background-color: lime;
-  height: 5em;
-  width: 5em;
-  max-height: 20vh;
+:host ::ng-deep .mat-table {
+  background-color: red;
   overflow-y: auto;
   overflow-x: hidden;
-
-  .mat-header-cell,
-  .mat-cell {
-    font-size: 1em;
-  }
-
-
-}
-tbody {
-  &::-webkit-scrollbar {
-    width: 0.1em;
-    margin-top: 10em;
-    overflow-x: scroll;
-    border: 1px solid yellow;
-  }
 
   &::-webkit-scrollbar-thumb {
     background-color: violet;
     outline: 1px solid purple;
     scroll-margin-top: 5em;
   }
-}
 
-th {
-  position: sticky;
-  min-height: 1em;
-  font-size: 1em;
-  width: 10em;
-  margin-left: 0.5em;
-  margin-top: 0.5em;
-}
-
-td {
-  min-height: 1.5em;
-  max-width: 10em;
-  margin-left: 0.5em;
-}
-
-th, td {
-  font-size: 0.6em;
-  color: darkgreen;
-
-  &:first-of-type {
-    padding-left: 0.5em;
-  }
-  &.mat-column-name {
-    min-width: 4em;
+  .mat-header-cell {
+    color: purple;
   }
 
-  &.mat-column-price {
-    min-width: 9em;
+  .mat-cell {
+    color: pink;
+    border: 1px solid black;
   }
 
-  &.mat-column-sub-totals {
-    min-width: 4em;
-  }
+  mat-header-cell.mat-mdc-header-cell, mat-cell.mat-mdc-cell, mat-footer-cell.mat-mdc-footer-cell {
+    font-size: 0.7em;
 
-  &.mat-column-actions {
-    max-width: 3em;
-    min-width: 3.25em;
+    &:first-of-type {
+      padding-left: 5px;
+    }
+    &.mat-column-name {
+      min-width: 4em;
+    }
+
+    &.mat-column-price {
+      min-width: 9em;
+    }
+
+    &.mat-column-sub-totals {
+      min-width: 4em;
+    }
+
+    &.mat-column-actions {
+      max-width: 3em;
+      min-width: 3.25em;
+    }
   }
 }
 

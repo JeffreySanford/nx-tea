@@ -25,10 +25,10 @@ export class UserService {
     return await this.UserModel.find().exec();
   }
 
-  async findOne(id: number) {
-    console.log('Find one fired: ' + id);
-    debugger
-    return await this.UserModel.find({ id }).exec();
+  async findOne(username: string) {
+    console.log('Find one fired: ' + username);
+
+    return await this.UserModel.find({ username }).exec();
 
   }
 }

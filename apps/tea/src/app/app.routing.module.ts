@@ -13,7 +13,7 @@ import { HelpComponent } from './landing/help/help.component';
 const routes: Routes = [
    { path: 'login', component: LoginComponent },
    { path: 'logout', component: LogoutComponent },
-   { path: 'landing', component: LandingComponent, canActivate: [AuthenticationGuard]},
+   { path: 'landing', component: LandingComponent},
    { path: 'stage', component: StageComponent, canActivate: [AuthenticationGuard]},
    { path: 'subscriptions', component: SubscriptionComponent, canActivate: [AuthenticationGuard]},
    { path: 'help', component: HelpComponent, canActivate: [AuthenticationGuard]},

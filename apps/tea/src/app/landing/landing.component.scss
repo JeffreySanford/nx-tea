@@ -18,6 +18,10 @@
   background: transparent;
 }
 
+// :host ::ng-deep [class*="mat-drawer-opened"] {
+//   width: 0em;
+// }
+
 :host ::ng-deep .mat-drawer-content {
   height: 99%;
   overflow: hidden !important;
@@ -37,7 +41,7 @@
 .collapsed-sidenav {
   display: flex;
   flex-direction: column;
-  width: 4em;
+  width: 2em;
 }
 
 .menu-button {

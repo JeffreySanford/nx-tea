@@ -1,11 +1,13 @@
 import { BooleanInput } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Tea, User } from '@tea/api-interfaces';
 import { CartService } from '../common/services/cart.service';
 import { SidebarService } from '../common/services/sidebar.service';
 import { Router } from '@angular/router';
 import { DashboardService } from '../common/services/dashboard.service';
 import { AuthenticationService } from '../common/services/authentication.service';
+import { TokenStorageService } from '../common/services/token-storage.service';
+import { UserService } from '../common/services/user.service';
 
 @Component({
   selector: 'tea-landing',
@@ -13,7 +15,7 @@ import { AuthenticationService } from '../common/services/authentication.service
   styleUrls: ['./landing.component.scss'],
 })
 
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, AfterContentChecked {
   @Input('isAction') isAction!: boolean
   opened = true;
   color = "green";
@@ -22,6 +24,7 @@ export class LandingComponent implements OnInit {
   currentTea: Tea = {
     name: '',
     price: 0,
+    description: '',
     cost: 0,
     id: 0,
     orderQuantity: 0,
@@ -47,10 +50,28 @@ export class LandingComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private router: Router,
     private dashboardService: DashboardService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private tokenStorageService: TokenStorageService,
+    private userService: UserService
   ) {
     this.cartService = cartService;
     this.sidebarService = sidebarService;
+  }
+
+  ngAfterContentChecked() {
+    this.userService.getUser().subscribe((user) => {
+      if(user.id > 0 && !this.user) {
+        this.authenticationService.getUser(user).subscribe((user: User) => {
+          console.log('Landing detects user login: ' + user.username);
+          this.user = user;
+          this.authenticationService.setUser(user);
+          this.authenticationService.isUserAuthenticated(user).subscribe((auth) => this.isAuthenticated = auth);
+          this.authenticationService.isAdmin(user).subscribe((isAdmin) => this.isAdmin = isAdmin);
+
+          this.cd.detectChanges();
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -59,23 +80,11 @@ export class LandingComponent implements OnInit {
     this.dashboardService.isDashboardOpen(this.dashboard).subscribe((next) => {
       this.dashboard = next ? true : false;
       this.checkout = next ? false : true;
+    });
 
-      this.cartService.getCart().subscribe((cart: Tea[]) => {
-        this.cart = cart;
-        this.totalCartItems = this.cartService.getTotalCartItems();
-
-        this.authenticationService.getUser().subscribe((user: User) => {
-          if (user.id !== 0) {
-
-            console.log('Landing detects user login: ' + user.username)
-            this.isAuthenticated = true;
-
-            this.authenticationService.isAdmin().subscribe((isAdmin) => {
-              this.isAdmin = isAdmin;
-            });
-          }
-        });
-      });
+    this.cartService.getCart().subscribe((cart: Tea[]) => {
+      this.cart = cart;
+      this.totalCartItems = this.cartService.getTotalCartItems();
     });
   }
 
@@ -105,10 +114,10 @@ export class LandingComponent implements OnInit {
   }
 
   toggleSidebar() {
-    this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
-      console.log('landing toggle sidebar trigger')
-      this.opened = isOpen;
-      this.isSidebarOpen = isOpen;
-    });
+      this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
+        console.log('landing toggle sidebar trigger')
+        this.opened = isOpen;
+        this.isSidebarOpen = isOpen;
+      });
   }
 }

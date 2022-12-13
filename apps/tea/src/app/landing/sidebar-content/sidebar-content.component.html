@@ -1,50 +1,49 @@
 <div class="sidebar-button-wrapper">
-  <button *ngIf="isAuthenticated" mat-stroked-button class="menu-button user mat-elevation-z2" (click)="viewUser()">
+  <button mat-stroked-button class="menu-button user mat-elevation-z2" (click)="viewUser()">
     <mat-icon class="icon">person</mat-icon>
-    <span class="icon-label">{{currentUser.firstName}}</span>
+    <span *ngIf="user" class="icon-label">{{user.firstName}}</span>
   </button>
 
-  <button *ngIf="isAuthenticated" mat-stroked-button class="menu-button shopping mat-elevation-z2" (click)="viewStage()">
+  <button mat-stroked-button class="menu-button shopping mat-elevation-z2" (click)="viewStage()">
     <mat-icon>add_shopping_cart</mat-icon>
     <span class="icon-label"> Cart ({{totalCartItems}})</span>
   </button>
 
-  <div *ngIf="this.cart?.length != 0 && isAuthenticated">
+  <div *ngIf="this.cart?.length != 0">
     <div class="cart-display mat-elevation-z2">
-
-      <table mat-table [dataSource]="dataSource">
+      <mat-table [dataSource]="dataSource">
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Tea </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <mat-header-cell *matHeaderCellDef> Tea </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
         <!-- Price Column -->
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price</th>
-          <td mat-cell *matCellDef="let element"> {{element.price | currency}} ({{element.orderQuantity}}) </td>
+          <mat-header-cell *matHeaderCellDef> Price</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price | currency}} ({{element.orderQuantity}}) </mat-cell>
         </ng-container>
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
             <span class="action-container">
               <mat-icon (click)="addToCart(element.id, true)">add_circle_outline</mat-icon>
               <mat-icon (click)="addToCart(element.id, false)">remove_circle_outline</mat-icon>
             </span>
-          </td>
+          </mat-cell>
         </ng-container>
 
         <!-- Sub Totals Column -->
         <ng-container matColumnDef="sub-totals">
-          <th mat-header-cell *matHeaderCellDef> Subtotal </th>
-          <td mat-cell *matCellDef="let element"> {{element.price * element.orderQuantity | currency}} </td>
+          <mat-header-cell *matHeaderCellDef> Subtotal </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price * element.orderQuantity | currency}} </mat-cell>
         </ng-container>
 
-        <th mat-header-row *matHeaderRowDef="displayedColumns"></th>
-        <td mat-row *matRowDef="let row; columns: displayedColumns;"></td>
-      </table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
 
 
       <!-- Totals Row -->
@@ -56,24 +55,24 @@
     </div>
   </div>
 
-  <button *ngIf="isAuthenticated" mat-stroked-button class="menu-button subscription mat-elevation-z2" (click)="viewSubscriptions()">
+  <button mat-stroked-button class="menu-button subscription mat-elevation-z2" (click)="viewSubscriptions()">
     <mat-icon>subscriptions</mat-icon>
     <span class="icon-label">Subscription</span>
   </button>
 
   <span>
-    <button *ngIf="isAdmin && isAuthenticated" mat-button class="menu-button membership mat-elevation-z2" (click)="viewMembership()" [hidden]="!isAdmin">
+    <button [hidden]="!isAdmin" mat-button class="menu-button membership mat-elevation-z2" (click)="viewMembership()">
       <mat-icon>supervisor_account</mat-icon>
       <span class="icon-label">Administration</span>
     </button>
 
-    <button *ngIf="isAdmin && isAuthenticated" mat-button class="menu-button groups mat-elevation-z2" (click)="viewGroups()" [hidden]="!isAdmin">
+    <button [hidden]="!isAdmin" mat-button class="menu-button groups mat-elevation-z2" (click)="viewGroups()">
       <mat-icon>groups</mat-icon>
       <span class="icon-label">Groups</span>
     </button>  
   </span>
 
-  <button *ngIf="isAuthenticated" mat-stroked-button class="menu-button help mat-elevation-z2" (click)="viewHelp()">
+  <button mat-stroked-button class="menu-button help mat-elevation-z2" (click)="viewHelp()">
     <mat-icon>help</mat-icon>
     <span class="icon-label">Help</span>
   </button>

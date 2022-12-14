@@ -1,6 +1,7 @@
 {
     "/api/*": {
-      "target": "http://localhost:3333",
-      "logLevel": "debug"
+      "target": "http://brokenleaf.us:3333",
+      "logLevel": "debug",
+      "secure": false
     }
   }

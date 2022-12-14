@@ -4,8 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '@tea/api-interfaces';
 import { SessionService } from './session.service';
 import { AuthenticationService } from './authentication.service';
+import { environment } from 'apps/tea/src/environments/environment';
 
-const API_URL = 'http://localhost:3333/api/';
+const API_URL = environment.apiUrl;;
 
 @Injectable({
   providedIn: 'root'

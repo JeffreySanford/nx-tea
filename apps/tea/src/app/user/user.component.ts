@@ -22,14 +22,8 @@ export class UserComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-
-    const getUser$ = this.userService.getUser();
-
-    getUser$?.subscribe((user: User) => {
+    this.userService.getUser().subscribe((user: User) => {
       this.user = user;
-      if (!this.isAuthenticated) {
-        this.authenticationService.isUserAuthenticated(user).subscribe((auth) => this.isAuthenticated = auth);
-      }
     });
   }
 }

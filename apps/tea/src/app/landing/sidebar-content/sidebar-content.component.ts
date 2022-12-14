@@ -75,7 +75,6 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
 
 
   viewUser() {
-    debugger
     this.router.navigate(['/user']);
   }
 

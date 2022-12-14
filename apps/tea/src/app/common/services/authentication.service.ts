@@ -53,7 +53,7 @@ export class AuthenticationService {
     if (user) {
       this.isAuthenticated.next(true);
     }
-
+    
     return this.isAuthenticated;
   }
 

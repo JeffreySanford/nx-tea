@@ -28,6 +28,6 @@ export class DepartmentsDataService {
   }
 
   saveDepartment(req: any): Observable<any> {
-    return this.http.post('/api/departments', req);
+    return this.http.post('departments', req);
   }
 }

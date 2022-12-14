@@ -77,7 +77,7 @@ export class AuthenticationService {
     this.http.get(api + 'users/:' + username).subscribe((next)=>{
       const user =  Object.values(next)[0];
       this.getUser(user).subscribe((next)=>{},(error)=>{console.log(error)});
-      this.http.post<Response>(api + 'api/users/authenticate', { username, password })
+      this.http.post<Response>(api + 'users/authenticate', { username, password })
         .pipe(map(
           res => {
             debugger

@@ -17,7 +17,7 @@ export class InventoryService {
   getInventory(): Subject<Tea[]> {
     const api = environment.apiUrl;
 
-    this.http.get<any>(api + 'api/inventory').subscribe(
+    this.http.get<any>(api + 'inventory').subscribe(
       (data) => {
       this.subject$.next(data);
     });

@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit, AfterContentChecked {
 
   title = 'Broken Leaf';
-  hello$ = this.http.get<Message>(environment.apiUrl + 'api/hello');
+  hello$ = this.http.get<Message>(environment.apiUrl + 'hello');
   loading = true;
 
   constructor(private http: HttpClient, private notifyService: NotificationService, private cd: ChangeDetectorRef) { }

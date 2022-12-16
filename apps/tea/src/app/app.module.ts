@@ -68,7 +68,8 @@ import { TokenStorageService } from './common/services/token-storage.service';
   ],
   providers: [
     {
-      provide: MatDialogRef
+      provide: MatDialogRef,
+      useValue: {}
     },
     TokenStorageService,
     httpInterceptorProviders,

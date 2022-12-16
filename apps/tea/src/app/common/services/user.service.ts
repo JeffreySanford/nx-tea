@@ -13,8 +13,9 @@ const API_URL = environment.apiUrl;;
 })
 export class UserService {
   isAuthenticated = false;
-  user: any;
-  
+  user: BehaviorSubject<User>;
+  users: Observable<Object>;
+
   constructor(private http: HttpClient, private sessionService: SessionService, private authenticationService: AuthenticationService) {
     this.user = new BehaviorSubject<User>({
       firstName: 'login',
@@ -22,8 +23,10 @@ export class UserService {
       username: 'login',
       password: 'login',
       id: 0
-    }) 
-    
+    });
+
+
+    this.users = this.http.get(API_URL + 'users');
   }
 
   setUser(user: { username: string, password: string }): Observable<Object> {
@@ -37,7 +40,12 @@ export class UserService {
 
   getUser(): BehaviorSubject<User> {
 
-      return this.user;
+    return this.user;
+  }
+
+  getUsers(): Observable<Object> {
+
+    return this.users;
   }
 
   getPublicContent(): Observable<any> {

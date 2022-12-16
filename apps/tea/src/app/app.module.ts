@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from './app.routing.module';
 
@@ -69,8 +68,7 @@ import { TokenStorageService } from './common/services/token-storage.service';
   ],
   providers: [
     {
-      provide: MatDialogRef,
-      useValue: {},
+      provide: MatDialogRef
     },
     TokenStorageService,
     httpInterceptorProviders,
@@ -78,4 +76,4 @@ import { TokenStorageService } from './common/services/token-storage.service';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

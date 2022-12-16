@@ -24,7 +24,7 @@ export class UserController {
 
   @Get()
   async findAll() {
-
+    debugger
     return await this.userService.findAllUsers();
   }
 

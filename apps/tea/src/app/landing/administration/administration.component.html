@@ -1,0 +1,14 @@
+<div class="content mat-elevation-z8">
+    <span class="inner" style="display: flex;flex-direction:column;">
+        <span *ngIf="users" style="background-color: green">
+            <div *ngFor="let user of users">
+                <div style="width: 100%;display: flex; justify-content: space-between;">
+                    <p>{{user?.firstName}}</p>
+                    <p>{{user?.lastName}}</p>
+                    <p>{{user?.username}}</p>
+                    <p>{{user?.password}}</p>
+                </div>
+            </div>
+        </span>
+    </span>
+</div>

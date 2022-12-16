@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@tea/api-interfaces';
-import { AuthenticationService } from '../common/services/authentication.service';
-import { SessionService } from '../common/services/session.service';
-import { TokenStorageService } from '../common/services/token-storage.service';
-import { UserService } from '../common/services/user.service';
+import { AuthenticationService } from '../../common/services/authentication.service';
+import { SessionService } from '../../common/services/session.service';
+import { TokenStorageService } from '../../common/services/token-storage.service';
+import { UserService } from '../../common/services/user.service';
 
 @Component({
   selector: 'tea-user',

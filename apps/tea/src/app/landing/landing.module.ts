@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
+import { LandingComponent } from './landing.component';
 import { SidebarContentComponent } from './sidebar-content/sidebar-content.component';
 import { StageComponent } from './stage/stage.component';
-import { MatIconModule } from '@angular/material/icon';
+import { AdministrationComponent } from './administration/administration.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
-import { LandingComponent } from './landing.component';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -17,14 +20,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     SidebarContentComponent,
     StageComponent,
     LandingComponent,
-    SidebarContentComponent
+    SidebarContentComponent,
+    AdministrationComponent,
+    AuthenticationComponent
+
   ],
   imports: [
     CommonModule,
@@ -32,6 +38,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatBadgeModule,
     MatTableModule,
+    MatPaginatorModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,

@@ -15,7 +15,6 @@ import { DepartmentSchema } from './entities/department.entity';
 import { UserModule } from './authentication/user.module';
 import { UserSchema } from './entities/user.entity';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,7 +35,7 @@ import { UserSchema } from './entities/user.entity';
     DepartmentsModule,
     TeasModule,
     UserModule,
-    CustomerSubscriptionsModule
+    CustomerSubscriptionsModule,
   ],
   controllers: [
     AppController

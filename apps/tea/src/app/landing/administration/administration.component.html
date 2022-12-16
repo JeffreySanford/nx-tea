@@ -1,14 +1,35 @@
 <div class="content mat-elevation-z8">
-    <span class="inner" style="display: flex;flex-direction:column;">
-        <span *ngIf="users" style="background-color: green">
-            <div *ngFor="let user of users">
-                <div style="width: 100%;display: flex; justify-content: space-between;">
-                    <p>{{user?.firstName}}</p>
-                    <p>{{user?.lastName}}</p>
-                    <p>{{user?.username}}</p>
-                    <p>{{user?.password}}</p>
-                </div>
-            </div>
+    <span class="inner">
+        <div class="example-header" *ngIf="tableConstructed">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+
+        <span *ngIf="tableConstructed">
+            <mat-table #table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let element" mat-sort-header> {{element.id}} </mat-cell>>
+                </ng-container>
+
+                <!-- Name Column - constructed object of first and last name - sort on last -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>>
+                    <mat-cell *matCellDef="let element"> {{element.firstName}}&nbsp;{{element.lastName}} </mat-cell>>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="username">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
+            </mat-table>
         </span>
     </span>
 </div>

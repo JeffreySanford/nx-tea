@@ -13,7 +13,7 @@ export class LoggingHttpInterceptor implements HttpInterceptor {
     }
 
     logRequest(request: HttpRequest<any>) {
-        console.log('logger request: ' + request);
+        console.log('logger request: ' + request.urlWithParams);
     }
 
     logResponce(response: HttpEvent<any>) {

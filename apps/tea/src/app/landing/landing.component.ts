@@ -60,7 +60,7 @@ export class LandingComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked() {
     this.userService.getUser().subscribe((user) => {
-      if(user.id > 0 && !this.user) {
+      if (user.id > 0 && !this.user) {
         this.authenticationService.getUser(user).subscribe((user: User) => {
           console.log('Landing detects user login: ' + user.username);
           this.user = user;
@@ -70,6 +70,9 @@ export class LandingComponent implements OnInit, AfterContentChecked {
 
           this.cd.detectChanges();
         });
+      }
+      else {
+        console.log('No user')
       }
     });
   }
@@ -114,10 +117,17 @@ export class LandingComponent implements OnInit, AfterContentChecked {
   }
 
   toggleSidebar() {
+    const isSidebarDisabled = this.dashboardService.sidebarStatus();
+
+    if (!isSidebarDisabled) {
       this.sidebarService.toggleSidebar(!this.isSidebarOpen).subscribe((isOpen: boolean) => {
         console.log('landing toggle sidebar trigger')
         this.opened = isOpen;
         this.isSidebarOpen = isOpen;
       });
+    } else {
+      debugger
+      this.dashboardService.isNotSidebarAction(false);
+    }
   }
 }

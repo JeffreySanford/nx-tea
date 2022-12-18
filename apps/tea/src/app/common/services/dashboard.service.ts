@@ -9,14 +9,28 @@ import { BehaviorSubject } from 'rxjs';
 
 export class DashboardService {
   subject$ = new BehaviorSubject<boolean>(false);
+  setDisabled = false;
 
   constructor() { }
 
+  sidebarStatus(): boolean {
+    console.log('Allow toggle: '+ this.setDisabled);
+  
+    return this.setDisabled;
+  }
 
- isDashboardOpen(dashboard: boolean): BehaviorSubject<boolean> {
-    this.subject$.next(dashboard);
+  isNotSidebarAction(isAction: boolean): void {
+    this.setDisabled = isAction;
+  }
+
+  isDashboardOpen(dashboard: boolean): BehaviorSubject<boolean> {
+
+    if (!this.setDisabled) {
+      this.subject$.next(dashboard);
+    } else {
+      debugger
+    }
 
     return this.subject$;
   }
-
 }

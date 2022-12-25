@@ -28,10 +28,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
       (next: Message) => {
         this.loading = false;
         this.cd.detectChanges();
-        this.notifyService.showSuccess(next.message, 'API Message');
+        this.notifyService.showSuccess(next.message, 'Broken Leaf');
       }, (error) => {
         debugger
-        this.notifyService.showError(error.message, 'API Message');
+        this.notifyService.showError(error.message, 'Broken Leaf');
         console.log('Error fired.')
       });
   }

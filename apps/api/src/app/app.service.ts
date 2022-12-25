@@ -5,6 +5,6 @@ import { Message } from '@tea/api-interfaces';
 export class AppService {
   getData(): Message {
     
-    return { message: 'Welcome to api!' };
+    return { message: 'This site is in development.  Feel free to look around!' };
   }
 }

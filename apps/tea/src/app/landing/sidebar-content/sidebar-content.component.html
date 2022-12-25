@@ -21,7 +21,7 @@
         <!-- Price Column -->
         <ng-container matColumnDef="price">
           <mat-header-cell *matHeaderCellDef> Price</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.price | currency}} ({{element.orderQuantity}}) </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.price | currency}}({{element.orderQuantity}})</mat-cell>
         </ng-container>
 
         <!-- Actions Column -->
@@ -51,7 +51,9 @@
         <p>Total</p>
         <div> {{getTotal() | currency}}</div>
       </span>
-      <button *ngIf="this.cart?.length != 0" class="checkout-button" mat-stroked-button (click)="checkout()"><p>checkout</p></button>
+      <button *ngIf="this.cart?.length != 0" class="checkout-button" mat-stroked-button (click)="checkout()">
+        <p>checkout</p>
+      </button>
     </div>
   </div>
 
@@ -69,7 +71,7 @@
     <button [hidden]="!isAdmin" mat-button class="menu-button groups mat-elevation-z2" (click)="viewGroups()">
       <mat-icon>groups</mat-icon>
       <span class="icon-label">Groups</span>
-    </button>  
+    </button>
   </span>
 
   <button mat-stroked-button class="menu-button help mat-elevation-z2" (click)="viewHelp()">

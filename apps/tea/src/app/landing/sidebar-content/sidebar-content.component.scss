@@ -48,7 +48,7 @@
   background-color: rgba(lime, 0.3);
   margin-bottom: 1em;
   border-radius: 0.25em;
-  width: 15em;
+  width: 10.6em;
   margin-left: 0.25em;
 
   .mdc-data-table__table {
@@ -56,15 +56,22 @@
   }
 }
 
-:host ::ng-deep .mat-table {
+mat-table {
   background-color: red;
   overflow-y: auto;
   overflow-x: hidden;
-
+  max-height: 14em;
+  
   &::-webkit-scrollbar-thumb {
     background-color: violet;
     outline: 1px solid purple;
     scroll-margin-top: 5em;
+  }
+
+  .mdc-data-table__cell,
+  .mdc-data-table__header-cell {
+    padding: 0;
+    width: 12em;
   }
 
   .mat-header-cell {
@@ -76,7 +83,9 @@
     border: 1px solid black;
   }
 
-  mat-header-cell.mat-mdc-header-cell, mat-cell.mat-mdc-cell, mat-footer-cell.mat-mdc-footer-cell {
+  mat-header-cell.mat-mdc-header-cell,
+  mat-cell.mat-mdc-cell,
+  mat-footer-cell.mat-mdc-footer-cell {
     font-size: 0.7em;
 
     &:first-of-type {
@@ -87,7 +96,7 @@
     }
 
     &.mat-column-price {
-      min-width: 9em;
+      min-width: 5em;
     }
 
     &.mat-column-sub-totals {
@@ -95,14 +104,13 @@
     }
 
     &.mat-column-actions {
-      max-width: 3em;
-      min-width: 3.25em;
+      min-width: 4.25em;
     }
   }
 }
 
 .totals {
-  width: 10em;
+  width: 9.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,12 +125,12 @@
 
 .action-container {
   display: flex;
-  max-width: 2em;
+  max-width: 4em;
 
   .material-icons {
-    font-size: 1em;
-    margin-top: 1em;
-  }
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    margin-right: -0.6em;  }
 }
 
 .icon-label {

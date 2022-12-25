@@ -75,30 +75,37 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
 
 
   viewUser() {
+    this.dashboardService.isNotSidebarAction(true);
+
     this.router.navigate(['/user']);
   }
 
   viewStage() {
+    this.dashboardService.isNotSidebarAction(true);
 
     this.router.navigate(['/stage']);
   }
 
   viewSubscriptions() {
+    this.dashboardService.isNotSidebarAction(true);
 
     this.router.navigate(['/subscriptions']);
   }
 
   viewMembership() {
+    this.dashboardService.isNotSidebarAction(true);
 
     this.router.navigate(['/membership']);
   }
 
   viewGroups() {
+    this.dashboardService.isNotSidebarAction(true);
 
     this.router.navigate(['/groups']);
   }
 
   viewHelp() {
+    this.dashboardService.isNotSidebarAction(true);
 
     this.router.navigate(['/help']);
   }

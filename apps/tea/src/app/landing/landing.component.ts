@@ -61,8 +61,10 @@ export class LandingComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() {
     this.userService.getUser().subscribe((user) => {
       if (user.id > 0 && !this.user) {
+        debugger
         this.authenticationService.getUser(user).subscribe((user: User) => {
           console.log('Landing detects user login: ' + user.username);
+          debugger
           this.user = user;
           this.authenticationService.setUser(user);
           this.authenticationService.isUserAuthenticated(user).subscribe((auth) => this.isAuthenticated = auth);

@@ -29,8 +29,8 @@ export class AuthenticationGuard implements CanActivate {
             console.log('CanActivate Guard Success')
           } else {
             debugger
-            console.log('CanActivate Guard Fail')
-            this.router.navigate(['/login']);
+            console.log('CanActivate Guard Fail');
+            this.isAuthenticated = false;
           }
         }, (error) => { console.log(error) });
       }

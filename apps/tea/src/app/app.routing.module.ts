@@ -15,8 +15,9 @@ import { AuthenticationComponent } from './landing/authentication/authentication
 const routes: Routes = [
    { path: 'login', component: LoginComponent },
    { path: 'logout', component: LogoutComponent },
+   { path: 'register', component: LogoutComponent },
    { path: 'landing', component: LandingComponent},
-   { path: 'stage', component: StageComponent, canActivate: [AuthenticationGuard]},
+   { path: 'store', component: StageComponent, canActivate: [AuthenticationGuard]},
    { path: 'subscriptions', component: SubscriptionComponent, canActivate: [AuthenticationGuard]},
    { path: 'membership', component: AdministrationComponent, canActivate: [AuthenticationGuard]},
    { path: 'groups', component: AuthenticationComponent, canActivate: [AuthenticationGuard]},

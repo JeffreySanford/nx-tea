@@ -4,6 +4,7 @@
   margin-top: 15vh;
   background-color: rgba(#b5ed00, 0.3)
 }
+
 .box.back {
   transform: scale(.95);
   -webkit-transform: scale(.95);
@@ -12,14 +13,15 @@
   opacity: .8;
   z-index: -1;
 }
+
 .box:before {
   content: "";
   width: 100%;
-  height: 30px;
+  height: 1.5em;
   border-radius: 10px;
   position: absolute;
-  top: -10px;
-  background: rgba(green, 1);
+  top: -0.75em;
+  background: rgba(#3d6000, 1);
   left: 0;
   transform: scale(.95);
   -webkit-transform: scale(.95);
@@ -40,7 +42,8 @@
   }
 
   .mat-mdc-outlined-button {
-    margin: 1em 32%;
+    margin: 0.25em 32%;
+    width: 6em;
     background-color: rgba(green, 0.3);
   }
 

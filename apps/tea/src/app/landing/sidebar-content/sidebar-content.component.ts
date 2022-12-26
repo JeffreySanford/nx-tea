@@ -52,6 +52,7 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked(): void {
     this.userService.getUser().subscribe(user => {
       if(user.id > 0 && !this.user) {
+        debugger
         this.authenticationService.isUserAuthenticated(user).subscribe(isAuth => this.isAuthenticated = isAuth);
         this.user = user;
 

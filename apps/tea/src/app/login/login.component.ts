@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../common/services/user.service';
 import { User } from '@tea/api-interfaces';
 import { SessionService } from '../common/services/session.service';
+import { NotificationService } from '../common/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   formData!: FormGroup;
-  baseColor = 'green';
+  baseColor = '3d6000';
   user?: User;
   isAuthenticated = false;
 
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private userService: UserService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private notifyService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -36,20 +38,36 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  viewRegister(): void {
+    debugger
+    this.router.navigate(['register'])
+  }
+
   onClickSubmit(user: { username: string, password: string }): void {
     this.authenticationService.login(user.username, user.password)
       .subscribe(
         (nextUser) => {
+          debugger
           console.log(nextUser);
-          console.log("Is Login Success: " + this.username);
+          console.log("Login Success: " + this.username);
           this.userService.setUser(user).subscribe(
             (next) => {
               const user = Object.values(next)[0];
+              debugger
               this.authenticationService.isAuthenticated.subscribe((isAuth: boolean) => {
-                this.isAuthenticated = isAuth;
-                this.user = user;
-                this.router.navigate(['stage']);
-                this.sessionService.setUserSession(user);
+                if (isAuth) {
+                  this.isAuthenticated = isAuth;
+                  this.user = user;
+                  console.log("Authentication Success: " + this.username);
+                  this.router.navigate(['store']);
+                  this.sessionService.setUserSession(user);  
+                }
+                else {
+                  debugger
+                  console.log("Is Login Failed: " + user.username);
+                  this.notifyService.showError('Authentication', 'User failed to authenticate');
+
+                }
               })
             },
             (error) => { console.log(error) }

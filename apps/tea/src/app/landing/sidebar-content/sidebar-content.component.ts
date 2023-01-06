@@ -15,7 +15,7 @@ import { UserService } from '../../common/services/user.service';
   templateUrl: './sidebar-content.component.html',
   styleUrls: ['./sidebar-content.component.scss'],
 })
-export class SidebarContentComponent implements OnInit, AfterContentChecked {
+export class SidebarContentComponent implements OnInit, AfterContentInit {
   @Input() cart?: Array<Tea>;
   @Input() public isSidebarOpen = false;
   totalCartItems = 0;
@@ -49,21 +49,19 @@ export class SidebarContentComponent implements OnInit, AfterContentChecked {
     this.dashboardService = dashboardService;
   }
 
-  ngAfterContentChecked(): void {
-    this.userService.getUser().subscribe(user => {
-      if(user.id > 0 && !this.user) {
-        debugger
-        this.authenticationService.isUserAuthenticated(user).subscribe(isAuth => this.isAuthenticated = isAuth);
-        this.user = user;
-
-        const userSession = this.sessionService.getUserSession();
-        if (!userSession && user) {
-          this.sessionService.setUserSession(user);
+  ngAfterContentInit(): void {
+    if (!this.user) {
+      this.userService.getUser().subscribe((user) => {
+        if (user && !this.user && user.id !== 0) {
+          this.authenticationService.isUserAuthenticated(user).subscribe(isAuth => {
+            debugger
+            this.isAuthenticated = isAuth
+            this.user = user;
+            this.cd.detectChanges();
+          });
         }
-
-        this.cd.detectChanges();  
-      }
-    });
+      });
+    }
   }
 
   ngOnInit(): void {

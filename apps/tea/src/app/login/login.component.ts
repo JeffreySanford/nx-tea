@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '../common/services/authentication.service';
 import { Router } from '@angular/router';
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private sessionService: SessionService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -39,39 +40,39 @@ export class LoginComponent implements OnInit {
   }
 
   viewRegister(): void {
-    debugger
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
+    this.cd.detectChanges();
   }
 
   onClickSubmit(user: { username: string, password: string }): void {
-    this.authenticationService.login(user.username, user.password)
-      .subscribe(
+    this.authenticationService.login(user.username, user.password);
+    this.authenticationService.authenticate().subscribe(
         (nextUser) => {
-          debugger
           console.log(nextUser);
-          console.log("Login Success: " + this.username);
-          this.userService.setUser(user).subscribe(
-            (next) => {
-              const user = Object.values(next)[0];
-              debugger
-              this.authenticationService.isAuthenticated.subscribe((isAuth: boolean) => {
-                if (isAuth) {
-                  this.isAuthenticated = isAuth;
-                  this.user = user;
-                  console.log("Authentication Success: " + this.username);
-                  this.router.navigate(['store']);
-                  this.sessionService.setUserSession(user);  
-                }
-                else {
-                  debugger
-                  console.log("Is Login Failed: " + user.username);
-                  this.notifyService.showError('Authentication', 'User failed to authenticate');
 
-                }
-              })
-            },
-            (error) => { console.log(error) }
-          );
+          if(nextUser) {
+            console.log("Login Success: " + this.username);
+            this.userService.setUser(user).subscribe(
+              (next) => {
+                const user = Object.values(next)[0];
+   
+                this.authenticationService.isAuthenticated.subscribe((isAuth: boolean) => {
+                  if (isAuth) {
+                    this.isAuthenticated = isAuth;
+                    this.user = user;
+                    console.log("Authentication Success: " + this.username);
+                    this.router.navigate(['store']);
+                    this.sessionService.setUserSession(user);  
+                  }
+                  else {
+                    console.log("Is Login Failed: " + user.username);
+                    this.notifyService.showError('Authentication', 'User failed to authenticate');
+  
+                  }
+                })
+              },
+              (error) => { console.log(error) }); 
+          }
         },
         (error) => {
           console.log("Is Login Failed: " + user.username + '' + error.message);

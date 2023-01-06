@@ -8,22 +8,15 @@ export class SessionService {
 
   constructor() { }
 
+
   status() {
     return false;
-  }
-
-  getUserSession(): string | null {
+  }  getUserSession(): string | null {
     return sessionStorage.getItem('username');
   }
+
   setUserSession(user: User) {
     sessionStorage.setItem('username', user.username)
   }
-
-  isAuthenticatedUser(user: User): boolean {
-    const session = sessionStorage.getItem('username');
-
-    return (user.username === session) ? true : false;
-  }
-
 }
 

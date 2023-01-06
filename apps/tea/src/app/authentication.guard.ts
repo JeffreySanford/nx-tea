@@ -14,17 +14,14 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('CanActivate called');
-    
     const getUser$ = this.userService.getUser();
 
     getUser$?.subscribe((next) => {
       const user = next;
 
-
       if (!this.isAuthenticated) {
         this.authenticationService.isUserAuthenticated(user).subscribe((authenticated) => {
           if (authenticated) {
-
             this.isAuthenticated = authenticated;
             console.log('CanActivate Guard Success')
           } else {
@@ -35,10 +32,10 @@ export class AuthenticationGuard implements CanActivate {
         }, (error) => { console.log(error) });
       }
     });
-    if(!this.isAuthenticated) {
+    if (!this.isAuthenticated) {
       debugger
     }
-      return this.isAuthenticated;
-  
+
+    return this.isAuthenticated;
   }
 }

@@ -11,11 +11,12 @@ import { StageComponent } from './landing/stage/stage.component';
 import { HelpComponent } from './landing/help/help.component';
 import { AdministrationComponent } from './landing/administration/administration.component';
 import { AuthenticationComponent } from './landing/authentication/authentication.component';
+import { RegisterComponent } from './login/register/register.component';
 
 const routes: Routes = [
    { path: 'login', component: LoginComponent },
    { path: 'logout', component: LogoutComponent },
-   { path: 'register', component: LogoutComponent },
+   { path: 'register', component: RegisterComponent },
    { path: 'landing', component: LandingComponent},
    { path: 'store', component: StageComponent, canActivate: [AuthenticationGuard]},
    { path: 'subscriptions', component: SubscriptionComponent, canActivate: [AuthenticationGuard]},

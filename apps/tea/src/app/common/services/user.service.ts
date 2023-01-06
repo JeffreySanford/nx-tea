@@ -30,12 +30,22 @@ export class UserService {
   }
 
   setUser(user: { username: string, password: string }): Observable<Object> {
-
     this.http.get(API_URL + 'users/:' + user.username).subscribe((next) => {
-      this.user = new BehaviorSubject<User>(Object.values(next)[0]);
+      const user = Object.values(next)[0];
+      if(user.id) {
+        this.user = new BehaviorSubject<User>(user);
+      }
     })
 
     return this.http.get(API_URL + 'users/:' + user.username).pipe();
+  }
+
+  createUser(user: User): Observable<User> {
+    debugger
+
+    this.user.next(user);
+    
+    return this.user;
   }
 
   getUser(): BehaviorSubject<User> {

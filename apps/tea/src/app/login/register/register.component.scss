@@ -1,0 +1,23 @@
+.title {
+    color: lime;
+}
+.box {
+    margin: 6vh 40vw;
+    background-color: green;
+
+    .register-submit {
+        margin: 0 30% 1em;
+        background-color: lime;
+        color: darkgreen;
+    }
+}
+.invalid-feedback {
+    background-color: white;
+    
+    div {
+        font-size: 0.75em;
+        color: red;
+    }
+
+}
+

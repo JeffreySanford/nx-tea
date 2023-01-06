@@ -1,5 +1,5 @@
 <mat-sidenav-container >
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" *ngIf="user">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" *ngIf="isAuthenticated">
       <tea-sidebar-content (click)="toggleSidebar()" [isSidebarOpen]="!opened" [cart]="cart"></tea-sidebar-content>
     </mat-sidenav>
 

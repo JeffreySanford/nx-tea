@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, lastValueFrom, Observable, Subject, Subscription, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
 import { SessionService } from './session.service';
 import { TokenStorageService } from './token-storage.service';
-import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -17,8 +16,8 @@ export class AuthenticationService {
     id: 0,
     username: '',
     password: 'not provided',
-    firstName: 'Sample',
-    lastName: 'Sam'
+    firstName: 'Sam',
+    lastName: 'Sam Sample'
   });
   isAdminSubject = new BehaviorSubject<boolean>(false);
   user?: User;
@@ -37,7 +36,7 @@ export class AuthenticationService {
   setUser(user: User) {
     const local = sessionStorage.getItem('username');
 
-    if (local) {
+    if (local && user.id) {
       this.currentUserSubject = new BehaviorSubject<User>({
         id: user.id,
         username: user.username,
@@ -53,7 +52,7 @@ export class AuthenticationService {
     if (user) {
       this.isAuthenticated.next(true);
     }
-    
+
     return this.isAuthenticated;
   }
 
@@ -70,30 +69,44 @@ export class AuthenticationService {
 
     return this.isAdminSubject;
   }
+  authenticate(): BehaviorSubject<boolean> {
+    return this.isAuthenticated;
 
-  login(username: string, password: string): BehaviorSubject<boolean> {
+  }
+
+  login(username: string, password: string): void  {
     const api = environment.apiUrl;
 
-    this.http.get(api + 'users/:' + username).subscribe((next)=>{
-      const user =  Object.values(next)[0];
-      this.getUser(user).subscribe((next)=>{ debugger;this.user = next},(error)=>{console.log(error)});
-      this.http.post<Response>(api + 'users/authenticate', { username, password })
-        .pipe(map(
-          res => {
-            debugger
-            console.log(username + ' authenticated: ' + res);
-            this.isLoggedIn.next(true);
-            this.isAuthenticated.next(true);
-            this.user = user;
-          })
-        );
-    });
+    this.http.get(api + 'users/:' + username).subscribe((next) => {
+      const user = Object.values(next)[0];
+      if (user) {
+        this.getUser(user).subscribe((next) => {
+          if (next.username === '') {
+            throw { message: 'User not found', value: 'User.username not found' }
 
-    return this.isLoggedIn;
+          } else {
+            const username = next.username;
+            const password = next.password;
+
+            this.http.post<Response>(api + 'users/authenticate', { username, password }).subscribe((auth)=>{
+              console.log(user.username + ' authenticated: ' + user.username + ' is ' + auth);
+              this.isLoggedIn.next(true);
+              this.isAuthenticated.next(true);
+              this.user = user;  
+            });
+            
+          }
+        }, (error) => { console.log(error) });
+      }
+    });
   }
 
   getUser(user: User): Observable<User> {
-    this.currentUserSubject.next(user);
+    if (user) {
+      this.currentUserSubject.next(user);
+    } else {
+      debugger
+    }
 
     return this.currentUserSubject;
   }
@@ -102,12 +115,5 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject?.unsubscribe();
-  }
-  signIn() {
-    this.router.navigate(['login']);
-  }
-
-  getAccessToken() {
-    return 'access-token-string'
   }
 }

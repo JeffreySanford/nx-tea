@@ -50,33 +50,27 @@ export class LandingComponent implements OnInit, AfterContentChecked {
     private cd: ChangeDetectorRef,
     private router: Router,
     private dashboardService: DashboardService,
-    private authenticationService: AuthenticationService,
-    private tokenStorageService: TokenStorageService,
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.cartService = cartService;
     this.sidebarService = sidebarService;
   }
 
   ngAfterContentChecked() {
-    this.userService.getUser().subscribe((user) => {
-      if (user.id > 0 && !this.user) {
-        debugger
-        this.authenticationService.getUser(user).subscribe((user: User) => {
-          console.log('Landing detects user login: ' + user.username);
-          debugger
-          this.user = user;
-          this.authenticationService.setUser(user);
-          this.authenticationService.isUserAuthenticated(user).subscribe((auth) => this.isAuthenticated = auth);
-          this.authenticationService.isAdmin(user).subscribe((isAdmin) => this.isAdmin = isAdmin);
+    if (!this.user ) {
+      this.userService.getUser().subscribe((user) => {
+        if (user && user.id !== 0) {
+          this.authenticationService.isUserAuthenticated(user).subscribe(isAuth => {
+            debugger
+            this.isAuthenticated = isAuth
+            this.user = user;
 
-          this.cd.detectChanges();
-        });
-      }
-      else {
-        console.log('No user')
-      }
-    });
+            this.cd.detectChanges();
+          });
+        }
+      });
+    }
   }
 
   ngOnInit(): void {

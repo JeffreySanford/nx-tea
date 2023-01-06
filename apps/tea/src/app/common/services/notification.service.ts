@@ -9,6 +9,10 @@ export class NotificationService {
 
     constructor(private toastr: ToastrService) { }
 
+    clear () {
+        this.toastr.clear();
+    }
+    
     showSuccess(message: string, title: string) {
         this.showHTMLMessage(true, message, title);
     }

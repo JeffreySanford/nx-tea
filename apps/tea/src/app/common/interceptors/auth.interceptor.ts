@@ -12,7 +12,6 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService, private router: Router) { }
     intercept(request: HttpRequest<any>, next: HttpHandler) {
 
-        const accessToken = this.authenticationService.getAccessToken();
         const headers = { 'Authorization': 'Bearer ${accessToken}' };
 
         request = request.clone({
@@ -42,7 +41,8 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             debugger
             console.error('Auth interceptor error: ' + error.message);
             if (/is expired/.test(authResHeader)) {
-                this.authenticationService.signIn();  // Token expired, leave app amd sign-in again
+                debugger
+                this.router.navigate(['login']);  // Token expired, leave app amd sign-in again
             }
         }
 

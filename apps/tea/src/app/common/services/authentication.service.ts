@@ -92,7 +92,7 @@ export class AuthenticationService {
               console.log(user.username + ' authenticated: ' + user.username + ' is ' + auth);
               this.isLoggedIn.next(true);
               this.isAuthenticated.next(true);
-              this.user = user;  
+              this.user = user;
             });
             
           }

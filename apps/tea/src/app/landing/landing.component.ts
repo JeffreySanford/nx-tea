@@ -66,6 +66,10 @@ export class LandingComponent implements OnInit, AfterContentChecked {
             this.isAuthenticated = isAuth
             this.user = user;
 
+            this.authenticationService.isAdmin(user).subscribe((isAdmin)=>{
+              this.isAdmin = isAdmin;
+            });
+
             this.cd.detectChanges();
           });
         }

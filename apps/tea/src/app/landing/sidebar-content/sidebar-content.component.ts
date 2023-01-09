@@ -57,6 +57,11 @@ export class SidebarContentComponent implements OnInit, AfterContentInit {
             debugger
             this.isAuthenticated = isAuth
             this.user = user;
+
+            this.authenticationService.isAdmin(user).subscribe((isAdmin)=>{
+              this.isAdmin = isAdmin;
+            });
+            
             this.cd.detectChanges();
           });
         }
